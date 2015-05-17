@@ -1,0 +1,15 @@
+<div class="title"><a href="#!/">{{title}}</a></div>
+<script type="text/javascript" language="JavaScript" src="../dist/find5.js">
+</script>
+
+<ul class="nav top"  ng-controller="navigationController" >
+  <li ng-if="globals"
+      ng-include="'templates/navbar-module.html'"
+      ng-controller="globalsController">
+  </li> 
+  <li ng-controller="moduleController"  ng-click='parentAccordeon.activeTab($event);' class="navItem {{module.$prefix}} {{module.name}}" ng-class="{ 'subNavItem': module.$prefix ,'perentNavItem': !module.$prefix  }" ng-class="{ 'subNavItem': module.$prefix}"  ng-if="modules"
+      ng-repeat="module in modules"
+      ng-include="'templates/navbar-module.html'"
+   >
+  </li>
+</ul>

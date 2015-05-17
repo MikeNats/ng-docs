@@ -1,0 +1,38 @@
+<h1 class="literal">
+  <span class="kind">  <span  ng-if="doclet.$prefix"> {{doclet.type.names[0] }} </span
+  >  <span  ng-if="!doclet.$prefix">{{doclet.kind}}  </span
+  > name:&nbsp; </span> 
+ <!-- <span class="prefix" ng-if="doclet.$prefix">{{doclet.$prefix}}.</span
+  >--><span class="name"> {{doclet.name}}</span>
+</h1>
+
+<p  ng-if="doclet.requires"><b>Requires:</b><span class='require' ng-repeat='require in doclet.requires track by $index'> <a  ng-if="isExternalLink(require)" target='_blank' href='{{ require | onlyUrl }}' > {{require | onlyName }} </a>
+<a  ng-if="!isExternalLink(require)" href='{{ require | onlyUrl }}' > {{require | onlyName }} </a>
+	
+	</span></p
+   >
+
+<div ng-if="doclet.description" ng-bind-html="doclet.description|html"></div>
+
+<div ng-if="elements.member">
+  <h2>Members</h2>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
+</div>
+ 
+
+<div ng-if="elements.function">
+  <h2>Functions</h2>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.function"></div>
+</div>
+
+
+<div ng-if="elements.event">
+  <h2>Events</h2>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.event"></div>
+</div>
+
+<div ng-if="doclet.examples">
+  <h2>Examples</h2>
+  <div ng-include="'templates/content-example.html'" ng-repeat="example in doclet.examples"></div>
+</div>
+
