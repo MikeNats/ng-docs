@@ -1,62 +1,87 @@
 /*global auth */
+
 /**
- * <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#constant-recipe' target='_blank'> angular.constant </a>
- <br /><br/>                     
- * <b>Parent Module:</b> {@link module:authModule authModule} <br /> <br /> 
- * <b>Description:</b> Contains authentication status messages.   <br /><br/>
- * @module  AUTH_EVENTS                           
- * @memberof module:authModule             
- * @type Constant    
- */
+*
+* <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#constant-recipe' target='_blank'> angular.constant </a>
+*                  
+* <b>Parent Module:</b> {@link module:authModule authModule} 
+*
+* <b>Description:</b> Contains authentication status messages. 
+*
+*
+*
+* @module  AUTH_EVENTS                           
+* @memberof module:authModule             
+* @type Constant  
+*
+*/
 
 auth.constant('AUTH_EVENTS', {
     
-    /**   
-     * @member loginSuccess                                                      
-     * @public  
-     * @static 
-     * @return {String} auth-login-success
+    /** 
+    * 
+    * @member loginSuccess                                                      
+    * @public  
+    * @static 
+    * @type {String}
+    *
     */
+    
 	loginSuccess : 'auth-login-success',
     
     /**
-     * @member   loginSuccess   
-     * @public
-     * @static
-     * @return {String} auth-login-failed         
+    * 
+    * @member   loginSuccess   
+    * @public
+    * @static
+    * @type {String}
+    * 
     */
+    
 	loginFailed : 'auth-login-failed',
     
     /**
-     * @member   logoutSuccess     
-     * @public
-     * @static
-     * @return {String} auth-logout-success
+    *
+    * @member   logoutSuccess     
+    * @public
+    * @static
+    * @type {String}
+    * 
     */
+    
 	logoutSuccess : 'auth-logout-success',
     
     /**
-     * @member   sessionTimeout  
-     * @static
-     * @public
-     * @return {String} auth-session-timeout
+    *
+    * @member   sessionTimeout  
+    * @static
+    * @public
+    * @type {String}
+    *
     */
+    
 	sessionTimeout : 'auth-session-timeout',
     
     /**
-     * @member   notAuthenticated  
-     * @public
-     * @static
-     * @return {String} auth-not-authenticated
+    *
+    * @member   notAuthenticated  
+    * @public
+    * @static
+    * @type {String}
+    *
     */
+    
 	notAuthenticated : 'auth-not-authenticated',
     
     /**
-     * @member   notAuthorized 
-     * @public
-     * @static
-     * @return {String} auth-not-authorized
+    *
+    * @member   notAuthorized 
+    * @public
+    * @static
+    * @type {String}
+    *
     */
+    
 	notAuthorized : 'auth-not-authorized'
     
 });

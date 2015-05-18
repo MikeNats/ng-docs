@@ -1,59 +1,56 @@
 /*global angular */
+/*global uiServices*/
 
-/**
- * <b>Type:</b> <a href='https://docs.angularjs.org/guide/module' target='_blank'> angular.module </a> <br /><br/>
- * <b>Description:</b> Conetains User Interface Services: <br /> <br />
- * <ul><li>{@link module:uiServicesModule.module:createEditController Controller: createEditController}<br />&nbsp;</li>
-
- </ul>                           
-* @module uiServicesModule   
-* @type module 
+/** 
+*
+* <b>Type:</b> {@link https://docs.angularjs.org/guide/controller angular.controller} 
+*
+* <b>Parent Module:</b> {@link module:uiServicesModule uiServices} 
+*
+* <b>Description:</b> Redirects user to  Create Map or Edit Map template  
+*
+*
+*
+* @module  createEditController                            
+* @memberof module:uiServicesModule 
+* @requires $scope+https://docs.angularjs.org/guide/scope+external
+* @requires $location+https://docs.angularjs.org/guide/$location+external
+* @requires Session+../documentation/index.html#!/module:authModule.module:Session+internal 
+* @type controller
+*
 */
-
-/**  
- * @var uiServices
- * @type {angular.module} 
-*/
-
-
-var uiServices =  angular.module('uiServicesModule', []);
-
-
-   
-/**
- * <b>Type:</b> {@link https://docs.angularjs.org/guide/controller angular.controller} <br /><br/>
- * <b>Parent Module:</b> {@link module:uiServicesModule uiServices} <br /> <br /> 
- * <b>Description:</b> Redirects user to  Create Map or Edit Map template  <br /><br/>
- * @module  createEditController                           
- * @memberof module:uiServicesModule 
- * @requires $scope 
- * @requires $location   
- * @requires Session 
- * @type controller
- */
-
 
 uiServices.controller('createEditController', ['$scope', '$location', 'Session', function ($scope, $location, Session) {
 	
     "use strict";
-   
-	
-	 /**
-     * @class project
-     * @public
-     * @classdesc
-     * <b>Type:</b>  Object  attached to  {@link $scope } <br/> <br/>
-	 * <b>Description: </b> Implements  redirection to Create Map or Edit Map templates.
-     */
-    
-	
+  
+    /**
+    *
+    * @class 
+    * @name project
+	* @type {Object}
+    * @inner
+    * @classdesc
+    *
+    * <b>Type:</b> Object attached to <a href='https://docs.angularjs.org/guide/scope' target='_blank' title='$scope' >$scope</a>.
+	*
+    * <b>Description: </b> Redirection to {@link createProjectTemplate.html} or {@link createProjectTemplate.html} according to user action.
+    *
+    */
 
-    $scope.project = { };
-	
-   /**
-    * Redirect user to Create Map template.
-    * @function  create 
-   */
+    $scope.project = {};
+
+    /**
+    *
+    * Redirect user to {@link createProjectTemplate.html}
+    *
+    * @member  create
+    * @type function
+	* @param no-arguments
+    * @memberof module:uiServicesModule.module:createEditController~project
+	* @inner
+    *
+    */
 	
 	$scope.project.create = function () {
 		
@@ -61,9 +58,17 @@ uiServices.controller('createEditController', ['$scope', '$location', 'Session',
 		
 	};
     
+    
    /**
-    * Redirect user to Edit Map template.
-    * @function  edit 
+   *
+   * Redirect user to {@link createProjectTemplate.html}
+   *
+   * @member  edit
+   * @param no-arguments
+   * @type function
+   * @memberof module:uiServicesModule.module:createEditController~project
+   * @inner  
+   *
    */
 	
 	$scope.project.edit = function () {

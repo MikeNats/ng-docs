@@ -3,16 +3,20 @@
 /*global auth */
 
 /**
- * <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#service-recipe' target='_blank'> angular.service </a> <br /><br/>   
- * <b>Parent Module:</b> {@link module:authModule authModule} <br /> <br /> 
- * <b>Description:</b> Store user data by returning in an  instance of the function object.                     
- * @module Session 
- * @memberof module:authModule 
- * @type Service
- */  
-
-
-   
+*
+* <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#service-recipe' target='_blank'> angular.service </a> 
+* 
+* <b>Parent Module:</b> {@link module:authModule authModule}
+*
+* <b>Description:</b> Store user data by returning in an  instance of the function object. 
+*
+*
+*
+* @module Session 
+* @memberof module:authModule 
+* @type Service
+*
+*/
 
  
 auth.service('Session', function () {
@@ -20,17 +24,20 @@ auth.service('Session', function () {
     "use strict";
     
     
-   /**
+    /**
+    *
     * Sets user credeltials.
-    * @function  create 
-    * @access public   
+    *
+    * @member  create 
+    * @access public
+    * @type function
     * @param {String} userName
     * @param {String} userPass 
-    * @param {String} userToken
-    * @param {String} userProjects 
-*/
+    * @param {String} userToken        
+    * @param {Object} userProjects 
+    *
+    */
     
-
     this.create = function (userName, userPass, userToken, userProjects) {
         this.name = userName;
 	    this.pass = userPass;
@@ -39,14 +46,18 @@ auth.service('Session', function () {
     };
     
     
+    
     /**
-    * Destroy user credentials. 
-    * @function  destroy 
+    *
+    * Destroy user credentials, sets data to null. 
+    *
+    * @member  destroy 
     * @access public 
-    * @param {String} status
+    * @type function
+	* @param no-arguments
+    *
     */
     
-
     this.destroy = function () {
 	    this.name = null;
 	    this.pass = null;
