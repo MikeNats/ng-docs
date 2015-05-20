@@ -7,6 +7,9 @@
 <div ng-if="doclet.description" ng-bind-html="doclet.description|html"></div>
 
 
+
+
+
 <div ng-if="elements.member">
   <h2>Properties</h2>
   <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>

@@ -2,20 +2,20 @@
 /*global angular */
 /*global auth */
 
-/**
+/**  
 *
 * <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#service-recipe' target='_blank'> angular.service </a> 
 * 
 * <b>Parent Module:</b> {@link module:authModule authModule}
-*
+*  
 * <b>Description:</b> Store user data by returning in an  instance of the function object. 
 *
 *
 *
-* @module Session 
-* @memberof module:authModule 
+* @kind angularConcept 
 * @type Service
-*
+* @name Session  
+* @memberof module:authModule 
 */
 
  

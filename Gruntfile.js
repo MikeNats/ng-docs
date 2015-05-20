@@ -109,32 +109,32 @@ module.exports = function(grunt) {
 
     
     'ngtemplates': {
-       files: 'yourJSToBeDocumented/**/*.js',
+       files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
 
         tasks:['ngtemplates']
       
     },
 
      minifyHtml:{
-         files: 'yourJSToBeDocumented/**/*.js',
+         files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
          tasks: ['minifyHtml']
       },
         
       uglify:{
-         files: 'yourJSToBeDocumented/**/*.js',
+       files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
          tasks: ['uglify']
 
       },   
 
       less: {
-         files: 'yourJSToBeDocumented/**/*.js',
+       files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
          tasks: ['less']
 
       },
         
       'jsdoc-ng' : {
 
-           files : 'yourJSToBeDocumented/**/*.js',
+       files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
            tasks: [ 'jsdoc-ng' ]
        },
 

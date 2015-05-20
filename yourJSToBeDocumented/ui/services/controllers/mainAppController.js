@@ -98,14 +98,14 @@ uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popU
 	* @inner
     * @classdesc
     *
-    * <b>Type:</b> Object attached to <a href='https://docs.angularjs.org/guide/scope' target='_blank' title='$scope' >$scope</a>.
+    * <b>Type:</b> Object attached to <a href='https://docs.angularjs.org/guide/scope' target='_blank' title='$scope' >$scope</a>.  
     *
 	* <b>Description:</b> Initialize pop up.
     *
     */
 	
 	$scope.popUp = {};
-		
+		 
 	
     /**  
     *
@@ -114,7 +114,7 @@ uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popU
     * @member togglePopUp
     * @type function
     * @inner
-    * @memberof module:uiServicesModule.module:mainAppController~header
+    * @memberof module:uiServicesModule.module:mainAppController~popUp
     * @param {Object} DOMelement
     *
     */
