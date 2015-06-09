@@ -32,7 +32,7 @@ function renderLinks(helper, doclet) {
     for (var i in doclet.params) {
       renderLinks(helper, doclet.params[i]);
     }
-  } 
+  }
   if (doclet.exceptions) {
     for (var i in doclet.exceptions) {
       renderLinks(helper, doclet.exceptions[i]);
@@ -44,8 +44,11 @@ function renderLinks(helper, doclet) {
 function createLink(helper, doclet, data) {
   if (doclet.kind == 'class')     return(doclet.longname);
   if (doclet.kind == 'module')    return(doclet.longname);
+  if (doclet.kind == 'jsConcept') {
+
+      return( doclet.longname);
+  } 
   if (doclet.kind == 'namespace') return(doclet.longname);
-  if (doclet.kind == 'angularConcept') return(doclet.memberof+'.'+doclet.kind+':'+doclet.name);
 
   if (doclet.scope == 'global') return("#" + doclet.name);
 
@@ -106,6 +109,12 @@ exports.publish = function(taffyData, opts, tutorials) {
     delete current.meta;
     delete current.___id;
     delete current.___s;
+      if(current.kind == 'jsConcept'){
+            current.kind = 'module';
+            current.jsConcept = true; 
+      }
+  
+    
 
     current.$href = createLink(helper, doclet, taffyData);
     current.$id = id;

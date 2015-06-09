@@ -2,16 +2,22 @@
 
 /**
 * 
-* @kind module      
+* @framework angular 
+* @kind module    
 * @name authModule  
-* @type angularModule  
-* @assignedToVariable auth
+* @variablename auth
 * @public
-* @static
 * @description Contains user authentication services. 
+*
+*
+* @author Michail Tsougkranis
+* @version 1.0
+* @since Angular.1.3.9
 *
 */
 
 
 var auth  =  angular.module('authModule', []);
  
+
+

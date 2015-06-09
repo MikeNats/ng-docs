@@ -1,29 +1,27 @@
 /*global auth */
 
-/**  
-*  
-* <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#constant-recipe' target='_blank'> angular.constant </a>
-*                  
-* <b>Parent Module:</b> {@link module:authModule authModule} 
+/**   
 *
-* <b>Description:</b> Contains authentication status messages.  
+* @framework angular
+* @kind jsConcept
+* @type constant
+* @name AUTH_EVENTS
+* @memberof module:authModule
+* @Description Contains authentication status messages.                 
 *
-*    
-*
-* @kind angularConcept 
-* @type Constant
-* @name AUTH_EVENTS  
-* @memberof module:authModule               
-*
+* @author Michail Tsougkranis
+* @version 1.0
+* @since Angular.1.3.9
 */
 
 auth.constant('AUTH_EVENTS', {
     
     /** 
     * 
-    * @member loginSuccess                                                      
-    * @public  
-    * @static  
+    * @member loginSuccess
+    * @memberof module:authModule.AUTH_EVENTS
+    * @public
+    * @static
     * @type {String}
     *
     */
@@ -32,18 +30,20 @@ auth.constant('AUTH_EVENTS', {
     
     /** 
     * 
-    * @member   loginSuccess   
+    * @member   loginSuccess 
+    * @memberof module:authModule.AUTH_EVENTS
     * @public
     * @static
     * @type {String}
-    *  
+    *    
     */
     
 	loginFailed : 'auth-login-failed',
     
     /**
-    *  
-    * @member   logoutSuccess     
+    *   
+    * @member  logoutSuccess 
+    * @memberof module:authModule.AUTH_EVENTS
     * @public
     * @static
     * @type {String}     
@@ -54,7 +54,8 @@ auth.constant('AUTH_EVENTS', {
     
     /**     
     *     
-    * @member   sessionTimeout  
+    * @member   sessionTimeout 
+    * @memberof module:authModule.AUTH_EVENTS
     * @static       
     * @public 
     * @type {String}
@@ -65,7 +66,8 @@ auth.constant('AUTH_EVENTS', {
     
     /**
     * 
-    * @member   notAuthenticated  
+    * @member   notAuthenticated 
+    * @memberof module:authModule.AUTH_EVENTS   
     * @public
     * @static
     * @type {String}
@@ -76,7 +78,8 @@ auth.constant('AUTH_EVENTS', {
     
     /**
     *
-    * @member   notAuthorized 
+    * @member   notAuthorized
+    * @memberof module:authModule.AUTH_EVENTS  
     * @public
     * @static
     * @type {String} 

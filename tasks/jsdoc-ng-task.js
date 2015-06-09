@@ -6,7 +6,7 @@ var tmp = require('temporary');
 /* Current and JSDoc directories */
 var baseDir = path.join(__dirname, '..');
 var jsDocDir = path.join(baseDir, 'node_modules', 'jsdoc');
-var cwDir = process.cwd();
+var cwDir = process.cwd(); 
 
 /* Our Grunt plugin */
 module.exports = function(grunt) {

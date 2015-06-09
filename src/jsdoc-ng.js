@@ -5,64 +5,51 @@ var ngDoc = angular.module('jsDocNG', [ 'jsDocNG-Data', 'jsDocNG-Templates' ])
 /* ======================================================================== */
 /* CONFIGURATION                                                            */
 /* ======================================================================== */
-
+     
 ngDoc.config(['$locationProvider', '$provide', '$doclets', function($locationProvider, $provide, $doclets) {
-
+   
   /* Configure our location provider */
-  $locationProvider.html5Mode(false);
+  $locationProvider.html5Mode(false); 
   $locationProvider.hashPrefix("!");
 
   /* "Index" our doclets by path and longname */
   var byPath = {};
   var byName = {};
-    
   for (var i in $doclets) {
-
     var doclet = $doclets[i];
     byPath[doclet.$href] = doclet;
     byName[doclet.longname] = doclet;
-   
-  }
-
+  } 
+ 
   /* Create links to the parent */
   for (var i in $doclets) {
-      
     var doclet = $doclets[i];
     var parent = byName[doclet.memberof];
     if (parent != null) doclet.$parent = parent;
-      
   }
 
   /* Create prefixes for names */
   var findPrefix = function(element) {
-      
     if (!element) return '';
     if (!element.$parent) return '';
 
     var parent = element.$parent;
-    if ((element.kind != 'module') && (parent.kind == 'module')) return '';
+    if ((element.kind != 'module') && (parent.kind == 'module') ) return '';
 
     var prefix = findPrefix(parent);
-      
     if (prefix) return prefix + "." + parent.name;
-      
     return parent.name;
-      
   }
 
   for (var i in $doclets) {
-      
     var doclet = $doclets[i];
     var prefix = findPrefix(doclet);
     if (prefix) doclet.$prefix = prefix;
-      
-  } 
+  }
 
   /* Provide our doclets by name/path as constants */
- 
   $provide.constant('$docletsByName', byName);
   $provide.constant('$docletsByPath', byPath);
-    
   if (window) window.$$doclets = byName;
 
 }]);
@@ -70,6 +57,33 @@ ngDoc.config(['$locationProvider', '$provide', '$doclets', function($locationPro
 /* ======================================================================== */
 /* FILTERS & SERVICES                                                       */
 /* ======================================================================== */
+
+ngDoc.filter('htmlToPlaintext',[ function() {
+    
+    return function(text) {
+      return String(text).replace(/<[^>]+>/gm, '');
+    };
+
+}]);
+
+ngDoc.filter('requiresSplit',['$sce', function($sce) {
+    
+    return function(text) {
+		
+		if(text.indexOf('+') !== -1){
+			
+			return $sce.trustAsHtml(' < a href="#!/'+text.split('+')[1]+'" > '+text.split('+')[0] +' </a>')
+		
+		}else{
+			
+		  return text.split(':')[1];
+		}
+		
+    };
+
+}]);
+
+
 
 ngDoc.filter('html', ['$sce', function($sce) {
   return function(value) {
@@ -179,45 +193,30 @@ ngDoc.run(['$rootScope', '$location', '$docletsByPath', function($rootScope, $lo
   /* Attach a location change handler */
   var currentDoclet = null;
   $rootScope.$on('$locationChangeSuccess', function() {
-    
-        /* Our path and hash */
-        var path = $location.path();
-        var hash = $location.hash();
+    /* Our path and hash */
+    var path = $location.path();
+    var hash = $location.hash();
 
-        /* Remove leading slashes */
-        while (path[0] == '/') path = path.substring(1);
+    /* Remove leading slashes */
+    while (path[0] == '/') path = path.substring(1);
 
-        /* New doclet */
-        var newDoclet = null;
-      
-        if (path && hash) {
-            
-          newDoclet = $docletsByPath[path + "#" + hash];
-            
-        } else if (path) {
-            
-          newDoclet = $docletsByPath[path];
-            
-        } else if (hash) {
-            
-          newDoclet = $docletsByPath["#" + hash];
-            
-        } else {
-            
-          newDoclet = null;
-            
-        }
-        
+    /* New doclet */
+    var newDoclet = null;
+    if (path && hash) {
+      newDoclet = $docletsByPath[path + "#" + hash];
+    } else if (path) {
+      newDoclet = $docletsByPath[path];
+    } else if (hash) {
+      newDoclet = $docletsByPath["#" + hash];
+    } else {
+      newDoclet = null;
+    }
 
-        /* Emit event if necessary */
-        if (newDoclet != currentDoclet) {
-         
-            currentDoclet = newDoclet;
-            
-            $rootScope.$broadcast('$docletChanged', newDoclet, currentDoclet);
-            
-            
-        }
+    /* Emit event if necessary */
+    if (newDoclet != currentDoclet) {
+      currentDoclet = newDoclet;
+      $rootScope.$broadcast('$docletChanged', newDoclet, currentDoclet);
+    }
   });
 
 }]);
@@ -237,29 +236,21 @@ function ModuleController($scope, $filterDoclets, $findChildren, spec) {
   }
 
   this.apply = function(spec) {
-      
     spec.kind = '!module';
     var elements = $filterDoclets(spec);
     if ($findChildren) elements = $findChildren(elements);
     if (elements.length) {
-        
       var count = 0;
       var grouped = {};
-        
       for (var i in elements) {
-          
         var element = elements[i];
         if (element.kind === 'typedef') continue;
 
         var kind = grouped[element.kind];
-          
         if (!kind) kind = grouped[element.kind] = [];
-          
         kind.push(element);
         count ++;
-          
       }
-        
       if (count) {
         $scope.elements = grouped;
       } else {
@@ -268,19 +259,34 @@ function ModuleController($scope, $filterDoclets, $findChildren, spec) {
     } else {
       this.reset();
     }
+ if ($scope.module){
+    console.log('da',$scope.elements);
+ }
+     /* if($scope.module){
+       $scope.module.jsConcepts = [];
+       for(var jsConcept in $scope.elements.jsConcept){
+           
+           $scope.module.jsConcepts.push($scope.elements.jsConcept[jsConcept]);
+          
+         } 
+          console.log($scope);
+      }*/
+   
+     
   }
 
+  
   if (spec) this.apply(spec);
     
-
-};
+  
+}; 
 
 /**
  * Controller for all global doclets. Extends ModuleController.
  */
 ngDoc.controller('globalsController', ['$scope', '$filterDoclets', '$findChildren', function($scope, $filterDoclets, $findChildren) {
   ModuleController.call(this, $scope, $filterDoclets, $findChildren, { scope: 'global', access: '!protected' });
-}]);
+}]); 
 
 /**
  * Controller for a specified module. Extends ModuleController and injects
@@ -298,6 +304,12 @@ ngDoc.controller('moduleController', ['$scope', '$attrs', '$filterDoclets', '$fi
       $this.reset();
     }
   });
+
+      
+  
+    
+
+
 }]);
 
 /**
@@ -332,144 +344,67 @@ ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$fi
   }
 
   /* Inject a list of all the modules (if we have any) */
+    
   var modules = $filterDoclets({kind: 'module'});
-  if (modules.length) {
-  $scope.modules = modules;
-  }
+ // var jsConcepts = $filterDoclets({kind: 'jsConcepts'});
 
- /*** Mike Nats - break down of jsddocs modules array to angularModules and angularFeatures  ***/
-   
-  $scope.extendModuleStracture = function(){  
-    var mIterrator,
-        sIterrator;
-        $scope.angularFeatures = [],
-        $scope.angularModules = [];    
-    
-    for (mIterrator = 0; mIterrator <  $scope.modules.length;  mIterrator +=1){
-    
-        if ($scope.modules[mIterrator].type.names[0] !== "module" && $scope.modules[mIterrator].type.names[0] !== "angularModule") {
-        
-            $scope.angularFeatures.push(Object.create($scope.modules[mIterrator])); 
-            
-        } else {
-            
-            $scope.modules[mIterrator].angularFeatures = [];
-            $scope.angularModules.push(Object.create($scope.modules[mIterrator]));
-        
-        
-        }
-    
-    }
-    
-    
-    
-    
-    /* Mike Nats - For every angular module pushs into the angularElements[] all angular Elements : Services, Controllers, filters etc..   */
-    
-    for (sIterrator = 0; sIterrator <  $scope.angularFeatures.length;  sIterrator +=1){//for every angularFeature
-    
-       for (mIterrator = 0; mIterrator <  $scope.angularModules.length;  mIterrator +=1){//for every angularModule
-            
-           if( $scope.angularFeatures[sIterrator].$parent.name === $scope.angularModules[mIterrator].name){//if angularFeatures[sIterrator] is under angularModules[mIterrator]
-               
-               $scope.angularModules[mIterrator].angularFeatures.push( $scope.angularFeatures[sIterrator]);//push angularFeaturse[sIterrator] to angularModules[mIterrator].angularFeatures
-           
-           }
-       
-       }
-    
-    } 
-    
-  }
-  
-  $scope.extendModuleStracture();  
-    
-   
-    
-    
-    $scope.hasModuleAttachedSpecificAngularType = function(currentModule, SpecificType){
-       
-        var sIterrator,
-            currentModuleHasSpecificType= false; 
-      
-          
-            for (sIterrator = 0; sIterrator < currentModule.angularFeatures.length;  sIterrator +=1){
-                
-                
-               if( currentModule.angularFeatures[sIterrator].type.names[0] === SpecificType){
-   
-                   return true;
-               }      
 
-           }
-          return false;
-              
-    }
-    
-    
-    
-  
+ 
+   console.log($scope) 
+
+  if (modules.length) $scope.modules = modules;
+
   /* The documentation title */
   $scope.title = $title;
-
-
-  /******  Mike Nats Accordeon ******/
-
-	  $scope.parentAccordeon = {
-  
-		  activeTab : function ($event) {
-
-			  	 var item = angular.element($event.currentTarget)[0].className.replace("perentNavItem",'');
-
-			     var subItem = item.replace("navItem",'').replace("perentNavItem",'').trim();
- 	
-			  
-			  	if(item.indexOf("subNavItem") <= -1){
-				  if (angular.element($event.currentTarget).hasClass('colapse')) {
-
-						angular.element(document.getElementsByClassName(item)).removeClass('colapse');
-
-					} else {
-
-					  angular.element(document.querySelectorAll('.navItem')).removeClass('colapse');
-					  angular.element(document.getElementsByClassName(item)).addClass('colapse');
-					}
-				}
-
-				}
-	  };
-	
-	$scope.accordeon = {
-  
-		activeTab : function ($event) {
-	
-	var item = angular.element($event.currentTarget).parent()[0].className;
-
-			     var subItem = item.replace("navItem  ",'');
-
-			  
-			  	if(item.indexOf("subNavItem") > -1){
-					
-						if (angular.element($event.currentTarget).hasClass('colapse')) {
-
-						  angular.element($event.currentTarget).removeClass('colapse');
-
-						} else {
-
-						  angular.element(document.querySelectorAll('.nav.group')).removeClass('colapse');
-						  angular.element($event.currentTarget).addClass('colapse');
-					  }
-				}
-		}
-  
-	};
+    
+$scope.topLevelModules =[]; 
+        
+  var mod;
+    
+  if ($scope.modules){
+        
+      for(mod in $scope.modules){
+              
+          
+           if(!$scope.modules[mod].hasOwnProperty('$parent')){
+              
+               $scope.modules[mod].jsConceptParent = true;
+               
+               $scope.topLevelModules.push($scope.modules[mod]);
+              
+               $scope.modules[mod].jsConcepts = [];
+               
+               for(var m in $scope.modules){
+                   
+                 if($scope.modules[m].hasOwnProperty('$parent')){   
+                   
+                     if($scope.modules[mod].name === $scope.modules[m].$parent.name){
+              
+                        
+                         
+                        $scope.modules[mod].jsConcepts.push($scope.modules[m]);
+                    
+                    }
+                 }
+                   
+              }
+               
+           }            
+          
+        } 
+    }
+    
+   $scope.colapseSubNav = function($event){
+	   console.log($event.currentTarget);
+      if(angular.element($event.currentTarget).hasClass('active') ){
+          angular.element($event.currentTarget).removeClass('active');
+      }else{
+         angular.element($event.currentTarget).addClass('active');         
+      }
+   
+   }; 
     
     
-     /***** >>Mike Nats -  $scope.modules has now NEW STARACTURE << */
-    /**************************************************************/
-    /**************************************************************/
-                
-
 
 }]);
 
@@ -477,15 +412,7 @@ ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$fi
  * Controller for the navbar's "expanded" content. Extends ModuleController
  * and inject in the scope all children of whatever doclet we are expanding.
  */
-
-ngDoc.controller('navigationController', ['$scope', '$attrs', '$filterDoclets', function($scope, $attrs, $filterDoclets) {
-    ModuleController.call(this, $scope, $filterDoclets);
-    var $this = this;
-}]);
-
-
 ngDoc.controller('navbarExpandedController', ['$scope', '$attrs', '$filterDoclets', function($scope, $attrs, $filterDoclets) {
-    
   ModuleController.call(this, $scope, $filterDoclets);
 
   var $this = this;
@@ -499,157 +426,83 @@ ngDoc.controller('navbarExpandedController', ['$scope', '$attrs', '$filterDoclet
   });
 }]);
 
-
-
-
-
-
-ngDoc.filter('onlyName', function () {
-   
-    return function (requires) {
-
-		var name = requires.replace(/["]+/g,"").substring(requires.indexOf(":")).split('+')[0].replace(/["]+/g,"").substring(requires.indexOf("module:") + 1).split('+')[0]
-     
-		return name;
-		 
-    }
-  });
-
-ngDoc.filter('onlyUrl', function () {
-    return function (requires) {
-    
-		return requires.replace(/["]+/g,"").substring(requires.indexOf("module:")).substring(requires.indexOf("+") + 1).split('+')[0];
-				
-		
-	}
-  });
-
-
-
 /* Content */
-ngDoc.controller('contentController', ['$scope', '$location', '$title', '$docletsByName', '$filterDoclets', '$findChildren', '$readme',
-  function($scope, $location, $title, $docletsByName, $filterDoclets, $findChildren, $readme) {
+ngDoc.controller('contentController', ['$scope', '$location', '$title', '$docletsByName', '$filterDoclets', '$findChildren', '$readme','$sce',
+  function($scope, $location, $title, $docletsByName, $filterDoclets, $findChildren, $readme, $sce) {
     ModuleController.call(this, $scope, $filterDoclets, $findChildren);
 
     /* Always keep our readme around */
     $scope.readme = $readme;
-	 var i = 0;
-	  i++;
-      
-	$scope.angularConcept  = $filterDoclets({kind: 'angularConcept'});
-     console.log() 
-	$scope.angularConceptType = function(type){
-		var i;
+	  
+	$scope.require = function(text) {
 
-		for (i = 0; i < $scope.angularConcept.length; i+=1) {
-	
-			if ($scope.angularConcept[i].type.names[0] === type ) {
-				
-				return true;
-			
+			if(text.indexOf('+') !== -1){
+
+				return $sce.trustAsHtml('<a href="#!/'+text.split('+')[1]+'" > '+text.split('+')[0].split(':')[1] +'</a>&nbsp;')
+
+			}else{
+
+			  return  $sce.trustAsHtml('<span>'+text.split(':')[1]+'</span>&nbsp;');
 			}
-		
-		}
-		return false;
-	
-	}
-	  
-	  
-	  
-     $scope.isExternalLink = function(requires){
-        
-         if(i>0){  
 
-             if(requires.replace(/["]+/g,"").substring(requires.indexOf("module:")).substring(requires.indexOf("+") + 1).split('+')[1] === 'external'){
+		};
 
-                    return true; 
-                }else{ 
-
-                    return false;
-                    }
-            }
 	  
-	  };
-      
+	  
     /* The content doclet/page is either a class, module, globals, or readme */
     var $this = this;
-    
-      $scope.$on('$docletChanged', function(event, doclet) {
+    $scope.$on('$docletChanged', function(event, doclet) {
+      if (doclet) {
 
-        if (doclet) {
-				console.log('1')
-                if (doclet.kind === 'typedef') {
-        	console.log('2')
-                        var href = doclet.$href;
-
-         
-
-                        while (doclet && doclet.type && doclet.type.names && (doclet.kind === 'typedef')) {
-                            doclet = $docletsByName[doclet.type.names[0]];
-                        }
-
-                        if (doclet && (doclet.$href != href)) {
-      
-                            $location.url(doclet.$href);
-
-                        } else {
-
-                            $scope.template = null;
-                            $scope.doclet = null;
-                            $this.reset();
-                        }
-
-                      return;
-                 }
-
-                var parent = doclet;
-                
-					
-                while (parent && (parent.kind != 'class') && (parent.kind != 'angularConcept') && (parent.kind != 'module') && (parent.kind != 'namespace') ) {
-                              parent = parent.$parent;
-					
-                }
-      			
-				console.log('sdfsdf',doclet);
-			console.log('sdfsdf',parent);
-				
-                if (parent && (parent.kind == 'class')) {
-                  $scope.template = "templates/content-class.html";
-                  $scope.doclet = parent;
-
-                  $this.apply({memberof: parent.longname});
-
-                } else if (parent && (parent.kind == 'angularConcept')) {
-                    
-   			console.log(parent.kind)
-                  $scope.template = "templates/content-angularConcept.html";
-                  $scope.doclet = parent;
-                  $this.apply({memberof: parent.longname})
-				
-				} else if (parent && (parent.kind == 'module')) {
-          			console.log(parent.kind)
-                  $scope.template = "templates/content-module.html";
-                  $scope.doclet = parent;
-                  $this.apply({memberof: parent.longname});
-                } else if (parent && (parent.kind == 'namespace')) {
-                  $scope.template = "templates/content-module.html";
-                  $scope.doclet = parent;
-                  $this.apply({memberof: parent.longname});
-    
-                } else {
-                  $scope.template = "templates/content-globals.html";
-                  $scope.doclet = null;
-                  $this.apply({scope: 'global'});
-                }
-            
+        if (doclet.kind === 'typedef') {
+          var href = doclet.$href;
+          while (doclet && doclet.type && doclet.type.names && (doclet.kind === 'typedef')) {
+            doclet = $docletsByName[doclet.type.names[0]];
+          }
+          if (doclet && (doclet.$href != href)) {
+            $location.url(doclet.$href);
           } else {
-              
-    
             $scope.template = null;
             $scope.doclet = null;
             $this.reset();
           }
+          return;
+        }
+
+        var parent = doclet;
+        while (parent && (parent.kind != 'class')
+                      && (parent.kind != 'module')
+                      && (parent.kind != 'namespace')) {
+          parent = parent.$parent;
+        }
+
+        if (parent && (parent.kind == 'class')) {
+          $scope.template = "templates/content-class.html";
+          $scope.doclet = parent;
+          $this.apply({memberof: parent.longname});
+        } else if (parent && (parent.kind == 'module')) {
+          $scope.template = "templates/content-module.html";
+          $scope.doclet = parent;
+          $this.apply({memberof: parent.longname});
+        } else if (parent && (parent.kind == 'namespace')) {
+          $scope.template = "templates/content-module.html";
+          $scope.doclet = parent;
+          $this.apply({memberof: parent.longname});
+        } else {
+          $scope.template = "templates/content-globals.html";
+          $scope.doclet = null;
+          $this.apply({scope: 'global'});
+        }
+      } else {
+        $scope.template = null;
+        $scope.doclet = null;
+        $this.reset();
+      }
     });
+      
+        
+      
+      
   }]
 );
 
@@ -688,6 +541,5 @@ ngDoc.controller('exampleController', ['$scope', '$attrs', function($scope, $att
       $scope.language = null;
     }
   });
-	
 
 }]);

@@ -2,27 +2,23 @@
 /*global templateUrl*/
 /*global auth*/
 
-/**    
-*                  
-* <b>Type:</b> <a href='https://docs.angularjs.org/guide/providers#factory-recipe' target='_blank'> angular.factory </a>
+
+/**   
 *
-* <b>Parent Module:</b> {@link module:authModule authModule}
-*
-* <b>Description:</b>  Singleton with a closure that implemets user authentication. On success sets user Session.  
-*
-* @kind angularConcept 
-* @type Factory
-* @name authService  
+* @framework angular  
+* @kind jsConcept  
+* @type factory
+* @name authService
 * @memberof module:authModule 
-*       
-* @requires $http+https://docs.angularjs.org/api/ng/service/$http+external                                     
-* @requires AUTH_EVENTS+../documentation/index.html#!/module:authModule.module:AUTH_EVENTS+internal    
-* @requires Session+../documentation/index.html#!/module:authModule.module:Session+internal 
-* 
+* @Description Singleton with a closure that implemets user authentication. On success sets user Session.                 
+* @requires $http
+* @requires AUTH_EVENTS+module:authModule.AUTH_EVENTS
+* @requires Session+module:authModule.Session
+*
+* @author Michail Tsougkranis
+* @version 1.0
+* @since Angular.1.3.9
 */
-
-   
-
 
 
 auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http, AUTH_EVENTS, Session) {
@@ -34,23 +30,21 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
     * @class 
     * @name auth  
     * @public 
-    * @classdesc 
-    * 
-    * <b>Type:</b>  Private Object of {@link module:authModule.module:authService factory.authService } <br/> <br/>
-    * <b>Description: </b> Implements user authenticantion.
+    * @classdesc  Implements user authenticantion
+    * @memberof module:authModule.authService
     *
     */
     
-    var auth = { 
+    var auth = {
         
         /** 
-        *  
-        * Default value: auth-not-authenticated.
         *
         * @member authenticatited
-        * @type {private | String}  
+        * @type {String}  
 		* @inner		
-        * @memberof module:authModule.module:authService~auth
+        * @memberof module:authModule.authService.auth
+		*
+		* @summary Default value: auth-not-authenticated.
         * 
         */
         
@@ -61,15 +55,13 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
 
         /**
         *
-        * $http request when user submit his credentials on success sets user session. Method is been triggered from public {@link module:authModule.module:authService login(credentials)}
-        *
         * @member user
-        * @type {private | method}
+        * @type {method}
 		* @inner
-        * @memberof module:authModule.module:authService~auth
+        * @memberof module:authModule.authService.auth
         * @param {Object} credentials
         * @return {XMLHttpRequest} 
-        *
+		* @summary $http request when user submit his credentials on success sets user session. Method is been triggered from public {@link module:authModule.module:authService login(credentials)}
         */
         
         user : function (credentials) {
@@ -94,14 +86,13 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         
         /**
         *
-        * Setter for  {@link module:authModule.module:authService~auth auth.authenticatited}
-        *
         * @member  setAuthentication 
-        * @type {private | method}
+        * @type {method}
 		* @inner
-        * @memberof module:authModule.module:authService~auth
-        * @param {String} status  
-        *
+        * @memberof module:authModule.authService.auth
+        * @param {String} status
+		*
+		* @summary Setter for  {@link module:authModule.authService.auth auth.authenticatited}
         */
         
         setAuthentication : function (status) {
@@ -116,12 +107,14 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         
         /** 
         *
-        * Triger user authentication promise using {@link module:authModule.module:authService~auth auth.user(credentials)}.
-        *
+        * @function
+        * @name isAuthenticated
+        * @memberof module:authModule.authService
         * @param {Object} credentials  
         * @public
         * @return {xhttprequest} 
         *
+		* @summary Triger user authentication promise using {@link module:authModule.authService.auth auth.user(credentials)}.
         */
         
 		login : function (credentials) {
@@ -134,12 +127,14 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         
         /**
         *
-        * Returns status message of authentication.
-        *
+        * @function
+        * @name isAuthenticated
+        * @memberof module:authModule.authService
         * @public
 		* @param no-arguments
         * @return {Sting} authentication status.
         *
+	    * @summary Returns status message of authentication.
         */
         
 		isAuthenticated : function () {

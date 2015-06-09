@@ -1,45 +1,69 @@
 <div class="title"><a href="#!/">{{title}}</a></div>
 
-
-
-<!-- <ul class="nav top"  ng-controller="navigationController" >
-    
+<ul class="nav top">
   <li ng-if="globals"
       ng-include="'templates/navbar-module.html'"
       ng-controller="globalsController">
-      
-      
-  </li> 
-    
-    
-  <li ng-controller="moduleController"  ng-click='parentAccordeon.activeTab($event);' class="navItem {{module.$prefix}} {{module.name}}" ng-class="{ 'subNavItem': module.$prefix ,'perentNavItem': !module.$prefix  }" ng-class="{ 'subNavItem': module.$prefix}"  ng-if="modules"
-      ng-repeat="module in modules"
+  </li>
+  <li ng-repeat="module in modules"
+       ng-if="module && !module.jsConceptParent  && !module.jsConcept"
       ng-include="'templates/navbar-module.html'"
-   >
-      
-      
-      
-  </li> 
-</ul>-->
-
-
-
-<ul class="nav top"  ng-controller="navigationController"   >
-    
-  <li ng-if="globals"
-      ng-include="'templates/navbar-module.html'"
-      ng-controller="globalsController">
-      
-      
-  </li>  
-    
-    
-  <li ng-controller="moduleController"  ng-click='parentAccordeon.activeTab($event);' class="navItem {{module.$prefix}} {{module.name}}" ng-class="{ 'subNavItem': module.$prefix ,'perentNavItem': !module.$prefix  }" ng-class="{ 'subNavItem': module.$prefix}"  ng-if="!module.$prefix"  ng-repeat="module in modules" 
-      ng-include="'templates/navbar-module.html'"
-   >
-      
-      
-      
+      ng-controller="moduleController"
+>
   </li>
 </ul>
 
+
+
+    
+ <ul class="nav group top" ng-if="topLevelModules">  
+     
+      <li ng-repeat="topLevel in topLevelModules"
+          ng-controller="moduleController"   
+          ng-class='{{topLevel.name}}' 
+		  >
+          
+           <div ng-if="topLevel"
+				ng-click='colapseSubNav($event);'
+				class="header topLevel module">
+
+              <span ng-if="topLevel.$prefix" class="kind-prefix">{{topLevel.$prefix}}.</span>
+
+              <a ng-href="#!/{{topLevel.$href}}">{{topLevel.name}}</a>
+
+              <span ng-if='topLevel.tags[0].title === "framework"' class='typeOfModule'>[ {{topLevel.tags[0].text}} <span ng-if='!topLevel.jsConcept'>module</span> ]</span>
+
+              <span ng-if='topLevel.tags[0].title !== "framework"' class='typeOfModule'>[ native module ]</span>
+
+          </div>
+   
+
+   
+     
+     
+      <ul class="nav subnav" ng-if="topLevel.jsConcepts">   
+          
+          <li ng-repeat="module in modules"
+              
+              ng-if='modules && 
+                     module.$parent.name && 
+                     module.$parent.name == topLevel.name && 
+                     module.jsConcept'
+              
+              ng-class='{{module.$parent.name}}' 
+              
+              ng-include="'templates/navbar-module.html'"
+              
+              ng-controller="moduleController">
+              
+          </li>
+
+        </ul>
+     
+       </li>
+        
+</ul>
+
+
+    
+ 

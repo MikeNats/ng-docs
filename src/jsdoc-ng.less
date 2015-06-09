@@ -17,18 +17,14 @@ div.nav {
   top: 0px;
   bottom: 0px;
   left: 0px;
-  width: 335px;
+  width: 25%;
   padding: 10px 10px 50px 10px;
   margin: 0px;
 }
 
 div.content {
-  margin-left: 360px;
+  margin-left: 28%;
   padding: 10px 30px 10px 20px;
-	p{
-			line-height: 25px;
-	
-	}
 }
 
 pre, code {
@@ -120,88 +116,20 @@ div.nav {
     padding: 0px 0px 0px 10px;
     margin: 0px;
 
-
     /* Top list */
     &.top {
-		
-		border-left: 1px solid #444;
-		padding-bottom: 10px;
-		padding-left: 10px; 
+      padding-left: 0px;
 
-		  /* Spacing between modules */
-		  & > li { margin-top: 20px;
-			  cursor: pointer;
+      /* Spacing between modules */
+      & > li { margin-top: 20px; }
 
-		   }
-		  & > li.subNavItem { 
-			height:0;
-			overflow: hidden;
-			 margin-top: 0;
-			  
-			  span.kind-prefix{
-			  	color:#94A7FC;
-			  }
-			  
-			   a{
-			  	color:#ccc;
-			  }
-		  }
-		 & > li.colapse { 
-			height:100%!important;
-			overflow: hidden;
-			 margin-top: 20px!important;
-		  }		
-		  & > li.perentNavItem.colapse { 
-			  ul{
-			  	height:100%!important;
-				overflow: hidden;
-				 margin-top: 20px!important;
-				   margin-left: 5px;
-			  }
+      /* Decorate module name */
+      .header.module::after {
 
-		  }
-				& > li.subNavItem { 
-                    
-                    border-left: 1px solid #444;
-                    margin-left: 5px;
-                    padding-left: 11px;
-		   }
-		  & > li.subNavItem.colapse { 
-                    
-				min-height: 18px;
-		   }
-		
+        font-size: 0.8em;
+        padding-left: 1em;
+      }
 
-		
-		& > li.perentNavItem {
-				height: 10px;
-			a{
-				color:#5370F4;
-			}
-			ul li a{
-				  	color:#ccc;
-			}
-		}
-		
-
-		  /* Decorate module name */
-		  .header.module .typeOf {
-
-			font-size: 0.8em;
-			padding-left: 1em;
-		  }
-		 .header.module.text-success::after {
-
-			font-size: 0.8em;
-			padding-left: 1em;
-		  }	
-
-		  ul{	
-			   height:0;
-			   overflow: hidden;
-			   margin:0
-
-		  }
 
     }
 
@@ -214,7 +142,6 @@ div.nav {
       > li {
         margin-left: 10px;
         padding: 2px 0px 2px 10px;
-
         &.expanded {
           background-color: rgba(0, 0, 0, 0.1);
           border-radius: 4px;
@@ -280,6 +207,30 @@ div.nav {
   }
 }
 
+
+ul ul.nav {
+  
+  	display:none;
+	margin:15px 0;
+	li{
+		margin-bottom:15px;
+	}  
+  
+  }
+
+
+ul ul.nav.expanded{
+	display:block;
+}
+ ul div.header.active ~ ul.nav {
+	 
+  	display:block;
+  
+  }
+.topLevel{
+
+	margin-bottom:15px;
+}
 /* ========================================================================== *
  * CONTENT                                                                    *
  * ========================================================================== */
@@ -325,7 +276,6 @@ div.content {
       color: #fff;
       padding: 2px;
     }
-   
 
     /* Type for members */
     .types {
@@ -469,38 +419,3 @@ div.content {
   }
 
 }
-
- /****  Mike Nats ***/
-    .public{
-
-      position: relative;
-      top: -2px;
-      font-size: 10px;
-      font-weight: 300;
-
-      border-radius: 4px;
-      margin-left: 10px;
- 
-      padding: 2px;
-        color: #110ECC;
-        border: 1px solid #6F6DE8;
-        background-color: #E6E5F9
-    }
-	.require{
-			background-color: #e8fce8;
-			border: 1px solid #97E295;
-			border-radius: 4px;
-			color: #276B26;
-			font-size: 10px;
-			font-weight: 300;
-			margin-left: 5px;
-			padding: 4px;
-			position: relative;
-			top: -2px;
-	}
-    div.nav ul.nav.top  .colapse + ul,  div.nav ul.nav.top  .colapse + ul ul{
-      height:100%;
-      overflow: hidden;
-
-
-     }

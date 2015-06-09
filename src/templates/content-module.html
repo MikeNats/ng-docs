@@ -1,123 +1,71 @@
-<!---------------- module name: NAME OF THE MODULE ----------------->
-
 <h1 class="literal">
+    <span class="kind">[ {{doclet.tags[0].text}} {{doclet.type.names[0]}} <span ng-if="!doclet.jsConcept">module</span> ]</span>
+  <span class="prefix" ng-if="doclet.$prefix">{{doclet.$prefix}}.</span
+  ><span class="name">{{doclet.name}}</span>
+</h1>  
+
+
+<!--  Mike addon Template for modules   -->
+
+<div ng-if='doclet.requires'>
     
-      <span class="kind">
-          
-          <span  ng-if="doclet.$prefix"> {{doclet.type.names[0]}} </span>
-          <span  ng-if="!doclet.$prefix">{{doclet.kind}}</span> 
-          
-          name:&nbsp;
-          
-    </span> 
+    <p> <strong>Requires:</strong> </p>  <span ng-repeat='requires in doclet.requires'  ng-bind-html='require(requires)' class="requires" ></span>
     
-    <span class="name"> {{doclet.name}}</span>
-    
-</h1>
-
-<!---------------- Require ----------------->
-
-<p  ng-if="doclet.requires">
-    
-    <b>Requires:</b>
-    
-    <span class='require' ng-repeat='require in doclet.requires track by $index'> 
-    
-        <a  ng-if="isExternalLink(require)" target='_blank' href='{{ require | onlyUrl }}' > {{require | onlyName }} </a> <!--IF External Link -->
-        <a  ng-if="!isExternalLink(require)" href='{{ require | onlyUrl }}' > {{require | onlyName }} </a> <!--IF Internal Link -->
-	
-	</span>
-    
-</p>
-
-
-<!---------------- Header General description  Module ----------------->
-
-<div class='generalDescription' ng-if="doclet.kind === 'module'" >
-   
-        <!---------------- Type: ----------------->
-
-
-                <!--If JavaScript Module --> 
-
-                <p ng-if="doclet.type.names[0] !== 'angularModule' " >
-                    
-                    <b>Type: </b> 
-                    <a class='moduleType'   href='https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Using' target='_blank' title='Module MDN Documentation'>JavaScript Module</a>
-                    <br />  Code modules is used for sharing code between different privileged scopes.  
-                </p>
-    
-    
-                 <!--If Angular Module -->  
-
-                 <p ng-if="doclet.type.names[0] === 'angularModule' " >
-                     <b>Type: </b>  
-                     <a class='moduleType' href='https://docs.angularjs.org/guide/module' title='Angular Documentation'  target='_blank'> Angular Module</a>
-                     <br />Container for the different parts of an app including controllers, services, filters, directives which configures the Injector. </p>
-
-
-        <!-------------- Description: ---------------->   
-
-
-        <p><b style='float:left;'>Description:&nbsp; </b>  <span ng-if="doclet.description" ng-bind-html="doclet.description|html"></span></p>      
-
-        <!-------------- Contains: ----------------> 
-	<ul>
-		<li class='containsType' ng-if="angularConceptType('Constant')">
-				<p >Constant</p>
-                <ul>
-                    <li ng-repeat="concept in angularConcept" ng-if="concept.type.names[0]=='Constant'"  >                
-                        <a ng-if="doclet.name === concept.$parent.name " href='#!/{{concept.$href}}' title='{{concept.type.names[0]}}' > {{concept.name}}</a>   
-                    </li>  
-				</ul>
-	</li>
-	
-		<li class='containsType' ng-if="angularConceptType('Factory')">
-				<p>Factory</p>
-				<ul>	
-                    <li ng-if="concept.type.names[0]=='Factory'" ng-repeat="concept in angularConcept" >                  
-                         <a ng-if="doclet.name === concept.$parent.name" href='#!/{{concept.$href}}' title='{{concept.type.names[0]}}' >{{concept.name}}</a>   
-                    </li> 
-					
-				 </ul>
-	</li>
-	
-	<li class='containsType' ng-if="angularConceptType('Service')">
-				<p >Service</p>
-			     <ul>
-                    <li ng-if="concept.type.names[0]=='Service'" ng-repeat="concept in angularConcept"  >                   
-                            <a ng-if="doclet.name === concept.$parent.name" href='#!/{{concept.$href}}' title='{{concept.type.names[0]}}' >{{concept.name}}</a>   
-                    </li>     
-                </ul>
-	
-		</li>
-	</ul>
-	
-	
-	
-        
 </div>
 
-<h2>Variable</h2>
-<h3 >h3</h3>
-<h4>h4</h4>
+<div ng-if="doclet.description" ><p><strong>Description:</strong></p> {{ doclet.description  | htmlToPlaintext }}  </div>
 
+<div class='appDetails' ng-if='doclet.version || doclet.since || doclet.author[0]'>
+	<p><strong>About:</strong></p>
+ <!-- <p ng-if='doclet.author[0]'>Author : <span>&nbsp;{{doclet.author.join()}}</span> </p>-->
 
-<!-------------- Felow Indian: ----------------> 
-
-
-
-<div ng-if="elements.member">
-  <h2>Members</h2>
-  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
+  <p ng-if='doclet.version'>Version : <span>{{doclet.version}}</span></p>
+  <p ng-if='doclet.since'><span>{{doclet.since}}</span> </p>
 </div>
- 
+
+<div ng-if="!doclet.jsConcept">  
+  <h2> Assigned to: </h2>
+
+
+      <div ng-if="doclet.tags[1].title === 'variablename' ">
+
+          <h3 id="{{element.name}}" class="literal">
+
+              <span class="kind">var </span>
+
+              <span class="name">{{doclet.tags[1].text}}</span>
+
+              <span ng-if="element.params || (element.kind == 'function') || (element.kind == 'class')">
+
+              <span>(</span><span ng-repeat="param in element.params"><span ng-if="!$first">,&nbsp;</span><span class="param">{{param.name}}</span></span>)</span>
+
+              <span class="types" ng-if="element.type.names">
+                  <span class="type" ng-repeat="type in element.type.names" ng-bind-html="type|type"></span>
+              </span>
+
+             <span class="extra" ng-if="doclet.access == 'static'">static</span>
+             <span class="extra public" ng-if="doclet.access == 'public'">public</span>
+
+
+          </h3>
+
+
+    </div>
+
+</div>
+
+<!-- END -->
+
 
 <div ng-if="elements.function">
   <h2>Functions</h2>
   <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.function"></div>
 </div>
 
+<div ng-if="elements.member">
+  <h2>Members</h2>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
+</div>
 
 <div ng-if="elements.event">
   <h2>Events</h2>
@@ -128,9 +76,4 @@
   <h2>Examples</h2>
   <div ng-include="'templates/content-example.html'" ng-repeat="example in doclet.examples"></div>
 </div>
-
-
-
-
-
 

@@ -1,14 +1,29 @@
-<div ng-if="!module" class="header globals ">Globals</div>
+<div ng-if="!module" class="header globals">Globals</div>
 
-<div ng-click='accordeon.activeTab($event);'  ng-class="{ 'text-success': module.$prefix}" ng-if="module || module.type.name[0] === 'angularModule'  " class="header module">
-    
-    <span ng-if="module.$prefix" class="kind-prefix" >{{module.$prefix}}.</span>
+
+
+<div ng-if="module" 	  
+	 ng-click='colapseSubNav($event);'
+	 class="header module">
+
+  <span ng-if="module.$prefix" class="kind-prefix">{{module.$prefix}}.</span>
+
     <a ng-href="#!/{{module.$href}}">{{module.name}}</a>
-    <span class='typeOf'> {{module.type.names[0] }} </span>
+
+    <span ng-if='module.tags[0].title === "framework"' class='typeOfModule'>[  {{module.type.names[0]}} <span ng-if='!module.jsConcept'>module</span> ]</span>
     
+    
+
+
+  <span ng-if='module.tags[0].title !== "framework" 'class='typeOfModule'>[ native module ]</span>
+
 </div>
-   
-<ul  class="nav group" ng-if="elements"> 
+
+
+
+
+
+<ul class="nav group" ng-if="elements">
   <li ng-if="elements.class" class="header">Classes</li>
   <li ng-if="elements.class"
       ng-repeat="element in elements.class"
@@ -45,32 +60,4 @@
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
       ng-include="'templates/navbar-element.html'"></li>
 
-</ul> 
-
- <ul  class="nav group" style='margin:0!important;' ng-if="module && module.angularFeatures.length > 0">      
-    <li ng-if="hasModuleAttachedSpecificAngularType(module ,'Factory')" class="header">Factories</li>
-     <li ng-repeat="angularFeatures in module.angularFeatures" > 
-     
-     
-     </li>
 </ul>
-
-<ul  class="nav group" style='margin:0!important;' ng-if="module && module.angularFeatures.length > 0">    
-  <li ng-if="hasModuleAttachedSpecificAngularType(module ,'Constant')" class="header">Constants</li>
-      <li></li>
-</ul>
-        
-
-    
-  <ul  class="nav group" style='margin:0!important;' ng-if="module && module.angularFeatures.length > 0">         
-   <li ng-if="hasModuleAttachedSpecificAngularType(module ,'Service')" class="header">Services</li> 
-        <li></li>
-</ul>
-
-  <ul  class="nav group" style='margin:0!important;' ng-if="module && module.angularFeatures.length > 0">        
-   <li ng-if="hasModuleAttachedSpecificAngularType(module ,'controller')" class="header">Controllers</li> 
-        <li></li>
-</ul>
-
-
-
