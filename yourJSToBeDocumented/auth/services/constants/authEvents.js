@@ -18,11 +18,13 @@ auth.constant('AUTH_EVENTS', {
     
     /** 
     * 
-    * @member loginSuccess
+    * @const 
+    * @name loginSuccess
     * @memberof module:authModule.AUTH_EVENTS
     * @public
     * @static
     * @type {String}
+    * @default auth-login-success
     *
     */
     
@@ -30,35 +32,41 @@ auth.constant('AUTH_EVENTS', {
     
     /** 
     * 
-    * @member   loginSuccess 
+    * @const 
+    * @name  loginFailed 
     * @memberof module:authModule.AUTH_EVENTS
     * @public
     * @static
     * @type {String}
+    * @default auth-login-failed
     *    
     */
     
 	loginFailed : 'auth-login-failed',
     
     /**
-    *   
-    * @member  logoutSuccess 
+    *  
+    * @const 
+    * @name  logoutSuccess 
     * @memberof module:authModule.AUTH_EVENTS
     * @public
     * @static
     * @type {String}     
-    *           
+    * @default auth-logout-success
+    *          
     */
     
 	logoutSuccess : 'auth-logout-success',
     
     /**     
-    *     
-    * @member   sessionTimeout 
+    *  
+    * @const     
+    * @name  sessionTimeout 
     * @memberof module:authModule.AUTH_EVENTS
     * @static       
     * @public 
     * @type {String}
+    * @default auth-session-timeout
     *     
     */
     
@@ -66,24 +74,28 @@ auth.constant('AUTH_EVENTS', {
     
     /**
     * 
-    * @member   notAuthenticated 
+    * @const 
+    * @name   notAuthenticated 
     * @memberof module:authModule.AUTH_EVENTS   
     * @public
     * @static
     * @type {String}
-    *
+    * @default auth-not-authenticated
+    * 
     */
     
 	notAuthenticated : 'auth-not-authenticated',
     
     /**
     *
-    * @member   notAuthorized
+    * @const 
+    * @name   notAuthorized
     * @memberof module:authModule.AUTH_EVENTS  
     * @public
     * @static
     * @type {String} 
-    *
+    * @default auth-not-authorized
+    * 
     */
     
 	notAuthorized : 'auth-not-authorized'

@@ -96,6 +96,72 @@ div.nav {
     &:visited { color: #ccc; }
   }
 
+    
+        
+        .attribute {
+        position: relative;
+        &:before {
+          content: "A" ;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 10px;
+          min-width: 10px;
+          max-width: 10px;
+          height: 10px;
+          min-height: 10px;
+          max-height: 10px;
+          overflow: hide;
+          top: 6px;
+          left: -9px;
+          font-size: 7px;
+          padding: 1px 0px 0px 0px;
+          font-weight: bold;
+          font-style: normal;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          color: #999;
+          opacity: 0.5;
+          line-height: 10px;
+        }
+      }
+        .method {
+        position: relative;
+        &:before {
+          content: "M" ;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 10px;
+          min-width: 10px;
+          max-width: 10px;
+          height: 10px;
+          min-height: 10px;
+          max-height: 10px;
+          overflow: hide;
+          top: 6px;
+          left: -9px;
+          font-size: 7px;
+          padding: 1px 0px 0px 0px;
+          font-weight: bold;
+          font-style: normal;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          color: #999;
+          opacity: 0.5;
+          line-height: 10px;
+        
+         
+        }
+     }
+        .method a:after {
+            content: '(\2026)';
+            padding-left: 0.2em;
+            color: #666;
+            position:absolute;
+         }
   /* Title */
   .title {
     font-size: 16px;
@@ -121,7 +187,15 @@ div.nav {
       padding-left: 0px;
 
       /* Spacing between modules */
-      & > li { margin-top: 20px; }
+      & > li { 
+            height: 18px;
+            line-height: 18px;
+            margin-top: 10px; 
+      }
+       & > li.active {
+            height:auto;     
+        
+        }     
 
       /* Decorate module name */
       .header.module::after {
@@ -189,6 +263,61 @@ div.nav {
           opacity: 0.5;
         }
       }
+        
+    .attribute {
+        position: relative;
+        &:before {
+          content: "A" ;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 10px;
+          min-width: 10px;
+          max-width: 10px;
+          height: 10px;
+          min-height: 10px;
+          max-height: 10px;
+          overflow: hide;
+          top: 2px;
+          left: -16px;
+          font-size: 7px;
+          padding: 1px 0px 0px 0px;
+          font-weight: bold;
+          font-style: normal;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          color: #999;
+          opacity: 0.5;
+        }
+      }
+        .method {
+        position: relative;
+        &:before {
+          content: "M" ;
+          display: block;
+          position: absolute;
+          text-align: center;
+          width: 10px;
+          min-width: 10px;
+          max-width: 10px;
+          height: 10px;
+          min-height: 10px;
+          max-height: 10px;
+          overflow: hide;
+          top: 2px;
+          left: -16px;
+          font-size: 7px;
+          padding: 1px 0px 0px 0px;
+          font-weight: bold;
+          font-style: normal;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          color: #999;
+          opacity: 0.5;
+        }
+      }
 
       /* Spacing, positioning, expansion */
       > li {
@@ -206,14 +335,17 @@ div.nav {
 
   }
 }
-
-
+ 
+ 
 ul ul.nav {
   
   	display:none;
 	margin:15px 0;
 	li{
-		margin-bottom:15px;
+		margin-bottom:8px;
+        li{
+        		margin-bottom:0px;
+        }
 	}  
   
   }
@@ -236,6 +368,24 @@ ul ul.nav.expanded{
  * ========================================================================== */
 
 div.content {
+    
+    
+    .requires{
+       position: relative;
+      top: -2px;
+      font-size: 10px;
+      font-weight: 300;
+      border: 1px solid #50A006;
+      background-color: #B4FC8F;
+      border-radius: 4px;
+      margin-right: 10px;
+      margin-left:0;
+      color: #128905;
+      padding: 2px;
+      
+      
+      }
+    
 
   h1 { // Class, module, namespace name...
     font-size: 36px;
@@ -275,6 +425,29 @@ div.content {
       margin-left: 10px;
       color: #fff;
       padding: 2px;
+    }
+    .extra.public{
+        background-color: #0615e8;
+        border: 1px solid #030ead;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 300;
+        margin-left: 10px;
+        padding: 2px;
+        position: relative;
+        top: -2px;
+      
+      
+    }
+    .extra.private{
+        background-color: #f72e53;
+        border: 1px solid #840303;
+        color: #fff;
+      }
+    .extra.constant{ 
+        background-color: #777;
+        border: 1px solid #555;
     }
 
     /* Type for members */
@@ -364,6 +537,13 @@ div.content {
     }
 
   }
+    ul.parameters .name:after {
+        content: ')'
+    }
+    
+    ul.parameters .name:before {
+        content: '('
+    }
 
   /* List of types (in parameters, returns, and members) */
   .types { // types list

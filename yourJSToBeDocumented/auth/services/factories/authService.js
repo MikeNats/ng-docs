@@ -9,15 +9,17 @@
 * @kind jsConcept  
 * @type factory
 * @name authService
-* @memberof module:authModule 
-* @Description Singleton with a closure that implemets user authentication. On success sets user Session.                 
+* @memberof module:authModule
+*
+* @Description Singleton with a closure that implemets user authentication.
+*
 * @requires $http
 * @requires AUTH_EVENTS+module:authModule.AUTH_EVENTS
 * @requires Session+module:authModule.Session
 *
 * @author Michail Tsougkranis
-* @version 1.0
-* @since Angular.1.3.9
+* @version 1.0  
+* @since Angular.1.3.9     
 */
 
 
@@ -26,13 +28,13 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
     'use strict';
 
     /**
-    * 
+    *   
     * @class 
     * @name auth  
-    * @public 
-    * @classdesc  Implements user authenticantion
     * @memberof module:authModule.authService
     *
+    * @classdesc  Encapulates user authenticantion functionality
+    * 
     */
     
     var auth = {
@@ -40,11 +42,10 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         /** 
         *
         * @member authenticatited
-        * @type {String}  
-		* @inner		
+        * @type {String}       
         * @memberof module:authModule.authService.auth
-		*
-		* @summary Default value: auth-not-authenticated.
+        *
+		* @Description Default value: auth-not-authenticated.
         * 
         */
         
@@ -56,12 +57,15 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         /**
         *
         * @member user
-        * @type {method}
-		* @inner
         * @memberof module:authModule.authService.auth
         * @param {Object} credentials
-        * @return {XMLHttpRequest} 
-		* @summary $http request when user submit his credentials on success sets user session. Method is been triggered from public {@link module:authModule.module:authService login(credentials)}
+        *
+        * @return {XMLHttpRequest}
+        *
+		* @Description $http request to check user credentials on success sets user session with the recived user data.
+        *
+        * Mothd is been invocted from {@link module:authModule.authService login(credentials)}
+        *
         */
         
         user : function (credentials) {
@@ -87,12 +91,11 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         /**
         *
         * @member  setAuthentication 
-        * @type {method}
-		* @inner
         * @memberof module:authModule.authService.auth
         * @param {String} status
 		*
-		* @summary Setter for  {@link module:authModule.authService.auth auth.authenticatited}
+		* @Description Setter for  {@link module:authModule.authService.auth authenticatited}
+        *
         */
         
         setAuthentication : function (status) {
@@ -107,14 +110,16 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         
         /** 
         *
-        * @function
-        * @name isAuthenticated
+        * @function 
+        * @name login
         * @memberof module:authModule.authService
         * @param {Object} credentials  
         * @public
+        * @static
         * @return {xhttprequest} 
         *
-		* @summary Triger user authentication promise using {@link module:authModule.authService.auth auth.user(credentials)}.
+		* @description Triger user authentication promise using {@link module:authModule.authService.auth auth.user(credentials)}.
+        *
         */
         
 		login : function (credentials) {
@@ -131,10 +136,12 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         * @name isAuthenticated
         * @memberof module:authModule.authService
         * @public
+        * @static
 		* @param no-arguments
         * @return {Sting} authentication status.
         *
-	    * @summary Returns status message of authentication.
+	    * @description Returns status of authentication.
+        *
         */
         
 		isAuthenticated : function () {

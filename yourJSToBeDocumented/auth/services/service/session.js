@@ -10,8 +10,10 @@
 * @type Service
 * @name Session
 * @memberof module:authModule 
-* @Description Stores user data by returning in an  instance of the function object.       
+*   
 * @requires $http
+*
+* @Description Stores user data by returning in an  instance of the function object.    
 *
 * @author Michail Tsougkranis
 * @version 1.0
@@ -23,39 +25,97 @@ auth.service('Session', function () {
     
     "use strict";
     
+    /**
+    * 
+    * @class 
+    * @name Session  
+    * @memberof module:authModule.Session
+    *   
+    * @classdesc  Stores user data by returning in an  instance of the function object.
+    *  
+    */
+       
+    /**
+    *  @instance
+    *  @name name
+    *  @public
+    *  @type {string}
+    *  @memberof module:authModule.Session.Session
+    */
+    
+    this.name = null;
     
     /**
+    *  @instance
+    *  @name pass
+    *  @public
+    *  @type {string}
+    *  @memberof module:authModule.Session.Session
+    */
+    
+    this.pass = null;
+    
+    /**
+    *  @instance
+    *  @name token
+    *  @public
+    *  @type {string}    
+    *  @memberof module:authModule.Session.Session
+    */
+    
+    this.token = null;
+    
+    /**
+    *  @instance
+    *  @name projects
+    *  @public
+    *  @type {object}  
+    *  @memberof module:authModule.Session.Session
+    */
+
+    this.projects = null;
+    
+    /** 
     *
-    * @member  create
-    * @memberof module:authModule.Session
-    * @access public
-    * @type function
+    * @member
+    * @memberof module:authModule.Session.Session
+    * @name create
+    * @access public 
+    * @instance 
+    *
     * @param {String} userName
     * @param {String} userPass 
     * @param {String} userToken        
     * @param {Object} userProjects 
     *
-    * @summary Sets user credeltials.
+    * @description Sets user credeltials.
+    *
     */
     
     this.create = function (userName, userPass, userToken, userProjects) {
+
         this.name = userName;
-	    this.pass = userPass;
-	    this.token = userToken;
-		this.projects = userProjects;
+	    
+        this.pass = userPass;
+	    
+        this.token = userToken;
+		
+        this.projects = userProjects;
     };
-    
-    
+     
     
     /** 
     *
-    * @member  destroy
-    * @memberof module:authModule.Session
+    * @member
+    * @memberof  module:authModule.Session.Session
+    * @name destroy 
     * @access public 
-    * @type function
+    * @instance
+    *
 	* @param no-arguments
     *
-	* @summary Destroy user credentials, sets data to null.
+	* @description Destroy user credentials, sets data to null.
+    *
     */
     
     this.destroy = function () {

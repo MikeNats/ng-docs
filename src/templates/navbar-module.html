@@ -5,17 +5,12 @@
 <div ng-if="module" 	  
 	 ng-click='colapseSubNav($event);'
 	 class="header module">
-
-  <span ng-if="module.$prefix" class="kind-prefix">{{module.$prefix}}.</span>
-
-    <a ng-href="#!/{{module.$href}}">{{module.name}}</a>
-
-    <span ng-if='module.tags[0].title === "framework"' class='typeOfModule'>[  {{module.type.names[0]}} <span ng-if='!module.jsConcept'>module</span> ]</span>
-    
-    
-
-
-  <span ng-if='module.tags[0].title !== "framework" 'class='typeOfModule'>[ native module ]</span>
+	<span ng-if="module.$prefix" class="kind-prefix">{{module.$prefix}}.</span>
+	<a ng-href="#!/{{module.$href}}">{{module.name}}</a>
+	<span ng-if='module.tags[0].title === "framework"' 
+		  class='typeOfModule'>[  {{module.type.names[0]}} <span ng-if='!module.jsConcept'>module</span> ]</span>
+   <span ng-if='module.tags[0].title !== "framework" '
+		 class='typeOfModule'>[ native module ]</span>
 
 </div>
 
@@ -41,6 +36,13 @@
       ng-repeat="element in elements.member"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
       ng-include="'templates/navbar-element.html'"></li>
+    
+  <li ng-if="elements.constant" class="header">Constants</li>
+  <li ng-if="elements.constant"
+      ng-repeat="element in elements.constant"
+      ng-class="{'expanded' : (selectedDocletID == element.$id), 'method' : element.params, 'attribute' : !element.params }"
+      ng-include="'templates/navbar-element.html'"></li>
+    
 
   <li ng-if="elements.event" class="header">Events</li>
   <li ng-if="elements.event"

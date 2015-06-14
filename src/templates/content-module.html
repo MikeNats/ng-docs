@@ -5,66 +5,72 @@
 </h1>  
 
 
-<!--  Mike addon Template for modules   -->
-
-<div ng-if='doclet.requires'>
-    
-    <p> <strong>Requires:</strong> </p>  <span ng-repeat='requires in doclet.requires'  ng-bind-html='require(requires)' class="requires" ></span>
-    
+<div ng-if='doclet.requires'>  
+     <p><strong>Requires:</strong> </p>  
+	<span ng-repeat='requires in doclet.requires'  
+		  ng-bind-html='require(requires)' 
+		  class="requires" ></span>   
 </div>
 
-<div ng-if="doclet.description" ><p><strong>Description:</strong></p> {{ doclet.description  | htmlToPlaintext }}  </div>
+
+<div ng-if="doclet.description" >
+	<p><strong>Description:</strong></p>
+	<div ng-bind-html="doclet.description|html" ></div> 
+</div>
+
+<div ng-if="doclet.jsConcepts"
+	 class='conceptIncluded'>
+    <p><strong>Consepts:</strong></p>
+    <ul ng-if="doclet.jsConcepts " style='padding-left: 20px;'>
+        <li ng-repeat='jsConcept in doclet.jsConcepts | orderBy: "name" | orderBy: "type.names[0]"' 
+			style="text-transform: capitalize">{{jsConcept.type.names[0] }}: <a href='#!/{{jsConcept.$href}}' style='text-transform: initial;' > {{jsConcept.name }}</a>
+		</li>  
+    </ul>    
+</div>
+
 
 <div class='appDetails' ng-if='doclet.version || doclet.since || doclet.author[0]'>
 	<p><strong>About:</strong></p>
- <!-- <p ng-if='doclet.author[0]'>Author : <span>&nbsp;{{doclet.author.join()}}</span> </p>-->
-
-  <p ng-if='doclet.version'>Version : <span>{{doclet.version}}</span></p>
-  <p ng-if='doclet.since'><span>{{doclet.since}}</span> </p>
+	<p ng-if='doclet.version'>Version : <span>{{doclet.version}}</span></p>
+   <p ng-if='doclet.since'><span>{{doclet.since}}</span> </p>
 </div>
 
-<div ng-if="!doclet.jsConcept">  
-  <h2> Assigned to: </h2>
 
-
-      <div ng-if="doclet.tags[1].title === 'variablename' ">
-
-          <h3 id="{{element.name}}" class="literal">
-
-              <span class="kind">var </span>
-
-              <span class="name">{{doclet.tags[1].text}}</span>
-
-              <span ng-if="element.params || (element.kind == 'function') || (element.kind == 'class')">
-
-              <span>(</span><span ng-repeat="param in element.params"><span ng-if="!$first">,&nbsp;</span><span class="param">{{param.name}}</span></span>)</span>
-
-              <span class="types" ng-if="element.type.names">
+     
+<div ng-if="!doclet.jsConcept">
+	<h2>Variable: </h2> 
+	<div ng-if="doclet.tags[1].title === 'variable' ">
+		<h3 id="{{element.name}}" class="literal">
+			<span class="kind">var </span>
+			<span class="name">{{doclet.tags[1].text}}</span>
+			<span class="types" ng-if="element.type.names">
                   <span class="type" ng-repeat="type in element.type.names" ng-bind-html="type|type"></span>
               </span>
-
-             <span class="extra" ng-if="doclet.access == 'static'">static</span>
-             <span class="extra public" ng-if="doclet.access == 'public'">public</span>
-
-
-          </h3>
-
-
-    </div>
-
+			<span class="extra constant" ng-if="doclet.kind=='constant'">constant</span>
+            <span class="extra public" ng-if="doclet.access == 'public'">public</span>
+            <span class="extra private" ng-if="doclet.access !== 'public' && doclet.access !== 'static'">private</span>
+            <span class="extra" ng-if="doclet.scope == 'static'">static</span>
+            <span class="extra" ng-if="doclet.scope == 'instance'">instance <span ng-if="doclet.params[0]" >method</span> 
+				<span ng-if="!doclet.params[0]" >variable</span> 
+			</span>
+		</h3>
+	</div>
 </div>
 
-<!-- END -->
+
+
+
+
+<div ng-if="elements.member || elements.constant">
+  <h2>Members</h2>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
+  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.constant"></div>
+</div>
 
 
 <div ng-if="elements.function">
   <h2>Functions</h2>
   <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.function"></div>
-</div>
-
-<div ng-if="elements.member">
-  <h2>Members</h2>
-  <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
 </div>
 
 <div ng-if="elements.event">

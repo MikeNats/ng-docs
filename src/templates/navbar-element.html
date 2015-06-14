@@ -1,7 +1,7 @@
-<div class="kind-{{element.kind}}">
+<div class="kind-{{element.kind}}" ng-if="!element.alias "  >
   <span ng-if="element.$prefix" class="kind-prefix">{{element.$prefix}}.</span
-  ><a ng-href="#!/{{element.$href}}">{{element.name}}</a
-></div>
+  ><a  ng-href="#!/{{element.$href}}">{{element.name}}</a
+></div>  
 
 <div ng-controller="navbarExpandedController" doclet="element"
      ng-if="(selectedDocletID == element.$id) &amp;&amp; (element.kind == 'class')">
@@ -16,11 +16,24 @@
       </div>
     </li>
 
+      
+   <!--  <li ng-if="elements.class" class="header">Constractors</li>
+    <li ng-if="elements.class"
+        ng-repeat="constractor in elements.class" 
+        ng-class="{'method' : constractor.params, 'attribute' : !constractor.params }">
+<div >-->
+<!--  <span ng-if="constractor.$prefix" class="kind-prefix">{{constractor.$prefix}}.</span
+  >--><!-- <a  ng-href="#!/{{constractor.$href}}">{{constractor.name}}</a
+></div>
+</li> -->
+
+      
     <li ng-if="elements.member" class="header">Members</li>
     <li ng-if="elements.member"
-        ng-repeat="member in elements.member">
-      <div class="kind-member" ng-class="{'static' : (member.scope == 'static')}">
-        <a ng-href="#!/{{member.$href}}">{{member.name}}</a>
+        ng-repeat="member in elements.member" 
+        ng-class="{'method' : member.params, 'attribute' : !member.params }">
+      <div class="kind-member" >
+          <a ng-href="#!/{{member.$href}}">  {{member.name}}</a>
       </div>
     </li>
 

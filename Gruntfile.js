@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         src: ['yourJSToBeDocumented/**/*.js'],
         options: {
           "plugins": ["plugins/markdown"],
+          "configure" : "node_modules/jsdoc/conf.json",
           "templates": {
             "cleverLinks":    true,
             "monospaceLinks": true,

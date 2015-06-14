@@ -41,9 +41,9 @@
    
      
      
-      <ul class="nav subnav" ng-if="topLevel.jsConcepts">   
+      <ul class="nav subnav " ng-if="topLevel.jsConcepts">   
           
-          <li ng-repeat="module in modules"
+          <li ng-repeat="module in modules | orderBy: 'name' | orderBy: 'type.names[0]'" 
               
               ng-if='modules && 
                      module.$parent.name && 
@@ -56,7 +56,7 @@
               
               ng-controller="moduleController">
               
-          </li>
+          </li> 
 
         </ul>
      

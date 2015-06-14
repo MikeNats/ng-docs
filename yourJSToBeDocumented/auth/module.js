@@ -4,9 +4,10 @@
 * 
 * @framework angular 
 * @kind module    
-* @name authModule  
-* @variablename auth
+* @name authModule 
+* @variable authModule  
 * @public
+* @static
 * @description Contains user authentication services. 
 *
 *

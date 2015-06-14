@@ -85,6 +85,12 @@ ngDoc.filter('requiresSplit',['$sce', function($sce) {
 
 
 
+
+
+
+
+
+
 ngDoc.filter('html', ['$sce', function($sce) {
   return function(value) {
     if (value == null) return null;
@@ -398,8 +404,10 @@ $scope.topLevelModules =[];
 	   console.log($event.currentTarget);
       if(angular.element($event.currentTarget).hasClass('active') ){
           angular.element($event.currentTarget).removeClass('active');
+          angular.element($event.currentTarget).parent('li').removeClass('active');
       }else{
-         angular.element($event.currentTarget).addClass('active');         
+         angular.element($event.currentTarget).addClass('active');
+         angular.element($event.currentTarget).parent('li').addClass('active');
       }
    
    }; 
@@ -442,11 +450,50 @@ ngDoc.controller('contentController', ['$scope', '$location', '$title', '$doclet
 
 			}else{
 
-			  return  $sce.trustAsHtml('<span>'+text.split(':')[1]+'</span>&nbsp;');
+			  return  $sce.trustAsHtml('<span>'+text.split(':')[1]+'</span>&nbsp;'); 
 			}
 
 		};
+      
+        $scope.descriptionLink = function(text) {
+            
+                var contentarray = [];
+            
+                if(text.indexOf('{@link')!== -1){ // contains {@link
+                   
+                    contentarray = text.split('{');
+                    
+                    for(var i = 0; i < contentarray.length;i++ ){
+                        
+                        contentarray[i] = contentarray[i].replace('}','');
+                        
+                        if(contentarray[i].indexOf('@link ') !== -1){ //if {@link url name}
+                            
+                            contentarray[i] = contentarray[i].replace('@link ','');
+                            
+                            if( contentarray[i].indexOf(' ') !== -1 ){
+                                
+                                contentarray[i] =  contentarray[i].split(' ');
+                                
+                                contentarray[i] =  ' <a href="#!/'+contentarray[i][0] +'" > <code> '+contentarray[i][1] +' </code></a>';
+                                
+                            }else{
+                                
+                                contentarray[i] =  ' <code>' + contentarray[i]  + ' </code>';
+                            
+                            }
+                           
+                        }
+                    }
+                    
+                return $sce.trustAsHtml(contentarray.join());
 
+                }else{  //else simple texts
+                   
+                   return $sce.trustAsHtml('<span>'+text+'</span>&nbsp;');
+                }
+
+            };
 	  
 	  
     /* The content doclet/page is either a class, module, globals, or readme */
