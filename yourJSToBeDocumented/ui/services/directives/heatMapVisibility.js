@@ -90,7 +90,6 @@ uiServices.directive('heatMapVisibility', ['heatMap', 'timeline', function (heat
     * @member
     * @name return 
     * @memberof module:uiServices.heatMapVisibility
-    * @type {statement} 
     * @public
     * @return {Object} 
     * @Description Wired with  {@link module:mapModule.mapController.$scope.map  mapcontrols} Object: {@link '='}

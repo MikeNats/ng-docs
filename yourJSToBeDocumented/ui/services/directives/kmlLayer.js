@@ -52,11 +52,11 @@ uiServices.directive('kmlLayer', ['kmlLayer', function (kmlLayer) {
         *   
         * @event 
         * @name $watch 
-        * @type {listener}
-        * @param {Integer} kmlLayer
+        * @type {Object}
+        * @param {Object} kmlLayer
         * @memberof module:uiServices.kmlLayer.anonymous.scope
         *
-        * @Description When kmkl layer is selected, {@link module:mapModule.heatMap kmlLayer.set} API service is been used to apply new kml to the map.
+        * @Description When a kml layer is selected from UI, {@link module:mapModule.heatMap kmlLayer.set} API service is been used to apply the new kml to the map.
         *
         */
         
@@ -74,7 +74,6 @@ uiServices.directive('kmlLayer', ['kmlLayer', function (kmlLayer) {
     * @member
     * @name return 
     * @memberof module:uiServices.kmlLayer
-    * @type {statement} 
     * @public
     * @return {Object} 
     * @Description Wired with  {@link module:mapModule.mapController.$scope.map  mapcontrols} Object: {@link '='}

@@ -95,7 +95,6 @@ uiServices.directive('markersVisibility', ['markers', 'timeline', function (mark
     * @member
     * @name return 
     * @memberof module:uiServices.markersVisibility
-    * @type {statement} 
     * @public
     * @return {Object} 
     * @Description Wired with  {@link module:mapModule.mapController.$scope.map  mapcontrols} Object: {@link '='}

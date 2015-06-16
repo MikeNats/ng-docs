@@ -51,7 +51,7 @@ ngDoc.config(['$locationProvider', '$provide', '$doclets', function($locationPro
   $provide.constant('$docletsByName', byName);
   $provide.constant('$docletsByPath', byPath);
   if (window) window.$$doclets = byName;
-
+   
 }]);
 
 /* ======================================================================== */
@@ -323,20 +323,33 @@ ngDoc.controller('moduleController', ['$scope', '$attrs', '$filterDoclets', '$fi
  * "modules" (an array of every module doclet), "title" (the title of the
  * API) and "selectedDocletID" (the currently selected doclet).
  */
-ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$findChildren', function($scope, $title, $filterDoclets, $findChildren) {
+ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$findChildren','$location', function($scope, $title, $filterDoclets, $findChildren,$location) {
 
   /* The selected doclet is either the class, or the doclet itself */
   $scope.$on('$docletChanged', function(event, doclet) {
     if (doclet) {
       var parent = doclet;
-      while (parent && (parent.kind != 'class')) {
-        parent = parent.$parent;
-      }
-      if (parent && (parent.kind == 'class')) {
-        $scope.selectedDocletID = parent.$id;
-      } else {
-        $scope.selectedDocletID = doclet.$id;
-      }
+     if (parent && (parent.kind == 'function')) {
+       // $scope.selectedDocletID = parent.$id;
+       $scope.selectedDocletID = doclet.$id;  
+     }else{
+         
+         while (parent && (parent.kind != 'class')) {
+            parent =  parent.$parent;
+          }
+          if (parent && (parent.kind == 'class') &&(parent.$parent.kind =='module' )) {
+             $scope.selectedDocletID = parent.$id;
+         //  $scope.selectedDocletID = doclet.$id;
+          }
+          if (parent && (parent.kind == 'class')) {
+           // $scope.selectedDocletID = parent.$id;
+         //  $scope.selectedDocletID = doclet.$id;
+          }
+         else {
+            $scope.selectedDocletID = doclet.$id;
+          }
+     }  
+
     } else {
       $scope.selectedDocletID = null;
     }
@@ -352,12 +365,11 @@ ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$fi
   /* Inject a list of all the modules (if we have any) */
     
   var modules = $filterDoclets({kind: 'module'});
- // var jsConcepts = $filterDoclets({kind: 'jsConcepts'});
 
 
  
    console.log($scope) 
-
+   
   if (modules.length) $scope.modules = modules;
 
   /* The documentation title */
@@ -406,13 +418,58 @@ $scope.topLevelModules =[];
           angular.element($event.currentTarget).removeClass('active');
           angular.element($event.currentTarget).parent('li').removeClass('active');
       }else{
+          
+       if(angular.element($event.currentTarget).hasClass('topLevel') ){
+                angular.element(document.getElementsByClassName('topLevel')).removeClass('active');
+                angular.element(document.getElementsByClassName('topLevel')).removeClass('active').parent('li').removeClass('active');
+       }
+       if(angular.element($event.currentTarget).hasClass('midLevel') ){
+                angular.element(document.getElementsByClassName('midLevel')).removeClass('active').parent('li').removeClass('active');
+       }      
+
+
          angular.element($event.currentTarget).addClass('active');
          angular.element($event.currentTarget).parent('li').addClass('active');
       }
    
    }; 
     
+     $scope.isClassMemeberOfFunction = function(class){
+
+        if(class.$parent.kind === 'function'){
+       
+            return true;
+        }
+         return false;
+    } 
+     
+     $scope.isFunctionParentToClass = function(func){
+
+        if(func.memberof.split('.').length <3){
+       
+            return false;
+        }
+         return true;
+    }     
     
+     $scope.isClassMemeberOfAFunction = function(elements){
+ 
+        
+             
+             for(var class in  elements.class){
+
+                if(elements.class[class].$parent.kind ==='function'){
+                   
+                    return true;
+                }
+         
+            return false;
+           
+    } 
+     }
+
+
+
 
 }]);
 
@@ -424,15 +481,50 @@ ngDoc.controller('navbarExpandedController', ['$scope', '$attrs', '$filterDoclet
   ModuleController.call(this, $scope, $filterDoclets);
 
   var $this = this;
+
   $scope.$parent.$watch($attrs['doclet'] || 'doclet', function(doclet) {
     $scope.doclet = doclet;
     if (doclet) {
+
       $this.apply({memberof: doclet.longname});
     } else {
+                console.log('2')
       $this.reset();
     }
   });
+    
+    
+
+    
 }]);
+
+
+/**
+ * Controller for the navbar's "expanded" content. Extends ModuleController
+ * and inject in the scope all children of whatever doclet we are expanding.
+ */
+ngDoc.controller('navbarExpandedController1', ['$scope', '$attrs', '$filterDoclets', function($scope, $attrs, $filterDoclets) {
+  ModuleController.call(this, $scope, $filterDoclets);
+
+  var $this = this;
+     
+  $scope.$parent.$watch($attrs['doclet'] || 'doclet', function(doclet) {
+    $scope.doclet = doclet;
+
+      if (doclet) {
+       
+      $this.apply({memberof: doclet.longname});
+    } else {
+                console.log('2')
+      $this.reset();
+    }
+  });
+    
+    
+
+    
+}]);
+
 
 /* Content */
 ngDoc.controller('contentController', ['$scope', '$location', '$title', '$docletsByName', '$filterDoclets', '$findChildren', '$readme','$sce',
@@ -494,7 +586,34 @@ ngDoc.controller('contentController', ['$scope', '$location', '$title', '$doclet
                 }
 
             };
-	  
+      
+	 $scope.isfunctionAndHasOnlyTypeAttr = function (element) {
+        
+         if(element.kind == 'function'){
+            console.log(element.returns[0].type.names[0],element.type.names[0],element.returns.length)
+             if(element.returns[0].type.names[0] === element.type.names[0] && element.returns.length == 1 ){
+                 
+                 return true;
+     
+             }
+         
+         }
+        return false;
+     };
+      
+    $scope.isfunctionAndHasTypeAttrThatMuchReturnAttr = function (element, returns){
+        
+        if(element.kind == 'function'){
+        
+            if(returns.type.names[0] === element.type.names[0]){ 
+            
+                return true;
+            }
+        
+        }
+    
+        return false
+    }; 
 	  
     /* The content doclet/page is either a class, module, globals, or readme */
     var $this = this;

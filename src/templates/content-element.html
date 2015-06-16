@@ -1,5 +1,6 @@
 <h3 id="{{element.name}}" class="literal">
-    <span class="kind">{{element.kind}}</span>
+    <span class="kind" ng-if='element.returns && element.name!=="return"'>{{element.kind}}</span>
+    <span class="kind" ng-if='element.returns && element.name=="return"'>statment</span>
     <span class="name">{{element.name}}</span
    ><span ng-if="element.params || (element.kind == 'function') || (element.alias)"
      ><span>(</span
@@ -45,12 +46,12 @@
     </ul>
   </div>
 
-  <div ng-if="element.returns">
+  <div ng-if="element.returns && !isfunctionAndHasOnlyTypeAttr(element)" >
     <h4>Returns</h4>
-    <ul class="returns">
-      <li ng-repeat="return in element.returns">
-        <span class="types" ng-if="return.type"
-           ><span class="type" ng-repeat="type in return.type.names" ng-bind-html="type|type"></span
+    <ul class="returns"><!--  -->
+      <li ng-repeat="return in element.returns" ng-if='!isfunctionAndHasTypeAttrThatMuchReturnAttr(element, return)' >
+        <span class="types" ng-if="return.type" 
+           ><span class="type" ng-repeat="type in return.type.names"   ng-if="type" ng-bind-html="type|type"></span
         ></span>
         <span ng-bind-html="return.description|html"></span>
       </li>

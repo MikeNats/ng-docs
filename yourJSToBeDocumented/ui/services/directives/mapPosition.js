@@ -109,7 +109,6 @@ uiServices.directive('setMapPosition', ['gMap', function (gMap) {
     * @member
     * @name return 
     * @memberof module:uiServices.setMapPosition
-    * @type {statement} 
     * @public
     * @return {Object} 
     * @Description Wired with  {@link module:mapModule.mapController.$scope.map  mapcontrols} Object: {@link '='}

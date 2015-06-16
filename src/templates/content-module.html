@@ -62,7 +62,8 @@
 
 
 <div ng-if="elements.member || elements.constant">
-  <h2>Members</h2>
+  <h2 >Members</h2>
+
   <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.member"></div>
   <div ng-include="'templates/content-element.html'" ng-repeat="element in elements.constant"></div>
 </div>

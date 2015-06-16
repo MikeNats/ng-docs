@@ -4,17 +4,76 @@
 ></div>  
 
 <div ng-controller="navbarExpandedController" doclet="element"
-     ng-if="(selectedDocletID == element.$id) &amp;&amp; (element.kind == 'class')">
+     ng-if="(selectedDocletID == element.$id) &amp;&amp;( (element.kind == 'class') || (element.kind == 'function'))">
 
   <ul class="nav expanded" ng-if="elements">
 
+
+      
+  <li ng-if="elements.class" class="header">Classes</li>
+  <li ng-if="elements.class"
+      ng-repeat="element in elements.class"
+      ng-class="{'expanded' : (selectedDocletID == element.$id)}"
+      >
+    <div class="kind-{{element.kind}}" ng-click='colapseSubNav($event);' ng-if="!element.alias "  >
+      <span ng-if="element.$prefix" class="kind-prefix">{{element.$prefix}}.</span
+      ><a  ng-href="#!/{{element.$href}}">{{element.name}}</a
+    ></div>  
+
+        <div ng-controller="navbarExpandedController1" doclet="element"
+            >
+
+            <ul  class="nav expanded  ">
+
+                <li ng-if="elements.function" class="header">Functions</li>
+                <li ng-if="elements.function"
+                    ng-repeat="function in elements.function">
+                  <div class="kind-function"  ng-class="{'static' : (function.scope == 'static')}">
+                    <a ng-href="#!/{{function.$href}}">{{function.name}}</a>
+                  </div>
+                </li> 
+
+
+            <!--<li ng-if="elements.class" class="header">Constractors</li>
+                <li ng-if="elements.class"
+                    ng-repeat="constractor in elements.class" 
+                    ng-class="{'method' : constractor.params, 'attribute' : !constractor.params }">
+            <div >-->
+            <!--  <span ng-if="constractor.$prefix" class="kind-prefix">{{constractor.$prefix}}.</span
+              >--><!-- <a  ng-href="#!/{{constractor.$href}}">{{constractor.name}}</a
+            ></div>
+            </li> -->
+
+
+                <li ng-if="elements.member" class="header">Members</li>
+                <li ng-if="elements.member"
+                    ng-repeat="member in elements.member" 
+                    ng-class="{'method' : member.params, 'attribute' : !member.params }">
+                  <div class="kind-member" >
+                      <a ng-href="#!/{{member.$href}}">  {{member.name}}</a>
+                  </div>
+                </li>
+
+                <li ng-if="elements.event" class="header">Events</li>
+                <li ng-if="elements.event"
+                    ng-repeat="event in elements.event">
+                  <div class="kind-event"><a ng-href="#!/{{event.$href}}">{{event.name}}</a></div>
+                </li>
+          </ul>
+      
+      
+      
+      
+    </li>      
+      
+      
     <li ng-if="elements.function" class="header">Functions</li>
     <li ng-if="elements.function"
         ng-repeat="function in elements.function">
-      <div class="kind-function" ng-class="{'static' : (function.scope == 'static')}">
+      <div class="kind-function"  ng-class="{'static' : (function.scope == 'static')}">
         <a ng-href="#!/{{function.$href}}">{{function.name}}</a>
       </div>
-    </li>
+    </li> 
 
       
    <!--  <li ng-if="elements.class" class="header">Constractors</li>

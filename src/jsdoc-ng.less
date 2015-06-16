@@ -359,6 +359,23 @@ ul ul.nav.expanded{
   	display:block;
   
   }
+
+.active > a, ul > .active  .expanded .kind-class > a, ul > .active  .expanded .kind-function > a{
+
+    color:#0c73f2!important;
+}
+
+ul > .active  .expanded .kind-class  ~ div .kind-class > a{
+ color:#ccc!important;
+}
+ul ul ul li .expanded div ~ div ul.expanded{
+    
+        display:none;
+}
+ul ul ul li .expanded div.active ~ div ul.expanded{
+    
+        display:block;
+}
 .topLevel{
 
 	margin-bottom:15px;
@@ -385,7 +402,20 @@ div.content {
       
       
       }
-    
+    .exceptions{
+        li{
+            margin-bottom:10px;
+            
+            span{
+
+                float:left;
+
+                p{
+                    margin:0;
+                 }
+            }
+        }
+    }   
 
   h1 { // Class, module, namespace name...
     font-size: 36px;

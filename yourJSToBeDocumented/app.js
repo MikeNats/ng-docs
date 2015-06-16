@@ -38,14 +38,11 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
 	app = angular.module('app', ['ngRoute', 'ngAnimate', 'mapModule', 'ui.router', 'uiServices', 'authModule', 'routeSateModule']).run(['$rootScope', '$state', '$stateParams', '$q', 'AUTH_EVENTS', 'authService', 'isSateInitialized', 'gMap', function ($rootScope, $state, $stateParams, $q, AUTH_EVENTS, authService, isSateInitialized, gMap) {
 
         /**   
-        *
         * @framework angular 
         * @kind jsConcept
         * @type initializer        
         * @name run
         * @memberof module:app
-        *
-        *
         * @requires $rootScope
         * @requires $state
         * @requires $stateParams
@@ -54,32 +51,25 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
         * @requires authModule+module:authModule.AUTH_EVENTS 
         * @requires authModule+module:authModule.authService
         * @requires mapModule+module:mapModule.gMap 
-        *
-        *
-        * @Description  Custom implementation of Jquery animate.
-        *     
+		* @Description Events before templates are been loaded
         */
          
         "use strict";
         /**
-        *   
         * @class 
         * @name $rootScope  
         * @memberof module:app.run
         * @public
         * @classdesc  Encapulates events before template loads
-        * 
         */
         
 		$rootScope.$state = $state;
         
         /** 
-        *
         * @property
         * @name $state 
         * @memberof module:app.run.$rootScope
         * @public 
-        *
         * @Description  Makes availiable {@link $state} to the hole App.
         */
 		$rootScope.$stateParams = $stateParams;
@@ -87,8 +77,8 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
         /** 
         *
         * @event
-        * @name $on 
-        * @type {$stateChangeStart}
+        * @name $stateChangeStart 
+        * @type {listener}
         * @memberof module:app.run.$rootScope
         *
         * @param {Object} event
@@ -117,8 +107,8 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
         /** 
         *
         * @event
-        * @name $on
-        * @type {$stateChangeSuccess}
+        * @name $stateChangeSuccess
+        * @type {listener}
         * @memberof module:app.run.$rootScope
         *
         * @param {Object} event
@@ -140,20 +130,14 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
 		"use strict";
         
         /**   
-        *
         * @framework angular 
         * @kind jsConcept
         * @type configuration        
         * @name config
         * @memberof module:app
-        *
-        *
         * @requires $stateProvide
         * @requires $urlRouterProvider
-        *
-        *
-        * @Description App state are been decreared
-        * 
+        * @Description Routing of the App
         * @example -
         *    /////////////////////////////
         *    // Redirects and Otherwise //
@@ -215,16 +199,8 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
         *        data : {requireLogin : false}
         *    });
         */
-        
-		/////////////////////////////
-		// Redirects and Otherwise //
-		/////////////////////////////
 		
 		$urlRouterProvider.otherwise('/index');
-		
-		//////////////////////////
-		// State Configurations //
-		//////////////////////////
 		
 		// Home //
 		$stateProvider.state("index", {

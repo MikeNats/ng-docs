@@ -54,14 +54,14 @@ module.exports = function(grunt) {
       'dist' : {
         template: 'jsdoc-ng',
         dest: 'documentation',
-        src: ['yourJSToBeDocumented/**/*.js'],
+        src: ['README.md', 'yourJSToBeDocumented/**/*.js'],
         options: {
           "plugins": ["plugins/markdown"],
           "configure" : "node_modules/jsdoc/conf.json",
           "templates": {
             "cleverLinks":    true,
             "monospaceLinks": true,
-            "windowTitle": "Maps App API",
+            "windowTitle": "Maps App Documentation",
             "minify": false
           },
           "markdown": {
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
         
       'jsdoc-ng' : {
 
-       files: ['yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
+       files: ['README.md','yourJSToBeDocumented/**/*.js','src/templates/**/*.html','src/**/*js','src/**/*less'],
            tasks: [ 'jsdoc-ng' ]
        },
 

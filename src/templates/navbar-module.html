@@ -4,7 +4,7 @@
 
 <div ng-if="module" 	  
 	 ng-click='colapseSubNav($event);'
-	 class="header module">
+	 class="header midLevel module">
 	<span ng-if="module.$prefix" class="kind-prefix">{{module.$prefix}}.</span>
 	<a ng-href="#!/{{module.$href}}">{{module.name}}</a>
 	<span ng-if='module.tags[0].title === "framework"' 
@@ -18,12 +18,13 @@
 
 
 
-<ul class="nav group" ng-if="elements">
-  <li ng-if="elements.class" class="header">Classes</li>
-  <li ng-if="elements.class"
+<ul class="nav group inner" ng-if="elements">
+  <li ng-if="elements.class && !isClassMemeberOfAFunction(elements)" class="header">Classes</li>
+  <li 
       ng-repeat="element in elements.class"
+      ng-if="elements.class && !isClassMemeberOfFunction(element) && !element.$prefix"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"></li> 
 
   <li ng-if="elements.function" class="header">Functions</li>
   <li ng-if="elements.function"
