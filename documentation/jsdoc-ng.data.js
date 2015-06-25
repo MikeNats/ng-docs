@@ -1,4 +1,4 @@
-(function() {angular.module('jsDocNG-Data', []).constant('$title',   "Maps App Documentation").constant('$readme',  "<h1>Google Maps App </h1><p>Responsive single page application for non BI users.<br />\nProvide the ability to non technical user's to visualize data using Google maps having as source a CSV file. </p>\n<h4>Technologies:</h4>\n\n<ul>\n<li>HTML 5   </li>\n<li>Zurd Foundation v5.5</li>\n<li>CSS 2/3</li>\n<li>SASS</li>\n<li>Angular JS v1.3.9</li>\n<li>Grunt JS</li>\n<li>Google Maps API v1.3</li>\n<li>PostCode Everywhere API</li>\n<li>Java/JSP v 6.0</li>\n<li>Oracle DB</li>\n</ul>\n<h2>Architecture:</h2><p><h4>HTML</h4>\nThe Application makes use of JavaScript MVVC framework, Angular.<br />\nThe HTML of the app is <strong>not</strong> delivered from JSP pages or any other server side scripting laguage. <br />\nIts been loaded to client when the app is loaded and delivered dynamically, througth the MVC Logic of Angular.</p>\n<p>The HTML is been divated to templates/views. <br />\nThe templates/views are been appended into the index.html with the help of the router. <br /><br />\nEvery template/view cames with a controller that defines a local scope for that template/view.<br />\nWith the help of the local scopes that controllers define and with the usage of Directives and Services that have access to that scopes, a two way data binding is been achived, creating an itercative UI.</p>\n<p>The templates/views that are been used are:<br/></p>\n<ul>\n<li>createEditTemplate</li>\n<li>createProjectTemplate</li>\n<li>editProjectTemplate</li>\n<li>logInTemplate</li>\n<li>mapTemplate</li>\n<li>navTemplate</li>\n<li>userTemplate</li>\n<li>viewMapTemplate </li>\n</ul>\n<p><br/>\n<br/></p>\n<p><h4>CSS</h4>\nThe app is been built with the usage of Zurb Foundation and SASS to created a responsive and easy to maintain app.\nThe SASS files devided in three main folders:</p>\n<ul>\n<li>Fonts</li>\n<li>Navigation</li>\n<li>Left Panel</li>\n<li>Right Panel</li>\n</ul>\n<p><br/>\n<br/></p>\n<p><h4>JavaScript</h4>\nThe Application is been devided into four modules:</p>\n<p>The <a href=\"#!/module:app\">app</a> module is on the top level of the hierarchy. The rest three modules are dependencies of the App.</p>\n<p>That modular approach makes the application scalable and easy to be teasted as the functionalities are decoupled.</p>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:app\">app</a></span></h3>\nBootstrapts the app and defines.</p>\n<ul>\n<li>Implements the routing of the app.</li>\n<li>Executes user authentication using the services of <a href=\"#!/module:authModule\">authModule</a></li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:authModule\">authModule</a></span></h3>\nProvides authentication services:</p>\n<ul>\n<li>Autheticate a user</li>\n<li>Create a session</li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:mapModule\">mapModule</a></span></h3> \nProvides  Google maps services:</p>\n<ul>\n<li>Google Map Library</li>\n<li>Map positioning</li>\n<li>Markers</li>\n<li>Heat Map</li>\n<li>KML layers</li>\n<li>Timeline</li>\n<li>CSV to Json convertion</li>\n<li>Postcode to Lat/lot convertion</li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:uiService\">uiService</a></span></h3> \nProvides all the intermidiate services to achive interactivity between UI and <a href=\"#!/module:mapModule\">mapModule</a></p>\n<ul>\n<li>Trigers :<blockquote>\n<ul>\n<li>Google Map Library</li>\n<li>Map positioning</li>\n<li>Markers</li>\n<li>Heat Map</li>\n<li>KML layers</li>\n<li>Timeline</li>\n<li>CSV to Json convertion</li>\n<li>Postcode to Lat/lot convertion</li>\n</ul>\n</blockquote>\n</li>\n<li>popUp</li>\n<li>animations</li>\n</ul>\n<h2>Maintenaince of the App</h2><p><h4>About</h4> \nThe development enviroment of the app is consistanced from the below folders:</p>\n<ul>\n<li><p><strong>app </strong><br /> \n  Contains the minified version of the app. The folder is been updated dinamicly from automated build that are defined to Grunt.js file. All the files of the app are been included automatically from the development enviroment. That folder should be then uploaded in the server as it is. </p>\n</li>\n<li><p><strong>bower_components </strong><br /> \n  Contains all the nessesary files for foundation</p>\n</li>\n<li><p><strong>css </strong><br /> \n  Contains the minified development version of the css.Its been produces dinamicly from automated build that are defined to Grunt.js file</p>\n</li>\n<li><p><strong>csv </strong><br /> \n  Contains test csv's for development perpouses</p>\n</li>\n<li><p><strong>js </strong><br /> \n  Contains the JavaScripts for the  development enviroment    </p>\n</li>\n<li><p><strong>scss </strong><br /> \n  Contains the SASS files</p>\n</li>\n<li><p><strong>node_modules </strong><br /> \n  Contains the node modules that are needed from the Grunt to implement the automated builds</p>\n</li>\n<li><p><strong>view </strong><br /> \n  Contains the views of the App. In the development enviroment use of unminified.</p>\n</li>\n<li><p><strong>Grunt.js </strong><br /> \n  Task manager for automated builds</p>\n</li>\n<li><p><strong>index.html </strong><br /> \n  The index page of the app.</p>\n</li>\n</ul>\n<p><br/></p>\n<p><h4>Grunt</h4><br>The Develpment enviroment of the app is been automated with Grunt.<br/>\nEvery time that a change is been applied, Grunt will validated the code, minified and extract the resulted app into the app folder.<br/>\nBefore any change is been applied to the development files, <strong>Grunt must be trigered</strong>.</p>\n<p>To triger Grunt open CMD:<br /></p>\n<pre class=\"prettyprint source lang-bash\"><code>cd pathToTheDevelopmentStack</code></pre><pre class=\"prettyprint source lang-bash\"><code>grunt watch</code></pre>").constant('$doclets', [
+(function() {angular.module('jsDocNG-Data', []).constant('$title',   "Maps App Documentation").constant('$readme',  "<h1>Google Maps App </h1><p>Responsive single page application for non BI users.<br />\nProvide the ability to non technical user's to visualize data using Google maps having as source a CSV file. </p>\n<h4>Technologies:</h4>\n\n<ul>\n<li>HTML 5   </li>\n<li>Zurd Foundation v5.5</li>\n<li>CSS 2/3</li>\n<li>SASS</li>\n<li>Angular JS v1.3.9</li>\n<li>Grunt JS</li>\n<li>Google Maps API v1.3</li>\n<li>PostCode Everywhere API</li>\n<li>Java/JSP v 6.0</li>\n<li>Oracle DB</li>\n</ul>\n<h2>Front End Architecture</h2><p><h4><strong>HTML</strong></h4>\nThe Application makes use of JavaScript MVVC framework, Angular.<br />\nThe HTML of the app is <strong>not</strong> delivered by any server side scripting language. <br />\nIts been loaded to client when the app is loaded and delivered dynamically, through the MVC Logic of Angular.<br /></p>\n<p>The HTML is been deviated to templates/views. <br />\nThe templates/views are been appended into the index.html with the help of the router. <br /><br />\nEvery template/view comes with a controller that defines a local scope for that template/view.<br />\nWith the help of the local scopes that controllers define and with the usage of Directives and Services that access these scopes, a two way data binding is been achieved, creating an interactive UI.<br /></p>\n<p>The templates/views that are been used are: <br /></p>\n<h3 class='docExample'>createEditTemplate</h3>\n<h3 class='docExample'>createProjectTemplate</h3>\n<h3 class='docExample'>editProjectTemplate </h3>\n<h3 class='docExample'> logInTemplate </h3>\n<h3 class='docExample'> mapTemplate </h3>\n<h3 class='docExample'> navTemplate</h3>\n<h3 class='docExample'>userTemplate </h3>\n<h3 class='docExample'>viewMapTemplate </h3>\n\n\n\n<h2><h4><strong>CSS</strong></h4>  </h2><p>The app is been built with the usage of Zurb Foundation and SASS to created a responsive and easy to maintain app.<br />\nThe SASS files divided in three main folders: <br /></p>\n<h3 class='docExample'> Fonts</h3>\n<h3 class='docExample'> Navigation</h3>\n<h3 class='docExample'> Left Panel</h3>\n<h3 class='docExample'>  Right Panel</h3>\n\n\n\n<h2><h4><strong>JavaScript</strong></h4></h2><p>The Application is been divided into four modules:</p>\n<p>The <a href=\"#!/module:app\">app</a> module is on the top level of the hierarchy. The rest three modules are dependencies of the App.</p>\n<p>That modular approach makes the application scalable and easy to be tested as the functionalities are decoupled.</p>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:app\">app</a></span></h3>\nBootstraps the app and defines.</p>\n<ul>\n<li>Implements the routing of the app.</li>\n<li>Executes user authentication using the services of <a href=\"#!/module:authModule\">authModule</a></li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:authModule\">authModule</a></span></h3>\nProvides authentication services:</p>\n<ul>\n<li>Authenticate a user</li>\n<li>Create a session</li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:mapModule\">mapModule</a></span></h3> \nProvides  Google maps services:</p>\n<ul>\n<li>Google Map Library</li>\n<li>Map positioning</li>\n<li>Markers</li>\n<li>Heat Map</li>\n<li>KML layers</li>\n<li>Time line</li>\n<li>CSV to Json conversion</li>\n<li>Postcode to Lat/lot conversion</li>\n</ul>\n<p><h3 class='literal'><span class='kind'>module</span> <span><a href=\"#!/module:uiService\">uiService</a></span></h3> \nProvides all the intermediate services to achieve communication between UI and <a href=\"#!/module:mapModule\">mapModule</a></p>\n<ul>\n<li>Tigers :<br />\n  Google Map Library<br />\n  Map positioning<br />\n  Markers<br />\n  Heat Map<br />\n  KML layers<br />\n  Time line<br />\n  CSV to Json conversion<br />\n  Postcode to Lat/lot conversion</li>\n<li>popUp</li>\n<li>animations</li>\n</ul>\n<h2>Maintenance of the App</h2><p><h4>About</h4> \nThe development environment of the app is consisted from the below folders:</p>\n<ul>\n<li><p><strong>app </strong><br /> \n  Contains the minified version of the app. The folder is been updated dynamical from automated build that are defined to Grunt.js file. All the files of the app are been included automatically from the development environment. That folder should be then uploaded in the server as it is. </p>\n</li>\n<li><p><strong>bower_components </strong><br /> \n  Contains all the necessary files for foundation</p>\n</li>\n<li><p><strong>css </strong><br /> \n  Contains the minified development version of the css. Its been produces dynamical from automated build that are defined to Grunt.js file</p>\n</li>\n<li><p><strong>js </strong><br /> \n  Contains the JavaScripts for the  development environment    </p>\n</li>\n<li><p><strong>scss </strong><br /> \n  Contains the SASS files</p>\n</li>\n<li><p><strong>node_modules </strong><br /> \n  Contains the node modules that are needed from the Grunt to implement the automated builds</p>\n</li>\n<li><p><strong>view </strong><br /> \n  Contains the views of the App. In the development environment use of unminified.</p>\n</li>\n<li><p><strong>Grunt.js </strong><br /> \n  Task manager for automated builds</p>\n</li>\n<li><p><strong>index.html </strong><br /> \n  The index page of the app.</p>\n</li>\n</ul>\n<p><br/></p>\n<p><h4>Grunt</h4><br>The Development environment of the app is been automated with Grunt.<br/>\nEvery time that a change is been applied, Grunt will validated the code, minified and extract the resulted app into the app folder.<br/>\nBefore any change is been applied to the development files, <strong>Grunt must be triggered</strong>.</p>\n<p>To triger Grunt open CMD:<br /></p>\n<pre class=\"prettyprint source lang-bash\"><code>cd pathToTheDevelopmentStack</code></pre><pre class=\"prettyprint source lang-bash\"><code>grunt watch</code></pre>").constant('$doclets', [
   {
     "tags": [
       {
@@ -455,7 +455,7 @@
         }
       }
     ],
-    "description": "<p>$http request to check user credentials on success sets user session with the recived user data.</p>\n<p>Mothd is been invocted from <a href=\"#!/module:authModule.authService\"><code>login(credentials)</code></a></p>",
+    "description": "<p>$http request to check user credentials on success sets user session with the recived user data.\nMothd is been invocted from <a href=\"#!/module:authModule.authService\"><code>login(credentials)</code></a></p>",
     "scope": "static",
     "longname": "module:authModule.authService.auth.user",
     "$href": "module:authModule.authService.auth#user",
@@ -707,340 +707,6 @@
         "title": "framework",
         "text": "angular",
         "value": "angular"
-      }
-    ],
-    "kind": "module",
-    "type": {
-      "names": [
-        "controller"
-      ]
-    },
-    "name": "mapController",
-    "memberof": "module:mapModule",
-    "description": "<p>Initialize an Instance of GooleMaps and its features according to settings object fetched from url.</p>",
-    "requires": [
-      "module:$rootScope",
-      "module:$scope",
-      "module:$stateParams",
-      "module:gMapsLib+module:mapModule.gMapsLib",
-      "module:gMap+module:mapModule.gMap",
-      "module:deleteHeadScripts+module:mapModule.deleteHeadScripts"
-    ],
-    "author": [
-      "Michail Tsougkranis"
-    ],
-    "version": "1.0",
-    "since": "Angular.1.3.9",
-    "scope": "static",
-    "longname": "module:mapModule.mapController",
-    "jsConcept": true,
-    "$href": "module:mapModule.mapController",
-    "$id": "T000002R000116"
-  },
-  {
-    "kind": "class",
-    "name": "$scope",
-    "memberof": "module:mapModule.mapController",
-    "classdesc": "<p>Controller's local scope.</p>",
-    "scope": "static",
-    "longname": "module:mapModule.mapController.$scope",
-    "$href": "module:mapModule.mapController.$scope",
-    "$id": "T000002R000117"
-  },
-  {
-    "kind": "class",
-    "name": "map",
-    "memberof": "module:mapModule.mapController.$scope",
-    "classdesc": "<p>Object attached to controllers <a href=\"#!/module:mapModule.mapController\"><code>$scope</code></a>.</p>\n<p>Encapsulates map data.</p>\n<p>The most important Object in the App.</p>\n<p>In that Object settings and the cutom view of the map is been stored, and is the one that is been stringified and turned into url for publishing the map.</p>",
-    "scope": "static",
-    "longname": "module:mapModule.mapController.$scope.map",
-    "$href": "module:mapModule.mapController.$scope.map",
-    "$id": "T000002R000118"
-  },
-  {
-    "properties": [
-      null
-    ],
-    "name": "settings",
-    "memberof": "module:mapModule.mapController.$scope.map",
-    "description": "<p>settings of the map initialy are been fetched throught URL  </p>\n<p>Using <code>$stateParams</code> service</p>",
-    "scope": "static",
-    "longname": "module:mapModule.mapController.$scope.map.settings",
-    "kind": "member",
-    "$href": "module:mapModule.mapController.$scope.map#settings",
-    "$id": "T000002R000120"
-  },
-  {
-    "kind": "function",
-    "name": "mapsInitialized",
-    "type": {
-      "names": [
-        "Promise"
-      ]
-    },
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "Promise"
-          ]
-        }
-      }
-    ],
-    "memberof": "module:mapModule.mapController",
-    "description": "<p>Promise is been fulfilled  when google Maps script is appended.\nWhen the Promised is been fulfied:</p>\n<blockquote>\n<p>Google Map is been appeded with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.append</code></a> API.</p>\n<p>Google Maps features are been initialized with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.features</code></a> API.  </p>\n<p>Settings <a href=\"#!/module:mapModule.mapController.$scope\"><code>$scope.map.settings</code></a> are been updated.</p>\n</blockquote>",
-    "scope": "static",
-    "longname": "module:mapModule.mapController.mapsInitialized",
-    "$href": "module:mapModule.mapController#mapsInitialized",
-    "$id": "T000002R000122"
-  },
-  {
-    "kind": "event",
-    "name": "$stateChangeStart",
-    "type": {
-      "names": [
-        "listener"
-      ]
-    },
-    "memberof": "module:mapModule.mapController",
-    "description": "<p>on $stateChangeStart &amp;&amp; curent template is customap:</p>\n<blockquote>\n<p>Using <a href=\"#!/module:uiServices.deleteHeadScripts\"><code> deleteHeadScripts.exclude</code></a> service API clears Google Map Script</p>\n<p>Deletes #map-canvas <code>HTML-tag</code></p>\n<p>Reinitialize <code>$scope.map.settings.map</code> Object</p>\n</blockquote>",
-    "scope": "static",
-    "longname": "module:mapModule.mapController.event:$stateChangeStart",
-    "$href": "module:mapModule.mapController#$stateChangeStart",
-    "$id": "T000002R000124"
-  },
-  {
-    "tags": [
-      {
-        "originalTitle": "framework",
-        "title": "framework",
-        "text": "angular",
-        "value": "angular"
-      }
-    ],
-    "kind": "module",
-    "type": {
-      "names": [
-        "controller"
-      ]
-    },
-    "name": "viewMapController",
-    "memberof": "module:mapModule",
-    "description": "<p>Initialize an Instance of GooleMaps and its features according to settings object fetched from url</p>",
-    "requires": [
-      "module:$scope",
-      "module:$stateParams",
-      "module:gMapsLib+module:mapModule.gMapsLib",
-      "module:gMap+module:mapModule.gMap"
-    ],
-    "author": [
-      "Michail Tsougkranis"
-    ],
-    "version": "1.0",
-    "since": "Angular.1.3.9",
-    "scope": "static",
-    "longname": "module:mapModule.viewMapController",
-    "jsConcept": true,
-    "$href": "module:mapModule.viewMapController",
-    "$id": "T000002R000127"
-  },
-  {
-    "kind": "class",
-    "name": "$scope",
-    "memberof": "module:mapModule.viewMapController",
-    "classdesc": "<p>Controller's local scope.</p>",
-    "scope": "static",
-    "longname": "module:mapModule.viewMapController.$scope",
-    "$href": "module:mapModule.viewMapController.$scope",
-    "$id": "T000002R000128"
-  },
-  {
-    "kind": "class",
-    "name": "map",
-    "memberof": "module:mapModule.viewMapController.$scope",
-    "classdesc": "<p>Object attached to controllers <a href=\"#!/module:mapModule.mapController\"><code>$scope</code></a>.</p>\n<p>Encapsulates map data.</p>\n<p>The most important Object in the App.</p>\n<p>In that Object settings and the cutom view of the map is been stored, and is the one that is been stringified and turned into url for publishing the map.</p>",
-    "scope": "static",
-    "longname": "module:mapModule.viewMapController.$scope.map",
-    "$href": "module:mapModule.viewMapController.$scope.map",
-    "$id": "T000002R000129"
-  },
-  {
-    "properties": [
-      null
-    ],
-    "name": "settings",
-    "memberof": "module:mapModule.viewMapController.$scope.map",
-    "description": "<p>settings of the map initialy are been fetched throught URL  </p>\n<p>Using <code>$stateParams</code> service</p>",
-    "scope": "static",
-    "longname": "module:mapModule.viewMapController.$scope.map.settings",
-    "kind": "member",
-    "$href": "module:mapModule.viewMapController.$scope.map#settings",
-    "$id": "T000002R000131"
-  },
-  {
-    "kind": "function",
-    "name": "mapsInitialized",
-    "type": {
-      "names": [
-        "Promise"
-      ]
-    },
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "Promise"
-          ]
-        }
-      }
-    ],
-    "memberof": "module:mapModule.viewMapController",
-    "description": "<p>Promise is been fulfilled  when google Maps script is appended.\nWhen the Promised is been fulfied:</p>\n<blockquote>\n<p>Google Map is been appeded with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.append</code></a> API.</p>\n<p>Google Maps features are been initialized with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.features</code></a> API.  </p>\n<p>Settings <a href=\"#!/module:mapModule.mapController.$scope\"><code>$scope.map.settings</code></a> are been updated.</p>\n</blockquote>",
-    "scope": "static",
-    "longname": "module:mapModule.viewMapController.mapsInitialized",
-    "$href": "module:mapModule.viewMapController#mapsInitialized",
-    "$id": "T000002R000133"
-  },
-  {
-    "tags": [
-      {
-        "originalTitle": "framework",
-        "title": "framework",
-        "text": "angular",
-        "value": "angular"
-      }
-    ],
-    "kind": "module",
-    "type": {
-      "names": [
-        "directive"
-      ]
-    },
-    "name": "googleMaps",
-    "memberof": "module:mapModule",
-    "description": "<p>handles the timeline UI.</p>",
-    "requires": [
-      "module:timeline+module:mapModule.timeline"
-    ],
-    "author": [
-      "Michail Tsougkranis"
-    ],
-    "version": "1.0",
-    "since": "Angular.1.3.9",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps",
-    "jsConcept": true,
-    "$href": "module:mapModule.googleMaps",
-    "$id": "T000002R000135"
-  },
-  {
-    "kind": "function",
-    "name": "anonymous",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "Object"
-          ]
-        },
-        "name": "scope"
-      },
-      {
-        "type": {
-          "names": [
-            "Object"
-          ]
-        },
-        "name": "el"
-      },
-      {
-        "type": {
-          "names": [
-            "Object"
-          ]
-        },
-        "name": "attr"
-      }
-    ],
-    "memberof": "module:mapModule.googleMaps",
-    "description": "<p>Extends <code>mapcontrols</code> with two function to wire the UI with the <a href=\"#!/module:mapModule.timeline\"><code>timeline</code></a> API</p>",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps.anonymous",
-    "$href": "module:mapModule.googleMaps#anonymous",
-    "$id": "T000002R000136"
-  },
-  {
-    "kind": "class",
-    "name": "scope",
-    "memberof": "module:mapModule.googleMaps.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps.anonymous.scope",
-    "$href": "module:mapModule.googleMaps.anonymous.scope",
-    "$id": "T000002R000138"
-  },
-  {
-    "kind": "member",
-    "name": "currentIndecatorDate",
-    "params": [
-      {
-        "name": "no-arguments"
-      }
-    ],
-    "memberof": "module:mapModule.googleMaps.anonymous.scope",
-    "description": "<p>Updates the Current Date that user see on the map by using <a href=\"#!/module:mapModule.timeline\"><code>timeline.currentIndecatorDate</code></a>  API</p>",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps.anonymous.scope.currentIndecatorDate",
-    "$href": "module:mapModule.googleMaps.anonymous.scope#currentIndecatorDate",
-    "$id": "T000002R000139"
-  },
-  {
-    "kind": "member",
-    "name": "trigertimeMachineFromUi",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "DOMElement"
-          ]
-        },
-        "name": "$event"
-      }
-    ],
-    "memberof": "module:mapModule.googleMaps.anonymous.scope",
-    "description": "<p>Use of <a href=\"#!/module:mapModule.timeline\"><code>timeline.moveInTimeByIncrementTimeIndicatorFromCurrentTimeStampToEnd</code></a>  API</p>",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps.anonymous.scope.trigertimeMachineFromUi",
-    "$href": "module:mapModule.googleMaps.anonymous.scope#trigertimeMachineFromUi",
-    "$id": "T000002R000142"
-  },
-  {
-    "kind": "member",
-    "name": "return",
-    "memberof": "module:mapModule.googleMaps",
-    "access": "public",
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "Object"
-          ]
-        }
-      }
-    ],
-    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
-    "scope": "static",
-    "longname": "module:mapModule.googleMaps.return",
-    "$href": "module:mapModule.googleMaps#return",
-    "$id": "T000002R000144"
-  },
-  {
-    "tags": [
-      {
-        "originalTitle": "framework",
-        "title": "framework",
-        "text": "angular",
-        "value": "angular"
       },
       {
         "originalTitle": "variable",
@@ -1061,7 +727,7 @@
     "since": "Angular.1.3.9",
     "longname": "module:mapModule",
     "$href": "module:mapModule",
-    "$id": "T000002R000149"
+    "$id": "T000002R000116"
   },
   {
     "tags": [
@@ -1094,7 +760,7 @@
     "longname": "module:mapModule.gMapsLib",
     "jsConcept": true,
     "$href": "module:mapModule.gMapsLib",
-    "$id": "T000002R000151"
+    "$id": "T000002R000118"
   },
   {
     "kind": "class",
@@ -1104,7 +770,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMapsLib.mapsDefer",
     "$href": "module:mapModule.gMapsLib.mapsDefer",
-    "$id": "T000002R000152"
+    "$id": "T000002R000119"
   },
   {
     "kind": "function",
@@ -1132,7 +798,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMapsLib.asyncLoad",
     "$href": "module:mapModule.gMapsLib#asyncLoad",
-    "$id": "T000002R000155"
+    "$id": "T000002R000122"
   },
   {
     "kind": "member",
@@ -1143,11 +809,11 @@
       }
     ],
     "memberof": "module:mapModule.gMapsLib.mapsDefer",
-    "description": "<p>Use of <code>$window</code> to triger the call back function that has been appended from <a href=\"#!/module:mapModule.gMapsLib\"><code>asyncLoad</code></a></p>\n<p>When after callback runs <a href=\"#!/module:mapModule.gMapsLib.mapsDefer\"><code>mapsDefer</code></a>  is been resolved.</p>",
+    "description": "<p>Use of <code>$window</code> to triger the call back function that has been appended from <a href=\"#!/module:mapModule.gMapsLib\"><code>asyncLoad</code></a>\nWhen after callback runs <a href=\"#!/module:mapModule.gMapsLib.mapsDefer\"><code>mapsDefer</code></a>  is been resolved.</p>",
     "scope": "static",
     "longname": "module:mapModule.gMapsLib.mapsDefer.googleMapsInitialized",
     "$href": "module:mapModule.gMapsLib.mapsDefer#googleMapsInitialized",
-    "$id": "T000002R000161"
+    "$id": "T000002R000128"
   },
   {
     "kind": "member",
@@ -1167,7 +833,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMapsLib.return",
     "$href": "module:mapModule.gMapsLib#return",
-    "$id": "T000002R000163"
+    "$id": "T000002R000130"
   },
   {
     "tags": [
@@ -1199,7 +865,7 @@
     "longname": "module:mapModule.errorHandler",
     "jsConcept": true,
     "$href": "module:mapModule.errorHandler",
-    "$id": "T000002R000165"
+    "$id": "T000002R000132"
   },
   {
     "kind": "class",
@@ -1209,7 +875,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.handler",
     "$href": "module:mapModule.errorHandler.handler",
-    "$id": "T000002R000166"
+    "$id": "T000002R000133"
   },
   {
     "kind": "member",
@@ -1245,7 +911,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.handler.csvData",
     "$href": "module:mapModule.errorHandler.handler#csvData",
-    "$id": "T000002R000168"
+    "$id": "T000002R000135"
   },
   {
     "kind": "member",
@@ -1260,7 +926,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.handler.addErrorClass",
     "$href": "module:mapModule.errorHandler.handler#addErrorClass",
-    "$id": "T000002R000176"
+    "$id": "T000002R000143"
   },
   {
     "kind": "member",
@@ -1275,7 +941,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.handler.removeErrorClass",
     "$href": "module:mapModule.errorHandler.handler#removeErrorClass",
-    "$id": "T000002R000178"
+    "$id": "T000002R000145"
   },
   {
     "kind": "function",
@@ -1304,7 +970,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.csv",
     "$href": "module:mapModule.errorHandler#csv",
-    "$id": "T000002R000180"
+    "$id": "T000002R000147"
   },
   {
     "kind": "function",
@@ -1325,7 +991,7 @@
     "scope": "static",
     "longname": "module:mapModule.errorHandler.settingsParseJson",
     "$href": "module:mapModule.errorHandler#settingsParseJson",
-    "$id": "T000002R000182"
+    "$id": "T000002R000149"
   },
   {
     "tags": [
@@ -1358,7 +1024,7 @@
     "longname": "module:mapModule.fetchDataFromCsvFactory",
     "jsConcept": true,
     "$href": "module:mapModule.fetchDataFromCsvFactory",
-    "$id": "T000002R000186"
+    "$id": "T000002R000153"
   },
   {
     "kind": "class",
@@ -1368,7 +1034,7 @@
     "scope": "static",
     "longname": "module:mapModule.fetchDataFromCsvFactory.parse",
     "$href": "module:mapModule.fetchDataFromCsvFactory.parse",
-    "$id": "T000002R000187"
+    "$id": "T000002R000154"
   },
   {
     "kind": "member",
@@ -1398,7 +1064,7 @@
     "scope": "static",
     "longname": "module:mapModule.fetchDataFromCsvFactory.parse.CsvToJson",
     "$href": "module:mapModule.fetchDataFromCsvFactory.parse#CsvToJson",
-    "$id": "T000002R000189"
+    "$id": "T000002R000156"
   },
   {
     "kind": "member",
@@ -1429,7 +1095,7 @@
     "scope": "static",
     "longname": "module:mapModule.fetchDataFromCsvFactory.get",
     "$href": "module:mapModule.fetchDataFromCsvFactory#get",
-    "$id": "T000002R000191"
+    "$id": "T000002R000158"
   },
   {
     "tags": [
@@ -1461,7 +1127,7 @@
     "longname": "module:mapModule.heatMap",
     "jsConcept": true,
     "$href": "module:mapModule.heatMap",
-    "$id": "T000002R000215"
+    "$id": "T000002R000182"
   },
   {
     "kind": "class",
@@ -1471,7 +1137,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.heatMap",
     "$href": "module:mapModule.heatMap.heatMap",
-    "$id": "T000002R000216"
+    "$id": "T000002R000183"
   },
   {
     "kind": "member",
@@ -1509,7 +1175,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.heatMap.construct",
     "$href": "module:mapModule.heatMap.heatMap#construct",
-    "$id": "T000002R000218"
+    "$id": "T000002R000185"
   },
   {
     "kind": "member",
@@ -1539,7 +1205,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.heatMap.getCoord",
     "$href": "module:mapModule.heatMap.heatMap#getCoord",
-    "$id": "T000002R000222"
+    "$id": "T000002R000189"
   },
   {
     "kind": "member",
@@ -1568,7 +1234,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.construct",
     "$href": "module:mapModule.heatMap#construct",
-    "$id": "T000002R000226"
+    "$id": "T000002R000193"
   },
   {
     "kind": "member",
@@ -1589,7 +1255,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.disConstruct",
     "$href": "module:mapModule.heatMap#disConstruct",
-    "$id": "T000002R000228"
+    "$id": "T000002R000195"
   },
   {
     "kind": "member",
@@ -1610,7 +1276,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.get",
     "$href": "module:mapModule.heatMap#get",
-    "$id": "T000002R000230"
+    "$id": "T000002R000197"
   },
   {
     "kind": "member",
@@ -1631,7 +1297,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.setRadius",
     "$href": "module:mapModule.heatMap#setRadius",
-    "$id": "T000002R000232"
+    "$id": "T000002R000199"
   },
   {
     "kind": "member",
@@ -1652,7 +1318,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.setOpacity",
     "$href": "module:mapModule.heatMap#setOpacity",
-    "$id": "T000002R000234"
+    "$id": "T000002R000201"
   },
   {
     "kind": "member",
@@ -1673,7 +1339,7 @@
     "scope": "static",
     "longname": "module:mapModule.heatMap.toggleView",
     "$href": "module:mapModule.heatMap#toggleView",
-    "$id": "T000002R000236"
+    "$id": "T000002R000203"
   },
   {
     "tags": [
@@ -1702,7 +1368,7 @@
     "longname": "module:mapModule.kmlLayer",
     "jsConcept": true,
     "$href": "module:mapModule.kmlLayer",
-    "$id": "T000002R000238"
+    "$id": "T000002R000205"
   },
   {
     "kind": "class",
@@ -1712,7 +1378,7 @@
     "scope": "static",
     "longname": "module:mapModule.kmlLayer.kml",
     "$href": "module:mapModule.kmlLayer.kml",
-    "$id": "T000002R000239"
+    "$id": "T000002R000206"
   },
   {
     "kind": "member",
@@ -1742,7 +1408,7 @@
     "scope": "static",
     "longname": "module:mapModule.kmlLayer.kml.options",
     "$href": "module:mapModule.kmlLayer.kml#options",
-    "$id": "T000002R000241"
+    "$id": "T000002R000208"
   },
   {
     "kind": "function",
@@ -1773,7 +1439,7 @@
     "scope": "static",
     "longname": "module:mapModule.kmlLayer.get",
     "$href": "module:mapModule.kmlLayer#get",
-    "$id": "T000002R000249"
+    "$id": "T000002R000216"
   },
   {
     "kind": "function",
@@ -1794,7 +1460,7 @@
     "scope": "static",
     "longname": "module:mapModule.kmlLayer.set",
     "$href": "module:mapModule.kmlLayer#set",
-    "$id": "T000002R000251"
+    "$id": "T000002R000218"
   },
   {
     "tags": [
@@ -1833,7 +1499,7 @@
     "longname": "module:mapModule.gMap",
     "jsConcept": true,
     "$href": "module:mapModule.gMap",
-    "$id": "T000002R000253"
+    "$id": "T000002R000220"
   },
   {
     "kind": "class",
@@ -1843,7 +1509,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map",
     "$href": "module:mapModule.gMap.map",
-    "$id": "T000002R000254"
+    "$id": "T000002R000221"
   },
   {
     "kind": "member",
@@ -1858,7 +1524,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.mapLong",
     "$href": "module:mapModule.gMap.map#mapLong",
-    "$id": "T000002R000256"
+    "$id": "T000002R000223"
   },
   {
     "kind": "member",
@@ -1873,7 +1539,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.mapLang",
     "$href": "module:mapModule.gMap.map#mapLang",
-    "$id": "T000002R000258"
+    "$id": "T000002R000225"
   },
   {
     "kind": "class",
@@ -1883,7 +1549,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.mapOptions",
     "$href": "module:mapModule.gMap.map.mapOptions",
-    "$id": "T000002R000260"
+    "$id": "T000002R000227"
   },
   {
     "kind": "member",
@@ -1893,7 +1559,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.mapOptions.zoom",
     "$href": "module:mapModule.gMap.map.mapOptions#zoom",
-    "$id": "T000002R000262"
+    "$id": "T000002R000229"
   },
   {
     "kind": "member",
@@ -1903,7 +1569,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.mapOptions.center",
     "$href": "module:mapModule.gMap.map.mapOptions#center",
-    "$id": "T000002R000264"
+    "$id": "T000002R000231"
   },
   {
     "kind": "member",
@@ -1933,7 +1599,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.map.set",
     "$href": "module:mapModule.gMap.map#set",
-    "$id": "T000002R000266"
+    "$id": "T000002R000233"
   },
   {
     "kind": "function",
@@ -1964,7 +1630,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.append",
     "$href": "module:mapModule.gMap#append",
-    "$id": "T000002R000270"
+    "$id": "T000002R000237"
   },
   {
     "kind": "function",
@@ -1990,7 +1656,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.reset",
     "$href": "module:mapModule.gMap#reset",
-    "$id": "T000002R000273"
+    "$id": "T000002R000240"
   },
   {
     "kind": "function",
@@ -2029,7 +1695,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.set",
     "$href": "module:mapModule.gMap#set",
-    "$id": "T000002R000277"
+    "$id": "T000002R000244"
   },
   {
     "kind": "function",
@@ -2050,7 +1716,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.removeMap",
     "$href": "module:mapModule.gMap#removeMap",
-    "$id": "T000002R000281"
+    "$id": "T000002R000248"
   },
   {
     "kind": "function",
@@ -2081,7 +1747,7 @@
     "scope": "static",
     "longname": "module:mapModule.gMap.features",
     "$href": "module:mapModule.gMap#features",
-    "$id": "T000002R000284"
+    "$id": "T000002R000251"
   },
   {
     "tags": [
@@ -2110,7 +1776,7 @@
     "longname": "module:mapModule.markers",
     "jsConcept": true,
     "$href": "module:mapModule.markers",
-    "$id": "T000002R000297"
+    "$id": "T000002R000264"
   },
   {
     "kind": "class",
@@ -2120,7 +1786,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.markersToolSet",
     "$href": "module:mapModule.markers.markersToolSet",
-    "$id": "T000002R000298"
+    "$id": "T000002R000265"
   },
   {
     "kind": "member",
@@ -2156,7 +1822,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.markersToolSet.markersToolSet",
     "$href": "module:mapModule.markers.markersToolSet#markersToolSet",
-    "$id": "T000002R000300"
+    "$id": "T000002R000267"
   },
   {
     "kind": "member",
@@ -2186,7 +1852,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.markersToolSet.initializeMarkerImage",
     "$href": "module:mapModule.markers.markersToolSet#initializeMarkerImage",
-    "$id": "T000002R000306"
+    "$id": "T000002R000273"
   },
   {
     "kind": "member",
@@ -2210,7 +1876,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.markersToolSet.initializeMarkerinfoWindow",
     "$href": "module:mapModule.markers.markersToolSet#initializeMarkerinfoWindow",
-    "$id": "T000002R000311"
+    "$id": "T000002R000278"
   },
   {
     "kind": "member",
@@ -2264,7 +1930,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.markersToolSet.buildMarker",
     "$href": "module:mapModule.markers.markersToolSet#buildMarker",
-    "$id": "T000002R000314"
+    "$id": "T000002R000281"
   },
   {
     "kind": "function",
@@ -2295,7 +1961,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.get",
     "$href": "module:mapModule.markers#get",
-    "$id": "T000002R000324"
+    "$id": "T000002R000291"
   },
   {
     "kind": "function",
@@ -2316,7 +1982,7 @@
     "scope": "static",
     "longname": "module:mapModule.markers.toggleView",
     "$href": "module:mapModule.markers#toggleView",
-    "$id": "T000002R000329"
+    "$id": "T000002R000296"
   },
   {
     "tags": [
@@ -2348,7 +2014,7 @@
     "longname": "module:mapModule.machPostCodeTo",
     "jsConcept": true,
     "$href": "module:mapModule.machPostCodeTo",
-    "$id": "T000002R000332"
+    "$id": "T000002R000299"
   },
   {
     "kind": "class",
@@ -2358,7 +2024,7 @@
     "scope": "static",
     "longname": "module:mapModule.machPostCodeTo.coordination",
     "$href": "module:mapModule.machPostCodeTo.coordination",
-    "$id": "T000002R000333"
+    "$id": "T000002R000300"
   },
   {
     "kind": "member",
@@ -2388,7 +2054,7 @@
     "scope": "static",
     "longname": "module:mapModule.machPostCodeTo.coordination.handleErrors",
     "$href": "module:mapModule.machPostCodeTo.coordination#handleErrors",
-    "$id": "T000002R000335"
+    "$id": "T000002R000302"
   },
   {
     "kind": "member",
@@ -2426,7 +2092,7 @@
     "scope": "static",
     "longname": "module:mapModule.machPostCodeTo.coordination.toLatLon",
     "$href": "module:mapModule.machPostCodeTo.coordination#toLatLon",
-    "$id": "T000002R000341"
+    "$id": "T000002R000308"
   },
   {
     "kind": "member",
@@ -2465,7 +2131,7 @@
     "scope": "static",
     "longname": "module:mapModule.machPostCodeTo.coordination.get",
     "$href": "module:mapModule.machPostCodeTo.coordination#get",
-    "$id": "T000002R000343"
+    "$id": "T000002R000310"
   },
   {
     "tags": [
@@ -2499,7 +2165,7 @@
     "longname": "module:mapModule.timeline",
     "jsConcept": true,
     "$href": "module:mapModule.timeline",
-    "$id": "T000002R000353"
+    "$id": "T000002R000320"
   },
   {
     "kind": "class",
@@ -2509,7 +2175,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline",
     "$href": "module:mapModule.timeline.timeline",
-    "$id": "T000002R000354"
+    "$id": "T000002R000321"
   },
   {
     "kind": "member",
@@ -2524,7 +2190,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.indicator",
     "$href": "module:mapModule.timeline.timeline#indicator",
-    "$id": "T000002R000356"
+    "$id": "T000002R000323"
   },
   {
     "kind": "member",
@@ -2539,7 +2205,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.clicked",
     "$href": "module:mapModule.timeline.timeline#clicked",
-    "$id": "T000002R000358"
+    "$id": "T000002R000325"
   },
   {
     "kind": "member",
@@ -2554,7 +2220,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.acceptableCoords",
     "$href": "module:mapModule.timeline.timeline#acceptableCoords",
-    "$id": "T000002R000360"
+    "$id": "T000002R000327"
   },
   {
     "kind": "member",
@@ -2569,7 +2235,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.cashedIndicator",
     "$href": "module:mapModule.timeline.timeline#cashedIndicator",
-    "$id": "T000002R000362"
+    "$id": "T000002R000329"
   },
   {
     "kind": "class",
@@ -2579,58 +2245,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timelineMemory",
     "$href": "module:mapModule.timeline.timelineMemory",
-    "$id": "T000002R000364"
-  },
-  {
-    "properties": [
-      null
-    ],
-    "name": "cashedHeatMapsBackrward",
-    "type": {
-      "names": [
-        "Array"
-      ]
-    },
-    "memberof": "module:mapModule.timeline.timelineMemory",
-    "description": "<p>All Heat Map instances before current time stamp</p>",
-    "scope": "static",
-    "longname": "module:mapModule.timeline.timelineMemory.cashedHeatMapsBackrward",
-    "kind": "member",
-    "$href": "module:mapModule.timeline.timelineMemory#cashedHeatMapsBackrward",
-    "$id": "T000002R000366"
-  },
-  {
-    "properties": [
-      null
-    ],
-    "name": "cashedHeatMapsForward",
-    "type": {
-      "names": [
-        "Array"
-      ]
-    },
-    "memberof": "module:mapModule.timeline.timelineMemory",
-    "description": "<p>All Heat Map instances after current time stamp</p>",
-    "scope": "static",
-    "longname": "module:mapModule.timeline.timelineMemory.cashedHeatMapsForward",
-    "kind": "member",
-    "$href": "module:mapModule.timeline.timelineMemory#cashedHeatMapsForward",
-    "$id": "T000002R000367"
-  },
-  {
-    "kind": "member",
-    "name": "setMinMaxDetailedDates",
-    "memberof": "module:mapModule.timeline.timeline",
-    "params": [
-      {
-        "name": "no-arguments"
-      }
-    ],
-    "description": "<p>Converts mm/dd/yyyy to  JavaScript  date  objects</p>",
-    "scope": "static",
-    "longname": "module:mapModule.timeline.timeline.setMinMaxDetailedDates",
-    "$href": "module:mapModule.timeline.timeline#setMinMaxDetailedDates",
-    "$id": "T000002R000369"
+    "$id": "T000002R000334"
   },
   {
     "kind": "member",
@@ -2645,7 +2260,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.dates.minMonth",
     "$href": "module:mapModule.timeline.timeline.dates#minMonth",
-    "$id": "T000002R000371"
+    "$id": "T000002R000336"
   },
   {
     "kind": "member",
@@ -2660,7 +2275,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.dates.minYear",
     "$href": "module:mapModule.timeline.timeline.dates#minYear",
-    "$id": "T000002R000373"
+    "$id": "T000002R000338"
   },
   {
     "kind": "member",
@@ -2675,7 +2290,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.dates.maxMonth",
     "$href": "module:mapModule.timeline.timeline.dates#maxMonth",
-    "$id": "T000002R000375"
+    "$id": "T000002R000340"
   },
   {
     "kind": "member",
@@ -2690,7 +2305,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.dates.maxYear",
     "$href": "module:mapModule.timeline.timeline.dates#maxYear",
-    "$id": "T000002R000377"
+    "$id": "T000002R000342"
   },
   {
     "kind": "member",
@@ -2720,7 +2335,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.findZeroBasedMonth",
     "$href": "module:mapModule.timeline.timeline#findZeroBasedMonth",
-    "$id": "T000002R000379"
+    "$id": "T000002R000344"
   },
   {
     "kind": "member",
@@ -2750,7 +2365,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.currentIndicator",
     "$href": "module:mapModule.timeline.timeline#currentIndicator",
-    "$id": "T000002R000383"
+    "$id": "T000002R000348"
   },
   {
     "kind": "member",
@@ -2770,7 +2385,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.incrementTimeIndicator",
     "$href": "module:mapModule.timeline.timeline#incrementTimeIndicator",
-    "$id": "T000002R000400"
+    "$id": "T000002R000365"
   },
   {
     "kind": "member",
@@ -2798,7 +2413,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.incrementTimeIndicatorFromCurrentTimeStampToEnd",
     "$href": "module:mapModule.timeline.timeline#incrementTimeIndicatorFromCurrentTimeStampToEnd",
-    "$id": "T000002R000406"
+    "$id": "T000002R000371"
   },
   {
     "kind": "member",
@@ -2818,7 +2433,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.findMinMaxDates",
     "$href": "module:mapModule.timeline.timeline#findMinMaxDates",
-    "$id": "T000002R000411"
+    "$id": "T000002R000376"
   },
   {
     "kind": "member",
@@ -2856,7 +2471,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.errorHandler",
     "$href": "module:mapModule.timeline.timeline#errorHandler",
-    "$id": "T000002R000415"
+    "$id": "T000002R000380"
   },
   {
     "kind": "member",
@@ -2876,7 +2491,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.setMinMaxDates",
     "$href": "module:mapModule.timeline.timeline#setMinMaxDates",
-    "$id": "T000002R000419"
+    "$id": "T000002R000384"
   },
   {
     "kind": "class",
@@ -2886,7 +2501,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.dates",
     "$href": "module:mapModule.timeline.timeline.dates",
-    "$id": "T000002R000422"
+    "$id": "T000002R000387"
   },
   {
     "kind": "member",
@@ -2930,7 +2545,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.totalMonth",
     "$href": "module:mapModule.timeline.timeline#totalMonth",
-    "$id": "T000002R000427"
+    "$id": "T000002R000392"
   },
   {
     "kind": "member",
@@ -2958,7 +2573,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.monthAsNumber",
     "$href": "module:mapModule.timeline.timeline#monthAsNumber",
-    "$id": "T000002R000435"
+    "$id": "T000002R000400"
   },
   {
     "kind": "member",
@@ -2973,7 +2588,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.resetHeatMapMemory",
     "$href": "module:mapModule.timeline.timeline#resetHeatMapMemory",
-    "$id": "T000002R000437"
+    "$id": "T000002R000402"
   },
   {
     "kind": "member",
@@ -3009,7 +2624,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.visibleCoords",
     "$href": "module:mapModule.timeline.timeline#visibleCoords",
-    "$id": "T000002R000444"
+    "$id": "T000002R000409"
   },
   {
     "kind": "member",
@@ -3053,7 +2668,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeline.animate",
     "$href": "module:mapModule.timeline.timeline#animate",
-    "$id": "T000002R000449"
+    "$id": "T000002R000414"
   },
   {
     "kind": "function",
@@ -3084,7 +2699,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.get",
     "$href": "module:mapModule.timeline#get",
-    "$id": "T000002R000459"
+    "$id": "T000002R000424"
   },
   {
     "kind": "function",
@@ -3110,7 +2725,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.get",
     "$href": "module:mapModule.timeline#get",
-    "$id": "T000002R000462"
+    "$id": "T000002R000427"
   },
   {
     "kind": "function",
@@ -3136,7 +2751,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.clearTimeMachine",
     "$href": "module:mapModule.timeline#clearTimeMachine",
-    "$id": "T000002R000464"
+    "$id": "T000002R000429"
   },
   {
     "kind": "function",
@@ -3181,7 +2796,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.timeMachine",
     "$href": "module:mapModule.timeline#timeMachine",
-    "$id": "T000002R000466"
+    "$id": "T000002R000431"
   },
   {
     "kind": "function",
@@ -3210,7 +2825,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.zeroBasedMonth",
     "$href": "module:mapModule.timeline#zeroBasedMonth",
-    "$id": "T000002R000468"
+    "$id": "T000002R000433"
   },
   {
     "kind": "function",
@@ -3239,7 +2854,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.clearTimeMachine",
     "$href": "module:mapModule.timeline#clearTimeMachine",
-    "$id": "T000002R000470"
+    "$id": "T000002R000435"
   },
   {
     "kind": "function",
@@ -3268,7 +2883,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.moveInTimeByIncrementTimeIndicator",
     "$href": "module:mapModule.timeline#moveInTimeByIncrementTimeIndicator",
-    "$id": "T000002R000472"
+    "$id": "T000002R000437"
   },
   {
     "kind": "function",
@@ -3297,7 +2912,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.moveInTimeByIncrementTimeIndicatorFromCurrentTimeStampToEnd",
     "$href": "module:mapModule.timeline#moveInTimeByIncrementTimeIndicatorFromCurrentTimeStampToEnd",
-    "$id": "T000002R000474"
+    "$id": "T000002R000439"
   },
   {
     "kind": "function",
@@ -3326,7 +2941,7 @@
     "scope": "static",
     "longname": "module:mapModule.timeline.bindMaptoTimeline",
     "$href": "module:mapModule.timeline#bindMaptoTimeline",
-    "$id": "T000002R000476"
+    "$id": "T000002R000441"
   },
   {
     "tags": [
@@ -3355,7 +2970,7 @@
     "since": "Angular.1.3.9",
     "longname": "module:uiServices",
     "$href": "module:uiServices",
-    "$id": "T000002R000486"
+    "$id": "T000002R000444"
   },
   {
     "tags": [
@@ -3389,7 +3004,7 @@
     "longname": "module:uiServices.createEditController",
     "jsConcept": true,
     "$href": "module:uiServices.createEditController",
-    "$id": "T000002R000488"
+    "$id": "T000002R000446"
   },
   {
     "kind": "class",
@@ -3399,17 +3014,17 @@
     "scope": "static",
     "longname": "module:uiServices.createEditController.$scope",
     "$href": "module:uiServices.createEditController.$scope",
-    "$id": "T000002R000489"
+    "$id": "T000002R000447"
   },
   {
     "kind": "class",
     "name": "project",
     "memberof": "module:uiServices.createEditController.$scope",
-    "classdesc": "<p>Object attached to controllers <a href=\"#!/module:uiServices.createEditController\"><code>$scope</code></a>.</p>\n<p>Encapsulates redirect functionality.</p>",
+    "classdesc": "<p>Object attached to controllers <a href=\"#!/module:uiServices.createEditController\"><code>$scope</code></a>.\nEncapsulates redirect functionality.</p>",
     "scope": "static",
     "longname": "module:uiServices.createEditController.$scope.project",
     "$href": "module:uiServices.createEditController.$scope.project",
-    "$id": "T000002R000490"
+    "$id": "T000002R000448"
   },
   {
     "kind": "member",
@@ -3424,7 +3039,7 @@
     "scope": "static",
     "longname": "module:uiServices.createEditController.$scope.project.create",
     "$href": "module:uiServices.createEditController.$scope.project#create",
-    "$id": "T000002R000492"
+    "$id": "T000002R000450"
   },
   {
     "kind": "member",
@@ -3439,7 +3054,155 @@
     "scope": "static",
     "longname": "module:uiServices.createEditController.$scope.project.edit",
     "$href": "module:uiServices.createEditController.$scope.project#edit",
-    "$id": "T000002R000494"
+    "$id": "T000002R000452"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "controller"
+      ]
+    },
+    "name": "createProjectController",
+    "memberof": "module:uiServices",
+    "description": "<p>Handles the creation of a new project.</p>",
+    "requires": [
+      "module:$scope",
+      "module:$location",
+      "module:Session+module:authModule.Session",
+      "module:projectSettings+module:uiServices.projectSettings",
+      "module:errorHandler+module:mapModule.errorHandler"
+    ],
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController",
+    "jsConcept": true,
+    "$href": "module:uiServices.createProjectController",
+    "$id": "T000002R000454"
+  },
+  {
+    "kind": "class",
+    "name": "$scope",
+    "memberof": "module:uiServices.createProjectController",
+    "classdesc": "<p>Controller's local scope.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope",
+    "$href": "module:uiServices.createProjectController.$scope",
+    "$id": "T000002R000455"
+  },
+  {
+    "kind": "class",
+    "name": "projects",
+    "memberof": "module:uiServices.createProjectController.$scope",
+    "classdesc": "<p>Encapsulates USER projects</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.projects",
+    "$href": "module:uiServices.createProjectController.$scope.projects",
+    "$id": "T000002R000456"
+  },
+  {
+    "kind": "class",
+    "name": "project",
+    "memberof": "module:uiServices.createProjectController.$scope",
+    "classdesc": "<p>Encapsulates new project functionallity.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project",
+    "$href": "module:uiServices.createProjectController.$scope.project",
+    "$id": "T000002R000458"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "memeber",
+        "title": "memeber",
+        "text": ""
+      }
+    ],
+    "name": "data,",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.createProjectController.$scope.project",
+    "description": "<p>Nesesary data for the creation of a project fetched from (@link module:uiServices.projectSettings projectSettings)</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project.data,",
+    "kind": "member",
+    "$href": "module:uiServices.createProjectController.$scope.project#data,",
+    "$id": "T000002R000460"
+  },
+  {
+    "kind": "member",
+    "name": "validation",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.createProjectController.$scope.project",
+    "description": "<p>Validates name;</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project.validation",
+    "$href": "module:uiServices.createProjectController.$scope.project#validation",
+    "$id": "T000002R000463"
+  },
+  {
+    "kind": "member",
+    "name": "emptyValue",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.createProjectController.$scope.project",
+    "description": "<p>On focus out emptys the value of name input</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project.emptyValue",
+    "$href": "module:uiServices.createProjectController.$scope.project#emptyValue",
+    "$id": "T000002R000467"
+  },
+  {
+    "kind": "member",
+    "name": "create",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.createProjectController.$scope.project",
+    "description": "<p>If validation pass. Update's USER data Object and executes the map.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project.create",
+    "$href": "module:uiServices.createProjectController.$scope.project#create",
+    "$id": "T000002R000470"
+  },
+  {
+    "kind": "member",
+    "name": "generateProjectId",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.createProjectController.$scope.project",
+    "description": "<p>Generates Random unique project ID.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.createProjectController.$scope.project.generateProjectId",
+    "$href": "module:uiServices.createProjectController.$scope.project#generateProjectId",
+    "$id": "T000002R000472"
   },
   {
     "tags": [
@@ -3461,7 +3224,9 @@
     "description": "<p>Gets userData from Session service and makes it availiable to the <code>editProjectView</code>.</p>",
     "requires": [
       "module:$scope",
-      "module:Session+module:authModule.Session"
+      "module:$compile",
+      "module:Session+module:authModule.Session",
+      "module:popUp+module:uiServices.popUp"
     ],
     "author": [
       "Michail Tsougkranis"
@@ -3472,7 +3237,7 @@
     "longname": "module:uiServices.editProjectController",
     "jsConcept": true,
     "$href": "module:uiServices.editProjectController",
-    "$id": "T000002R000496"
+    "$id": "T000002R000481"
   },
   {
     "kind": "class",
@@ -3482,22 +3247,72 @@
     "scope": "static",
     "longname": "module:uiServices.editProjectController.$scope",
     "$href": "module:uiServices.editProjectController.$scope",
-    "$id": "T000002R000497"
+    "$id": "T000002R000482"
+  },
+  {
+    "kind": "class",
+    "name": "userData",
+    "memberof": "module:uiServices.editProjectController.$scope",
+    "description": "<p>Encapsulates functionality to edit projects.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.editProjectController.$scope.userData",
+    "$href": "module:uiServices.editProjectController.$scope.userData",
+    "$id": "T000002R000483"
   },
   {
     "kind": "member",
-    "name": "userData",
+    "name": "projects",
     "type": {
       "names": [
         "array"
       ]
     },
-    "memberof": "module:uiServices.editProjectController.$scope",
-    "description": "<p>Array of objects attached to controllers <a href=\"#!/module:uiServices.editProjectController\"><code>$scope</code></a>. </p>\n<p>Encapsulates  user projects data by storing projects data using <a href=\"#!/module:authModule.Session\"><code>Session.projects</code></a></p>",
+    "memberof": "module:uiServices.editProjectController.$scope.userData",
+    "description": "<p>Array of objects attached to controllers <code>$scope</code>.</p>",
     "scope": "static",
-    "longname": "module:uiServices.editProjectController.$scope.userData",
-    "$href": "module:uiServices.editProjectController.$scope#userData",
-    "$id": "T000002R000498"
+    "longname": "module:uiServices.editProjectController.$scope.userData.projects",
+    "$href": "module:uiServices.editProjectController.$scope.userData#projects",
+    "$id": "T000002R000485"
+  },
+  {
+    "kind": "member",
+    "name": "toDelete",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "DOMElement"
+          ]
+        },
+        "name": "$event"
+      }
+    ],
+    "memberof": "module:uiServices.editProjectController.$scope.userData",
+    "description": "<p>Triger modal with warning message</p>",
+    "scope": "static",
+    "longname": "module:uiServices.editProjectController.$scope.userData.toDelete",
+    "$href": "module:uiServices.editProjectController.$scope.userData#toDelete",
+    "$id": "T000002R000487"
+  },
+  {
+    "kind": "member",
+    "name": "deleteProject",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Integer"
+          ]
+        },
+        "name": "project"
+      }
+    ],
+    "memberof": "module:uiServices.editProjectController.$scope.userData",
+    "description": "<p>Delete's project from the view and from <code>$scope</code>.\n    close the modal</p>",
+    "scope": "static",
+    "longname": "module:uiServices.editProjectController.$scope.userData.deleteProject",
+    "$href": "module:uiServices.editProjectController.$scope.userData#deleteProject",
+    "$id": "T000002R000494"
   },
   {
     "tags": [
@@ -3531,7 +3346,7 @@
     "longname": "module:uiServices.logInController",
     "jsConcept": true,
     "$href": "module:uiServices.logInController",
-    "$id": "T000002R000500"
+    "$id": "T000002R000496"
   },
   {
     "kind": "class",
@@ -3541,7 +3356,7 @@
     "scope": "static",
     "longname": "module:uiServices.logInController.$scope",
     "$href": "module:uiServices.logInController.$scope",
-    "$id": "T000002R000501"
+    "$id": "T000002R000497"
   },
   {
     "kind": "class",
@@ -3551,7 +3366,7 @@
     "scope": "static",
     "longname": "module:uiServices.logInController.$scope.credentials",
     "$href": "module:uiServices.logInController.$scope.credentials",
-    "$id": "T000002R000502"
+    "$id": "T000002R000498"
   },
   {
     "properties": [
@@ -3566,7 +3381,7 @@
     "kind": "member",
     "scope": "static",
     "$href": "module:uiServices.logInController.$scope.credentials#userName",
-    "$id": "T000002R000504"
+    "$id": "T000002R000500"
   },
   {
     "properties": [
@@ -3581,7 +3396,7 @@
     "kind": "member",
     "scope": "static",
     "$href": "module:uiServices.logInController.$scope.credentials#password",
-    "$id": "T000002R000505"
+    "$id": "T000002R000501"
   },
   {
     "kind": "member",
@@ -3601,7 +3416,7 @@
     "scope": "static",
     "longname": "module:uiServices.logInController.$scope.credentials.login",
     "$href": "module:uiServices.logInController.$scope.credentials#login",
-    "$id": "T000002R000506"
+    "$id": "T000002R000502"
   },
   {
     "tags": [
@@ -3635,7 +3450,7 @@
     "longname": "module:uiServices.mainAppController",
     "jsConcept": true,
     "$href": "module:uiServices.mainAppController",
-    "$id": "T000002R000508"
+    "$id": "T000002R000504"
   },
   {
     "kind": "class",
@@ -3645,17 +3460,17 @@
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope",
     "$href": "module:uiServices.mainAppController.$scope",
-    "$id": "T000002R000509"
+    "$id": "T000002R000505"
   },
   {
     "kind": "class",
     "name": "header",
     "memberof": "module:uiServices.mainAppController.$scope",
-    "classdesc": "<p>Objects attached to controllers <a href=\"#!/module:uiServices.mainAppController\"><code>$scope</code></a>. </p>\n<p>Encapsulates  Header visibility.</p>",
+    "classdesc": "<p>Objects attached to controllers <a href=\"#!/module:uiServices.mainAppController\"><code>$scope</code></a>. \nEncapsulates  Header visibility.</p>",
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope.header",
     "$href": "module:uiServices.mainAppController.$scope.header",
-    "$id": "T000002R000510"
+    "$id": "T000002R000506"
   },
   {
     "kind": "member",
@@ -3670,7 +3485,7 @@
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope.header.show",
     "$href": "module:uiServices.mainAppController.$scope.header#show",
-    "$id": "T000002R000512"
+    "$id": "T000002R000508"
   },
   {
     "kind": "member",
@@ -3681,11 +3496,11 @@
         "name": "no-argument"
       }
     ],
-    "description": "<p>Setter for <a href=\"#!/module:uiServices.mainAppController.$scope.header\"><code>show</code></a>. </p>\n<p>Promise <code>isSateInitialized</code> that is been fulfield when the state of the page is not index, when  the user succesfully login's.</p>",
+    "description": "<p>Setter for <a href=\"#!/module:uiServices.mainAppController.$scope.header\"><code>show</code></a>. </p>\n<p>Promise <a href=\"#!/module:uiServices.isSateInitialized\"><code>isSateInitialized</code></a> that is been fulfield when the state of the page is not index, when  the user succesfully login's.</p>",
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope.header.checkVisibility",
     "$href": "module:uiServices.mainAppController.$scope.header#checkVisibility",
-    "$id": "T000002R000514"
+    "$id": "T000002R000510"
   },
   {
     "kind": "class",
@@ -3695,7 +3510,7 @@
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope.popUp",
     "$href": "module:uiServices.mainAppController.$scope.popUp",
-    "$id": "T000002R000518"
+    "$id": "T000002R000514"
   },
   {
     "kind": "member",
@@ -3715,7 +3530,126 @@
     "scope": "static",
     "longname": "module:uiServices.mainAppController.$scope.popUp.togglePopUp",
     "$href": "module:uiServices.mainAppController.$scope.popUp#togglePopUp",
+    "$id": "T000002R000516"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "controller"
+      ]
+    },
+    "name": "mapController",
+    "memberof": "module:uiServices",
+    "description": "<p>Initialize an Instance of GooleMaps and its features according to settings object fetched from url.</p>",
+    "requires": [
+      "module:$rootScope",
+      "module:$scope",
+      "module:$stateParams",
+      "module:gMapsLib+module:mapModule.gMapsLib",
+      "module:gMap+module:mapModule.gMap",
+      "module:deleteHeadScripts+module:mapModule.deleteHeadScripts"
+    ],
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.mapController",
+    "jsConcept": true,
+    "$href": "module:uiServices.mapController",
+    "$id": "T000002R000518"
+  },
+  {
+    "kind": "class",
+    "name": "$scope",
+    "memberof": "module:uiServices.mapController",
+    "classdesc": "<p>Controller's local scope.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.$scope",
+    "$href": "module:uiServices.mapController.$scope",
+    "$id": "T000002R000519"
+  },
+  {
+    "kind": "member",
+    "name": "urlVariables",
+    "memberof": "module:uiServices.mapController.$scope",
+    "description": "<p>varriables fetched from <code>$stateParams.path</code></p>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.$scope.urlVariables",
+    "$href": "module:uiServices.mapController.$scope#urlVariables",
     "$id": "T000002R000520"
+  },
+  {
+    "kind": "class",
+    "name": "map",
+    "memberof": "module:uiServices.mapController.$scope",
+    "classdesc": "<p>Object attached to controllers <code>$scope</code>.</p>\n<p>Encapsulates map data.</p>\n<p>The most important Object in the App.</p>\n<p>In that Object settings and the cutom view of the map is been stored, and is the one that is been stringified and turned into url for publishing the map.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.$scope.map",
+    "$href": "module:uiServices.mapController.$scope.map",
+    "$id": "T000002R000522"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "settings",
+    "memberof": "module:uiServices.mapController.$scope.map",
+    "description": "<p>settings of the map initialy are been fetched throught URL  </p>\n<p>Using <code>$stateParams</code> service</p>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.$scope.map.settings",
+    "kind": "member",
+    "$href": "module:uiServices.mapController.$scope.map#settings",
+    "$id": "T000002R000525"
+  },
+  {
+    "kind": "function",
+    "name": "mapsInitialized",
+    "type": {
+      "names": [
+        "Promise"
+      ]
+    },
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Promise"
+          ]
+        }
+      }
+    ],
+    "memberof": "module:uiServices.mapController",
+    "description": "<p>Promise is been fulfilled  when google Maps script is appended.\nWhen the Promised is been fulfied:</p>\n<blockquote>\n<p>Google Map is been appeded with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.append</code></a> API.</p>\n<p>Google Maps features are been initialized with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.features</code></a> API.  </p>\n<p>Settings <code>$scope.map.settings</code> are been updated.</p>\n</blockquote>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.mapsInitialized",
+    "$href": "module:uiServices.mapController#mapsInitialized",
+    "$id": "T000002R000527"
+  },
+  {
+    "kind": "event",
+    "name": "$stateChangeStart",
+    "type": {
+      "names": [
+        "listener"
+      ]
+    },
+    "memberof": "module:uiServices.mapController",
+    "description": "<p>on $stateChangeStart &amp;&amp; curent template is customap:</p>\n<blockquote>\n<p>Using <a href=\"#!/module:uiServices.deleteHeadScripts\"><code> deleteHeadScripts.exclude</code></a> service API clears Google Map Script</p>\n<p>Deletes #map-canvas <code>HTML-tag</code></p>\n<p>Reinitialize <code>$scope.map.settings.map</code> Object</p>\n</blockquote>",
+    "scope": "static",
+    "longname": "module:uiServices.mapController.event:$stateChangeStart",
+    "$href": "module:uiServices.mapController#$stateChangeStart",
+    "$id": "T000002R000529"
   },
   {
     "tags": [
@@ -3747,7 +3681,7 @@
     "longname": "module:uiServices.mapUiController",
     "jsConcept": true,
     "$href": "module:uiServices.mapUiController",
-    "$id": "T000002R000522"
+    "$id": "T000002R000532"
   },
   {
     "kind": "class",
@@ -3757,7 +3691,7 @@
     "scope": "static",
     "longname": "module:uiServices.mapUiController.$scope",
     "$href": "module:uiServices.mapUiController.$scope",
-    "$id": "T000002R000523"
+    "$id": "T000002R000533"
   },
   {
     "kind": "class",
@@ -3767,7 +3701,7 @@
     "scope": "static",
     "longname": "module:uiServices.mapUiController.$scope.accordeon",
     "$href": "module:uiServices.mapUiController.$scope.accordeon",
-    "$id": "T000002R000524"
+    "$id": "T000002R000534"
   },
   {
     "kind": "member",
@@ -3787,7 +3721,7 @@
     "scope": "static",
     "longname": "module:uiServices.mapUiController.$scope.accordeon.activeTab",
     "$href": "module:uiServices.mapUiController.$scope.accordeon#activeTab",
-    "$id": "T000002R000526"
+    "$id": "T000002R000536"
   },
   {
     "tags": [
@@ -3809,7 +3743,8 @@
     "description": "<p>Controls Back Button (top left on the header).</p>",
     "requires": [
       "module:$scope",
-      "module:$location"
+      "module:$location",
+      "module:$rootScope"
     ],
     "author": [
       "Michail Tsougkranis"
@@ -3820,7 +3755,7 @@
     "longname": "module:uiServices.navController",
     "jsConcept": true,
     "$href": "module:uiServices.navController",
-    "$id": "T000002R000528"
+    "$id": "T000002R000538"
   },
   {
     "kind": "class",
@@ -3830,17 +3765,62 @@
     "scope": "static",
     "longname": "module:uiServices.navController.$scope",
     "$href": "module:uiServices.navController.$scope",
-    "$id": "T000002R000529"
+    "$id": "T000002R000539"
   },
   {
     "kind": "class",
-    "name": "back",
+    "name": "button",
     "memberof": "module:uiServices.navController.$scope",
-    "classdesc": "<p>Objects attached to controllers <a href=\"#!/module:uiServices.navController\"><code>$scope</code></a>. </p>\n<p>Encapsulates  Back button functionality.</p>",
+    "classdesc": "<p>Objects attached to controllers <a href=\"#!/module:uiServices.navController\"><code>$scope</code></a>. </p>\n<p>Encapsulates  Button functionality.</p>",
     "scope": "static",
-    "longname": "module:uiServices.navController.$scope.back",
-    "$href": "module:uiServices.navController.$scope.back",
-    "$id": "T000002R000530"
+    "longname": "module:uiServices.navController.$scope.button",
+    "$href": "module:uiServices.navController.$scope.button",
+    "$id": "T000002R000540"
+  },
+  {
+    "kind": "member",
+    "name": "set",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.navController.$scope.button",
+    "description": "<p>Setter of <a href=\"#!/module:uiServices.navController.$scope.button\"><code>button</code></a> attributes.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.navController.$scope.button.set",
+    "$href": "module:uiServices.navController.$scope.button#set",
+    "$id": "T000002R000542"
+  },
+  {
+    "kind": "member",
+    "name": "name",
+    "type": {
+      "names": [
+        "Sting"
+      ]
+    },
+    "memberof": "module:uiServices.navController.$scope.button",
+    "description": "<p>Name Of the button. Is set dynamically from <a href=\"#!/module:uiServices.navController\"><code>set</code></a></p>",
+    "scope": "static",
+    "longname": "module:uiServices.navController.$scope.button.name",
+    "$href": "module:uiServices.navController.$scope.button#name",
+    "$id": "T000002R000544"
+  },
+  {
+    "kind": "member",
+    "name": "path",
+    "type": {
+      "names": [
+        "Sting"
+      ]
+    },
+    "memberof": "module:uiServices.navController.$scope.button",
+    "description": "<p>Url Of the button. Is set dynamically from <a href=\"#!/module:uiServices.navController\"><code>set</code></a></p>",
+    "scope": "static",
+    "longname": "module:uiServices.navController.$scope.button.path",
+    "$href": "module:uiServices.navController.$scope.button#path",
+    "$id": "T000002R000546"
   },
   {
     "kind": "member",
@@ -3850,12 +3830,12 @@
         "name": "no-argument"
       }
     ],
-    "memberof": "module:uiServices.navController.$scope.back",
-    "description": "<p>Redirect's to <code>createdit</code> template </p>\n<p>Using <code>$location</code> service</p>",
+    "memberof": "module:uiServices.navController.$scope.button",
+    "description": "<p>Redirects to <code>$scope.button.path</code></p>\n<p>Using <code>$location</code> service</p>",
     "scope": "static",
-    "longname": "module:uiServices.navController.$scope.back.go",
-    "$href": "module:uiServices.navController.$scope.back#go",
-    "$id": "T000002R000532"
+    "longname": "module:uiServices.navController.$scope.button.go",
+    "$href": "module:uiServices.navController.$scope.button#go",
+    "$id": "T000002R000548"
   },
   {
     "tags": [
@@ -3889,7 +3869,7 @@
     "longname": "module:uiServices.userController",
     "jsConcept": true,
     "$href": "module:uiServices.userController",
-    "$id": "T000002R000534"
+    "$id": "T000002R000550"
   },
   {
     "kind": "class",
@@ -3899,7 +3879,7 @@
     "scope": "static",
     "longname": "module:uiServices.userController.$scope",
     "$href": "module:uiServices.userController.$scope",
-    "$id": "T000002R000535"
+    "$id": "T000002R000551"
   },
   {
     "kind": "class",
@@ -3909,7 +3889,7 @@
     "scope": "static",
     "longname": "module:uiServices.userController.$scope.user",
     "$href": "module:uiServices.userController.$scope.user",
-    "$id": "T000002R000536"
+    "$id": "T000002R000552"
   },
   {
     "kind": "member",
@@ -3924,7 +3904,7 @@
     "scope": "static",
     "longname": "module:uiServices.userController.$scope.user.name",
     "$href": "module:uiServices.userController.$scope.user#name",
-    "$id": "T000002R000538"
+    "$id": "T000002R000554"
   },
   {
     "kind": "member",
@@ -3939,7 +3919,99 @@
     "scope": "static",
     "longname": "module:uiServices.userController.$scope.user.panel",
     "$href": "module:uiServices.userController.$scope.user#panel",
-    "$id": "T000002R000540"
+    "$id": "T000002R000556"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "controller"
+      ]
+    },
+    "name": "viewMapController",
+    "memberof": "module:uiServices",
+    "description": "<p>Initialize an Instance of GooleMaps and its features according to settings object fetched from url</p>",
+    "requires": [
+      "module:$scope",
+      "module:$stateParams",
+      "module:gMapsLib+module:mapModule.gMapsLib",
+      "module:gMap+module:mapModule.gMap"
+    ],
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.viewMapController",
+    "jsConcept": true,
+    "$href": "module:uiServices.viewMapController",
+    "$id": "T000002R000558"
+  },
+  {
+    "kind": "class",
+    "name": "$scope",
+    "memberof": "module:mapModule.viewMapController",
+    "classdesc": "<p>Controller's local scope.</p>",
+    "scope": "static",
+    "longname": "module:mapModule.viewMapController.$scope",
+    "$href": "module:mapModule.viewMapController.$scope",
+    "$id": "T000002R000559"
+  },
+  {
+    "kind": "class",
+    "name": "map",
+    "memberof": "module:uiServices.viewMapController.$scope",
+    "classdesc": "<p>Object attached to controllers <code>$scope</code>.</p>\n<p>Encapsulates map data.</p>\n<p>The most important Object in the App.</p>\n<p>In that Object settings and the cutom view of the map is been stored, and is the one that is been stringified and turned into url for publishing the map.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.viewMapController.$scope.map",
+    "$href": "module:uiServices.viewMapController.$scope.map",
+    "$id": "T000002R000560"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "settings",
+    "memberof": "module:uiServices.viewMapController.$scope.map",
+    "description": "<p>settings of the map initialy are been fetched throught URL  </p>\n<p>Using <code>$stateParams</code> service</p>",
+    "scope": "static",
+    "longname": "module:uiServices.viewMapController.$scope.map.settings",
+    "kind": "member",
+    "$href": "module:uiServices.viewMapController.$scope.map#settings",
+    "$id": "T000002R000562"
+  },
+  {
+    "kind": "function",
+    "name": "mapsInitialized",
+    "type": {
+      "names": [
+        "Promise"
+      ]
+    },
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Promise"
+          ]
+        }
+      }
+    ],
+    "memberof": "module:uiServices.viewMapController",
+    "description": "<p>Promise is been fulfilled  when google Maps script is appended.\nWhen the Promised is been fulfied:</p>\n<blockquote>\n<p>Google Map is been appeded with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.append</code></a> API.</p>\n<p>Google Maps features are been initialized with the use of <a href=\"#!/module:mapModule.gMap\"><code>gMap.features</code></a> API.  </p>\n<p>Settings <code>$scope.map.settings</code> are been updated.</p>\n</blockquote>",
+    "scope": "static",
+    "longname": "module:uiServices.viewMapController.mapsInitialized",
+    "$href": "module:uiServices.viewMapController#mapsInitialized",
+    "$id": "T000002R000564"
   },
   {
     "tags": [
@@ -3972,7 +4044,7 @@
     "longname": "module:uiServices.heatMapOpacity",
     "jsConcept": true,
     "$href": "module:uiServices.heatMapOpacity",
-    "$id": "T000002R000542"
+    "$id": "T000002R000566"
   },
   {
     "kind": "function",
@@ -4004,21 +4076,21 @@
       }
     ],
     "memberof": "module:uiServices.heatMapOpacity",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a></p>",
+    "description": "<p>Watching <code>mapcontrols</code></p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapOpacity.anonymous",
     "$href": "module:uiServices.heatMapOpacity#anonymous",
-    "$id": "T000002R000543"
+    "$id": "T000002R000567"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.heatMapOpacity.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapOpacity.anonymous.scope",
     "$href": "module:uiServices.heatMapOpacity.anonymous.scope",
-    "$id": "T000002R000545"
+    "$id": "T000002R000569"
   },
   {
     "kind": "event",
@@ -4043,7 +4115,7 @@
     "scope": "static",
     "longname": "module:uiServices.heatMapOpacity.anonymous.scope.event:$watch",
     "$href": "module:uiServices.heatMapOpacity.anonymous.scope#$watch",
-    "$id": "T000002R000546"
+    "$id": "T000002R000570"
   },
   {
     "kind": "member",
@@ -4059,11 +4131,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapOpacity.return",
     "$href": "module:uiServices.heatMapOpacity#return",
-    "$id": "T000002R000547"
+    "$id": "T000002R000571"
   },
   {
     "tags": [
@@ -4096,7 +4168,7 @@
     "longname": "module:uiServices.heatMapRadius",
     "jsConcept": true,
     "$href": "module:uiServices.heatMapRadius",
-    "$id": "T000002R000552"
+    "$id": "T000002R000576"
   },
   {
     "kind": "function",
@@ -4131,17 +4203,17 @@
     "scope": "static",
     "longname": "module:uiServices.heatMapRadius.anonymous",
     "$href": "module:uiServices.heatMapRadius#anonymous",
-    "$id": "T000002R000553"
+    "$id": "T000002R000577"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.heatMapRadius.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapRadius.anonymous.scope",
     "$href": "module:uiServices.heatMapRadius.anonymous.scope",
-    "$id": "T000002R000555"
+    "$id": "T000002R000579"
   },
   {
     "kind": "event",
@@ -4166,7 +4238,7 @@
     "scope": "static",
     "longname": "module:uiServices.heatMapRadius.anonymous.scope.event:$watch",
     "$href": "module:uiServices.heatMapRadius.anonymous.scope#$watch",
-    "$id": "T000002R000556"
+    "$id": "T000002R000580"
   },
   {
     "kind": "member",
@@ -4182,11 +4254,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapRadius.return",
     "$href": "module:uiServices.heatMapRadius#return",
-    "$id": "T000002R000557"
+    "$id": "T000002R000581"
   },
   {
     "tags": [
@@ -4219,7 +4291,7 @@
     "longname": "module:uiServices.heatMapVisibility",
     "jsConcept": true,
     "$href": "module:uiServices.heatMapVisibility",
-    "$id": "T000002R000562"
+    "$id": "T000002R000586"
   },
   {
     "kind": "function",
@@ -4255,17 +4327,17 @@
     "scope": "static",
     "longname": "module:uiServices.heatMapVisibility.anonymous",
     "$href": "module:uiServices.heatMapVisibility#anonymous",
-    "$id": "T000002R000563"
+    "$id": "T000002R000587"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.heatMapVisibility.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapVisibility.anonymous.scope",
     "$href": "module:uiServices.heatMapVisibility.anonymous.scope",
-    "$id": "T000002R000565"
+    "$id": "T000002R000589"
   },
   {
     "kind": "event",
@@ -4290,7 +4362,7 @@
     "scope": "static",
     "longname": "module:uiServices.heatMapVisibility.anonymous.scope.event:$watch",
     "$href": "module:uiServices.heatMapVisibility.anonymous.scope#$watch",
-    "$id": "T000002R000566"
+    "$id": "T000002R000590"
   },
   {
     "kind": "member",
@@ -4306,11 +4378,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.heatMapVisibility.return",
     "$href": "module:uiServices.heatMapVisibility#return",
-    "$id": "T000002R000567"
+    "$id": "T000002R000591"
   },
   {
     "tags": [
@@ -4342,7 +4414,7 @@
     "longname": "module:uiServices.kmlLayer",
     "jsConcept": true,
     "$href": "module:uiServices.kmlLayer",
-    "$id": "T000002R000572"
+    "$id": "T000002R000596"
   },
   {
     "kind": "function",
@@ -4374,21 +4446,21 @@
       }
     ],
     "memberof": "module:uiServices.kmlLayer",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a></p>",
+    "description": "<p>Watching <code>map</code></p>",
     "scope": "static",
     "longname": "module:uiServices.kmlLayer.anonymous",
     "$href": "module:uiServices.kmlLayer#anonymous",
-    "$id": "T000002R000573"
+    "$id": "T000002R000597"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.kmlLayer.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.kmlLayer.anonymous.scope",
     "$href": "module:uiServices.kmlLayer.anonymous.scope",
-    "$id": "T000002R000575"
+    "$id": "T000002R000599"
   },
   {
     "kind": "event",
@@ -4413,7 +4485,7 @@
     "scope": "static",
     "longname": "module:uiServices.kmlLayer.anonymous.scope.event:$watch",
     "$href": "module:uiServices.kmlLayer.anonymous.scope#$watch",
-    "$id": "T000002R000576"
+    "$id": "T000002R000600"
   },
   {
     "kind": "member",
@@ -4429,11 +4501,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.kmlLayer.return",
     "$href": "module:uiServices.kmlLayer#return",
-    "$id": "T000002R000577"
+    "$id": "T000002R000601"
   },
   {
     "tags": [
@@ -4465,7 +4537,7 @@
     "longname": "module:uiServices.setMapPosition",
     "jsConcept": true,
     "$href": "module:uiServices.setMapPosition",
-    "$id": "T000002R000582"
+    "$id": "T000002R000606"
   },
   {
     "kind": "function",
@@ -4500,17 +4572,17 @@
     "scope": "static",
     "longname": "module:uiServices.setMapPosition.anonymous",
     "$href": "module:uiServices.setMapPosition#anonymous",
-    "$id": "T000002R000583"
+    "$id": "T000002R000607"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.setMapPosition.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>mapcontrols</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.setMapPosition.anonymous.scope",
     "$href": "module:uiServices.setMapPosition.anonymous.scope",
-    "$id": "T000002R000585"
+    "$id": "T000002R000609"
   },
   {
     "kind": "member",
@@ -4526,11 +4598,11 @@
       }
     ],
     "memberof": "module:uiServices.setMapPosition.anonymous.scope",
-    "description": "<p>Updates  Lat/Lot of the map and to <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a> Object according to user interaction with UI.</p>",
+    "description": "<p>Updates  Lat/Lot of the map and to <code>mapcontrols</code> Object according to user interaction with UI.</p>",
     "scope": "static",
     "longname": "module:uiServices.setMapPosition.anonymous.scope.setMapPosition",
     "$href": "module:uiServices.setMapPosition.anonymous.scope#setMapPosition",
-    "$id": "T000002R000586"
+    "$id": "T000002R000610"
   },
   {
     "kind": "member",
@@ -4545,7 +4617,7 @@
     "scope": "static",
     "longname": "module:uiServices.setMapPosition.anonymous.scope.resetPosition",
     "$href": "module:uiServices.setMapPosition.anonymous.scope#resetPosition",
-    "$id": "T000002R000594"
+    "$id": "T000002R000618"
   },
   {
     "kind": "member",
@@ -4561,11 +4633,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.setMapPosition.return",
     "$href": "module:uiServices.setMapPosition#return",
-    "$id": "T000002R000596"
+    "$id": "T000002R000620"
   },
   {
     "tags": [
@@ -4597,7 +4669,7 @@
     "longname": "module:uiServices.zoomHandler",
     "jsConcept": true,
     "$href": "module:uiServices.zoomHandler",
-    "$id": "T000002R000602"
+    "$id": "T000002R000626"
   },
   {
     "kind": "function",
@@ -4632,17 +4704,17 @@
     "scope": "static",
     "longname": "module:uiServices.zoomHandler.anonymous",
     "$href": "module:uiServices.zoomHandler#anonymous",
-    "$id": "T000002R000603"
+    "$id": "T000002R000627"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.zoomHandler.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.zoomHandler.anonymous.scope",
     "$href": "module:uiServices.zoomHandler.anonymous.scope",
-    "$id": "T000002R000605"
+    "$id": "T000002R000629"
   },
   {
     "kind": "event",
@@ -4667,7 +4739,7 @@
     "scope": "static",
     "longname": "module:uiServices.zoomHandler.anonymous.scope.event:$watch",
     "$href": "module:uiServices.zoomHandler.anonymous.scope#$watch",
-    "$id": "T000002R000606"
+    "$id": "T000002R000630"
   },
   {
     "kind": "member",
@@ -4683,11 +4755,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.zoomHandler.return",
     "$href": "module:uiServices.zoomHandler#return",
-    "$id": "T000002R000607"
+    "$id": "T000002R000631"
   },
   {
     "tags": [
@@ -4720,7 +4792,7 @@
     "longname": "module:uiServices.markersVisibility",
     "jsConcept": true,
     "$href": "module:uiServices.markersVisibility",
-    "$id": "T000002R000613"
+    "$id": "T000002R000637"
   },
   {
     "kind": "function",
@@ -4752,21 +4824,21 @@
       }
     ],
     "memberof": "module:uiServices.markersVisibility",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a></p>",
+    "description": "<p>Watching <code>map</code></p>",
     "scope": "static",
     "longname": "module:uiServices.markersVisibility.anonymous",
     "$href": "module:uiServices.markersVisibility#anonymous",
-    "$id": "T000002R000614"
+    "$id": "T000002R000638"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.markersVisibility.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.markersVisibility.anonymous.scope",
     "$href": "module:uiServices.markersVisibility.anonymous.scope",
-    "$id": "T000002R000616"
+    "$id": "T000002R000640"
   },
   {
     "kind": "event",
@@ -4791,7 +4863,7 @@
     "scope": "static",
     "longname": "module:uiServices.markersVisibility.anonymous.scope.event:$watch",
     "$href": "module:uiServices.markersVisibility.anonymous.scope#$watch",
-    "$id": "T000002R000617"
+    "$id": "T000002R000641"
   },
   {
     "kind": "member",
@@ -4807,11 +4879,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.markersVisibility.return",
     "$href": "module:uiServices.markersVisibility#return",
-    "$id": "T000002R000618"
+    "$id": "T000002R000642"
   },
   {
     "tags": [
@@ -4844,7 +4916,7 @@
     "longname": "module:uiServices.publish",
     "jsConcept": true,
     "$href": "module:uiServices.publish",
-    "$id": "T000002R000624"
+    "$id": "T000002R000648"
   },
   {
     "kind": "function",
@@ -4876,21 +4948,48 @@
       }
     ],
     "memberof": "module:uiServices.publish",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a></p>",
+    "description": "<p>Watching <code>map</code></p>",
     "scope": "static",
     "longname": "module:uiServices.publish.anonymous",
     "$href": "module:uiServices.publish#anonymous",
-    "$id": "T000002R000625"
+    "$id": "T000002R000649"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.publish.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>mapcontrols</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.publish.anonymous.scope",
     "$href": "module:uiServices.publish.anonymous.scope",
-    "$id": "T000002R000627"
+    "$id": "T000002R000651"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "memeber",
+        "title": "memeber",
+        "text": ""
+      }
+    ],
+    "name": "updateSession",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "name": "updateMap"
+      }
+    ],
+    "memberof": "module:uiServices.publish.anonymous.scope",
+    "description": "<p>Updates User data</p>",
+    "scope": "static",
+    "longname": "module:uiServices.publish.anonymous.scope.updateSession",
+    "kind": "member",
+    "$href": "module:uiServices.publish.anonymous.scope#updateSession",
+    "$id": "T000002R000652"
   },
   {
     "tags": [
@@ -4907,12 +5006,12 @@
       }
     ],
     "memberof": "module:uiServices.publish.anonymous.scope",
-    "description": "<p>Filter's the attributes of  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols.settings</code></a> Object to cretae a url with nesesacry variables by for embading the map into iframe.</p>\n<p>Use of <a href=\"#!/module:mapModule.errorHandler\"><code>errorHandler.settingsParseJson</code></a> API service to validate that the produced json,</p>\n<p>that was produced by the filtering the   <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols.settings</code></a> is valid, so as to be stringnified to produce the final  URL  </p>\n<p>Use of <a href=\"#!/module:uiServices.popUp\"><code> popUp.populate</code></a> API service to make availiable the URL to the  USER throught modal window.</p>",
+    "description": "<p>Filter's the attributes of  <code>mapcontrols.settings</code> Object to cretae a url with nesesacry variables by for embading the map into iframe.</p>\n<p>Use of <a href=\"#!/module:mapModule.errorHandler\"><code>errorHandler.settingsParseJson</code></a> API service to validate that the produced json,</p>\n<p>that was produced by the filtering the   <code>mapcontrols.settings</code> is valid, so as to be stringnified to produce the final  URL  </p>\n<p>Use of <a href=\"#!/module:uiServices.popUp\"><code> popUp.populate</code></a> API service to make availiable the URL to the  USER throught modal window.</p>",
     "scope": "static",
     "longname": "module:uiServices.publish.anonymous.scope.publish",
     "kind": "member",
     "$href": "module:uiServices.publish.anonymous.scope#publish",
-    "$id": "T000002R000628"
+    "$id": "T000002R000656"
   },
   {
     "kind": "member",
@@ -4928,11 +5027,144 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with:\n<code> mapcontrols</code> Object: <code>'='</code>\n<code> urlVariables</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.publish.return",
     "$href": "module:uiServices.publish#return",
-    "$id": "T000002R000630"
+    "$id": "T000002R000658"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "directive"
+      ]
+    },
+    "name": "googleMaps",
+    "memberof": "module:uiServices",
+    "description": "<p>handles the timeline UI.</p>",
+    "requires": [
+      "module:timeline+module:mapModule.timeline"
+    ],
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps",
+    "jsConcept": true,
+    "$href": "module:uiServices.googleMaps",
+    "$id": "T000002R000670"
+  },
+  {
+    "kind": "function",
+    "name": "anonymous",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "name": "scope"
+      },
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "name": "el"
+      },
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "name": "attr"
+      }
+    ],
+    "memberof": "module:uiServices.googleMaps",
+    "description": "<p>Extends <code>mapcontrols</code> with two function to wire the UI with the <a href=\"#!/module:mapModule.timeline\"><code>timeline</code></a> API</p>",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps.anonymous",
+    "$href": "module:uiServices.googleMaps#anonymous",
+    "$id": "T000002R000671"
+  },
+  {
+    "kind": "class",
+    "name": "scope",
+    "memberof": "module:uiServices.googleMaps.anonymous",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps.anonymous.scope",
+    "$href": "module:uiServices.googleMaps.anonymous.scope",
+    "$id": "T000002R000673"
+  },
+  {
+    "kind": "member",
+    "name": "currentIndecatorDate",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "memberof": "module:uiServices.googleMaps.anonymous.scope",
+    "description": "<p>Updates the Current Date that user see on the map by using <a href=\"#!/module:mapModule.timeline\"><code>timeline.currentIndecatorDate</code></a>  API</p>",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps.anonymous.scope.currentIndecatorDate",
+    "$href": "module:uiServices.googleMaps.anonymous.scope#currentIndecatorDate",
+    "$id": "T000002R000674"
+  },
+  {
+    "kind": "member",
+    "name": "trigertimeMachineFromUi",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "DOMElement"
+          ]
+        },
+        "name": "$event"
+      }
+    ],
+    "memberof": "module:uiServices.googleMaps.anonymous.scope",
+    "description": "<p>Use of <a href=\"#!/module:mapModule.timeline\"><code>timeline.moveInTimeByIncrementTimeIndicatorFromCurrentTimeStampToEnd</code></a>  API</p>",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps.anonymous.scope.trigertimeMachineFromUi",
+    "$href": "module:uiServices.googleMaps.anonymous.scope#trigertimeMachineFromUi",
+    "$id": "T000002R000677"
+  },
+  {
+    "kind": "member",
+    "name": "return",
+    "memberof": "module:uiServices.googleMaps",
+    "access": "public",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        }
+      }
+    ],
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "scope": "static",
+    "longname": "module:uiServices.googleMaps.return",
+    "$href": "module:uiServices.googleMaps#return",
+    "$id": "T000002R000679"
   },
   {
     "tags": [
@@ -4964,7 +5196,7 @@
     "longname": "module:uiServices.timeIndicator",
     "jsConcept": true,
     "$href": "module:uiServices.timeIndicator",
-    "$id": "T000002R000642"
+    "$id": "T000002R000684"
   },
   {
     "kind": "function",
@@ -4996,21 +5228,21 @@
       }
     ],
     "memberof": "module:uiServices.timeIndicator",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a></p>",
+    "description": "<p>Watching <code>mapcontrols</code></p>",
     "scope": "static",
     "longname": "module:uiServices.timeIndicator.anonymous",
     "$href": "module:uiServices.timeIndicator#anonymous",
-    "$id": "T000002R000643"
+    "$id": "T000002R000685"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.timeIndicator.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.timeIndicator.anonymous.scope",
     "$href": "module:uiServices.timeIndicator.anonymous.scope",
-    "$id": "T000002R000645"
+    "$id": "T000002R000687"
   },
   {
     "kind": "event",
@@ -5035,7 +5267,7 @@
     "scope": "static",
     "longname": "module:uiServices.timeIndicator.anonymous.scope.event:$watch",
     "$href": "module:uiServices.timeIndicator.anonymous.scope#$watch",
-    "$id": "T000002R000646"
+    "$id": "T000002R000688"
   },
   {
     "kind": "member",
@@ -5051,11 +5283,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.timeIndicator.return",
     "$href": "module:uiServices.timeIndicator#return",
-    "$id": "T000002R000647"
+    "$id": "T000002R000689"
   },
   {
     "tags": [
@@ -5089,7 +5321,7 @@
     "longname": "module:uiServices.timeLineVisibility",
     "jsConcept": true,
     "$href": "module:uiServices.timeLineVisibility",
-    "$id": "T000002R000656"
+    "$id": "T000002R000698"
   },
   {
     "kind": "function",
@@ -5121,21 +5353,21 @@
       }
     ],
     "memberof": "module:uiServices.timeLineVisibility",
-    "description": "<p>Watching <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>mapcontrols</code></a></p>",
+    "description": "<p>Watching <code>mapcontrols</code></p>",
     "scope": "static",
     "longname": "module:uiServices.timeLineVisibility.anonymous",
     "$href": "module:uiServices.timeLineVisibility#anonymous",
-    "$id": "T000002R000657"
+    "$id": "T000002R000699"
   },
   {
     "kind": "class",
     "name": "scope",
     "memberof": "module:uiServices.timeLineVisibility.anonymous",
-    "classdesc": "<p>Directive's local scope: <a href=\"#!/module:mapModule.mapController.$scope.map\"><code>map</code></a>.</p>",
+    "classdesc": "<p>Directive's local scope: <code>map</code>.</p>",
     "scope": "static",
     "longname": "module:uiServices.timeLineVisibility.anonymous.scope",
     "$href": "module:uiServices.timeLineVisibility.anonymous.scope",
-    "$id": "T000002R000659"
+    "$id": "T000002R000701"
   },
   {
     "kind": "event",
@@ -5160,7 +5392,7 @@
     "scope": "static",
     "longname": "module:uiServices.timeLineVisibility.anonymous.scope.event:$watch",
     "$href": "module:uiServices.timeLineVisibility.anonymous.scope#$watch",
-    "$id": "T000002R000660"
+    "$id": "T000002R000702"
   },
   {
     "kind": "member",
@@ -5176,286 +5408,11 @@
         }
       }
     ],
-    "description": "<p>Wired with  <a href=\"#!/module:mapModule.mapController.$scope.map\"><code> mapcontrols</code></a> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
+    "description": "<p>Wired with  <code> mapcontrols</code> Object: <code>'='</code></p>\n<p>Type: <code>HTML-Attribute</code></p>",
     "scope": "static",
     "longname": "module:uiServices.timeLineVisibility.return",
     "$href": "module:uiServices.timeLineVisibility#return",
-    "$id": "T000002R000661"
-  },
-  {
-    "tags": [
-      {
-        "originalTitle": "framework",
-        "title": "framework",
-        "text": "angular",
-        "value": "angular"
-      }
-    ],
-    "kind": "module",
-    "type": {
-      "names": [
-        "factory"
-      ]
-    },
-    "name": "uiAnimation",
-    "memberof": "module:uiServices",
-    "description": "<p>Custom implementation of Jquery animate.</p>",
-    "requires": [
-      "module:$interval"
-    ],
-    "author": [
-      "Michail Tsougkranis"
-    ],
-    "version": "1.0",
-    "since": "Angular.1.3.9",
-    "scope": "static",
-    "longname": "module:uiServices.uiAnimation",
-    "jsConcept": true,
-    "$href": "module:uiServices.uiAnimation",
-    "$id": "T000002R000670"
-  },
-  {
-    "kind": "class",
-    "name": "animation",
-    "memberof": "module:uiServices.uiAnimation",
-    "classdesc": "<p>Encapulates animation functionality</p>",
-    "scope": "static",
-    "longname": "module:uiServices.uiAnimation.animation",
-    "$href": "module:uiServices.uiAnimation.animation",
-    "$id": "T000002R000671"
-  },
-  {
-    "kind": "member",
-    "name": "inisiate",
-    "params": [
-      {
-        "name": "no-arguments"
-      }
-    ],
-    "memberof": "module:uiServices.uiAnimation.animation",
-    "description": "<p>Each time <code>animation.linear</code> will be invoced</p>\n<p><code>inisiate</code> will be assigned with $interval function that will make itteration throught time by doing:</p>\n<ul>\n<li>INCREASE or DECREASE a given CSS attribute by a give value called <code>step</code> up untill it reach a given ending value</li>\n<li><p>Assign the value new CSS value to a given DOMElement</p>\n</li>\n<li><p>CHECK if interval should be cancelled by compering the new CSS value with the given ending value</p>\n</li>\n</ul>",
-    "scope": "static",
-    "longname": "module:uiServices.uiAnimation.animation.inisiate",
-    "$href": "module:uiServices.uiAnimation.animation#inisiate",
-    "$id": "T000002R000673"
-  },
-  {
-    "kind": "member",
-    "tags": [
-      {
-        "originalTitle": "calulateVelocity",
-        "title": "calulatevelocity",
-        "text": ""
-      }
-    ],
-    "memberof": "module:uiServices.uiAnimation.animation",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "cssCurrentValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "endingCssValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "step"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "animationSpeed"
-      }
-    ],
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "Integer"
-          ]
-        }
-      }
-    ],
-    "description": "<p>Calculates the velocity of the animation for its $interval iteration:</p>\n<ul>\n<li><p>Calculate the scale between the initial and the ending css value according to a given offset (step), by divading the given offset (step) with the resulted CSS value from the INCREASED/DECRESED operation</p>\n</li>\n<li><p>Calculates the animation velocity by divading  the animationSpeed with the scale</p>\n</li>\n</ul>",
-    "name": "animation.calulateVelocity",
-    "longname": "module:uiServices.uiAnimation.animation.animation.calulateVelocity",
-    "scope": "static",
-    "$href": "module:uiServices.uiAnimation.animation#animation.calulateVelocity",
-    "$id": "T000002R000675"
-  },
-  {
-    "kind": "member",
-    "name": "operation",
-    "memberof": "module:uiServices.uiAnimation.animation",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "cssCurrentValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "endingCssValue"
-      }
-    ],
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "String"
-          ]
-        }
-      }
-    ],
-    "description": "<p>Determines what operation will be applied to the CSS values :  accending or descending the values</p>",
-    "scope": "static",
-    "longname": "module:uiServices.uiAnimation.animation.operation",
-    "$href": "module:uiServices.uiAnimation.animation#operation",
-    "$id": "T000002R000676"
-  },
-  {
-    "kind": "member",
-    "name": "linear",
-    "memberof": "module:uiServices.uiAnimation.animation",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "cssCurrentValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "endingCssValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "step"
-      },
-      {
-        "type": {
-          "names": [
-            "String"
-          ]
-        },
-        "name": "cssAttribute"
-      },
-      {
-        "type": {
-          "names": [
-            "DOMElement"
-          ]
-        },
-        "name": "targetElement"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "animationSpeed"
-      }
-    ],
-    "description": "<p>Trigers a linear animation by invocing:</p>\n<ul>\n<li><p><code>operation</code></p>\n</li>\n<li><p><code>velocity</code></p>\n</li>\n<li><p>Assign $interval function to <a href=\"#!/module:uiServices.uiAnimation.animation\"><code> animation.inisiate</code></a></p>\n</li>\n</ul>",
-    "scope": "static",
-    "longname": "module:uiServices.uiAnimation.animation.linear",
-    "$href": "module:uiServices.uiAnimation.animation#linear",
-    "$id": "T000002R000678"
-  },
-  {
-    "kind": "function",
-    "name": "linear",
-    "memberof": "module:uiServices.uiAnimation",
-    "params": [
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "cssCurrentValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "endingCssValue"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "step"
-      },
-      {
-        "type": {
-          "names": [
-            "String"
-          ]
-        },
-        "name": "cssAttribute"
-      },
-      {
-        "type": {
-          "names": [
-            "DOMElement"
-          ]
-        },
-        "name": "targetElement"
-      },
-      {
-        "type": {
-          "names": [
-            "Interger"
-          ]
-        },
-        "name": "animationSpeed"
-      }
-    ],
-    "access": "public",
-    "scope": "static",
-    "description": "<p>Triger CSS animation using <a href=\"#!/module:uiServices.uiAnimation.animation#linear\"><code>animation.linear</code></a>.</p>",
-    "longname": "module:uiServices.uiAnimation.linear",
-    "$href": "module:uiServices.uiAnimation#linear",
-    "$id": "T000002R000688"
+    "$id": "T000002R000703"
   },
   {
     "tags": [
@@ -5484,7 +5441,7 @@
     "longname": "module:uiServices.deleteHeadScripts",
     "jsConcept": true,
     "$href": "module:uiServices.deleteHeadScripts",
-    "$id": "T000002R000690"
+    "$id": "T000002R000719"
   },
   {
     "kind": "class",
@@ -5494,7 +5451,7 @@
     "scope": "static",
     "longname": "module:uiServices.deleteHeadScripts.script",
     "$href": "module:uiServices.deleteHeadScripts.script",
-    "$id": "T000002R000691"
+    "$id": "T000002R000720"
   },
   {
     "kind": "member",
@@ -5509,7 +5466,7 @@
     "scope": "static",
     "longname": "module:uiServices.deleteHeadScripts.script.selectedElements",
     "$href": "module:uiServices.deleteHeadScripts.script#selectedElements",
-    "$id": "T000002R000693"
+    "$id": "T000002R000722"
   },
   {
     "kind": "member",
@@ -5529,7 +5486,7 @@
     "scope": "static",
     "longname": "module:uiServices.deleteHeadScripts.script.filterSelectedElements",
     "$href": "module:uiServices.deleteHeadScripts.script#filterSelectedElements",
-    "$id": "T000002R000695"
+    "$id": "T000002R000724"
   },
   {
     "kind": "member",
@@ -5544,7 +5501,7 @@
     "scope": "static",
     "longname": "module:uiServices.deleteHeadScripts.script.deleteSelectedElements",
     "$href": "module:uiServices.deleteHeadScripts.script#deleteSelectedElements",
-    "$id": "T000002R000702"
+    "$id": "T000002R000731"
   },
   {
     "kind": "function",
@@ -5565,7 +5522,50 @@
     "description": "<p>Triger the removal of the Head Scripts exept the <code>exclude</code>.</p>",
     "longname": "module:uiServices.deleteHeadScripts.linear",
     "$href": "module:uiServices.deleteHeadScripts#linear",
-    "$id": "T000002R000706"
+    "$id": "T000002R000735"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "factory"
+      ]
+    },
+    "name": "isSateInitialized",
+    "memberof": "module:uiServices",
+    "requires": [
+      "module:isSateInitialized",
+      "module:$q"
+    ],
+    "description": "<p>page state promise</p>",
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.isSateInitialized",
+    "jsConcept": true,
+    "$href": "module:uiServices.isSateInitialized",
+    "$id": "T000002R000737"
+  },
+  {
+    "kind": "class",
+    "name": "isStateInit",
+    "memberof": "module:uiServices.isSateInitialized",
+    "classdesc": "<p>Promise that page changed succesfully</p>",
+    "scope": "static",
+    "longname": "module:uiServices.isSateInitialized.isStateInit",
+    "$href": "module:uiServices.isSateInitialized.isStateInit",
+    "$id": "T000002R000738"
   },
   {
     "tags": [
@@ -5600,7 +5600,7 @@
     "longname": "module:uiServices.popUp",
     "jsConcept": true,
     "$href": "module:uiServices.popUp",
-    "$id": "T000002R000708"
+    "$id": "T000002R000746"
   },
   {
     "kind": "function",
@@ -5621,7 +5621,7 @@
     "description": "<p>Poplulates modal window with content If the modal has no error class</p>",
     "longname": "module:uiServices.popUp.populate",
     "$href": "module:uiServices.popUp#populate",
-    "$id": "T000002R000709"
+    "$id": "T000002R000747"
   },
   {
     "kind": "function",
@@ -5637,7 +5637,7 @@
     "description": "<p>Emptie's modal content</p>",
     "longname": "module:uiServices.popUp.populate",
     "$href": "module:uiServices.popUp#populate",
-    "$id": "T000002R000711"
+    "$id": "T000002R000749"
   },
   {
     "kind": "function",
@@ -5658,7 +5658,490 @@
     "description": "<p>Emptie's modal content show/hide modal by toggling activePopUp class</p>",
     "longname": "module:uiServices.popUp.togglePopUp",
     "$href": "module:uiServices.popUp#togglePopUp",
-    "$id": "T000002R000713"
+    "$id": "T000002R000751"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "framework",
+        "title": "framework",
+        "text": "angular",
+        "value": "angular"
+      }
+    ],
+    "kind": "module",
+    "type": {
+      "names": [
+        "factory"
+      ]
+    },
+    "name": "projectSettings",
+    "memberof": "module:uiServices",
+    "description": "<p>Provide's Object for new project.</p>",
+    "author": [
+      "Michail Tsougkranis"
+    ],
+    "version": "1.0",
+    "since": "Angular.1.3.9",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings",
+    "jsConcept": true,
+    "$href": "module:uiServices.projectSettings",
+    "$id": "T000002R000754"
+  },
+  {
+    "kind": "class",
+    "name": "project",
+    "memberof": "module:uiServices.projectSettings",
+    "classdesc": "<p>Encapsulates all the nessdesary attributes to initialize a google maps project.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project",
+    "$href": "module:uiServices.projectSettings.project",
+    "$id": "T000002R000755"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "projectId",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project",
+    "description": "<p>Unique identifier of the specific project.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.projectId",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project#projectId",
+    "$id": "T000002R000757"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "projectName",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project",
+    "description": "<p>Project name.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.projectName",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project#projectName",
+    "$id": "T000002R000759"
+  },
+  {
+    "kind": "class",
+    "name": "settings",
+    "memberof": "module:uiServices.projectSettings.project",
+    "description": "<p>Encapulates all the attributes that are nessesary to triger a new google map\nAs the user is further customizing the view of the map. The {@settings} is been extented with new attributes: timeline etc..</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings",
+    "$href": "module:uiServices.projectSettings.project.settings",
+    "$id": "T000002R000761"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "response",
+    "type": {
+      "names": [
+        "Array"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Data fethed from CSV.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.response",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#response",
+    "$id": "T000002R000763"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "mapLang",
+    "type": {
+      "names": [
+        "Float"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Map Latitude.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.mapLang",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#mapLang",
+    "$id": "T000002R000765"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "mapLong",
+    "type": {
+      "names": [
+        "Float"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Map Longitude.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.mapLong",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#mapLong",
+    "$id": "T000002R000767"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "zoom",
+    "type": {
+      "names": [
+        "Float"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Map zoom.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.zoom",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#zoom",
+    "$id": "T000002R000769"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "zoom",
+    "type": {
+      "names": [
+        "Float"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Marker image width.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.zoom",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#zoom",
+    "$id": "T000002R000771"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "allow",
+    "type": {
+      "names": [
+        "Bolean"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>For performace reason's set true after map has been initialized.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.allow",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#allow",
+    "$id": "T000002R000773"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "map",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>google map Object</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.map",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#map",
+    "$id": "T000002R000775"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "heatMapRadius",
+    "type": {
+      "names": [
+        "Integer"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Heat Map Radius</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.heatMapRadius",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#heatMapRadius",
+    "$id": "T000002R000777"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "heatMapOpacity",
+    "type": {
+      "names": [
+        "Integer"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Heat Map Opacity</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.heatMapOpacity",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#heatMapOpacity",
+    "$id": "T000002R000779"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "heatmap",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Heat Map layers</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.heatmap",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#heatmap",
+    "$id": "T000002R000781"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "markers",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Markers</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.markers",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#markers",
+    "$id": "T000002R000783"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "layerObject",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Selected KML layer.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.layerObject",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#layerObject",
+    "$id": "T000002R000785"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "layers",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Availiable KML layer's.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.layers",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#layers",
+    "$id": "T000002R000787"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "timeline",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Availiable KML layer's.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.timeline",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#timeline",
+    "$id": "T000002R000792"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "selectedLayer",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Selected KML layer.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.selectedLayer",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#selectedLayer",
+    "$id": "T000002R000796"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "subCatergoryName",
+    "type": {
+      "names": [
+        "Array"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Subcatecory names of Markers.</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.subCatergoryName",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#subCatergoryName",
+    "$id": "T000002R000798"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "showMarkers",
+    "type": {
+      "names": [
+        "Bolean"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Show/Hide Markers</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.showMarkers",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#showMarkers",
+    "$id": "T000002R000800"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "showHeatMap",
+    "type": {
+      "names": [
+        "Bolean"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Show/Hide HeatMap</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.showHeatMap",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#showHeatMap",
+    "$id": "T000002R000802"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "showTimeLine",
+    "type": {
+      "names": [
+        "Bolean"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Show/Hide TimeLine</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.showTimeLine",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#showTimeLine",
+    "$id": "T000002R000804"
+  },
+  {
+    "properties": [
+      null
+    ],
+    "name": "userImgPath",
+    "type": {
+      "names": [
+        "Array"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Path's for the Marker Images</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.userImgPath",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#userImgPath",
+    "$id": "T000002R000806"
+  },
+  {
+    "tags": [
+      {
+        "originalTitle": "path",
+        "title": "path",
+        "text": ""
+      }
+    ],
+    "name": "path",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "memberof": "module:uiServices.projectSettings.project.settings",
+    "description": "<p>Path's for the CSV</p>",
+    "scope": "static",
+    "longname": "module:uiServices.projectSettings.project.settings.path",
+    "kind": "member",
+    "$href": "module:uiServices.projectSettings.project.settings#path",
+    "$id": "T000002R000808"
+  },
+  {
+    "kind": "function",
+    "name": "get",
+    "memberof": "module:uiServices.projectSettings.project",
+    "params": [
+      {
+        "name": "no-arguments"
+      }
+    ],
+    "access": "public",
+    "scope": "static",
+    "description": "<p>Retures a new instance of project.</p>",
+    "longname": "module:uiServices.projectSettings.project.get",
+    "$href": "module:uiServices.projectSettings.project#get",
+    "$id": "T000002R000810"
   },
   {
     "tags": [
@@ -5690,7 +6173,7 @@
     "longname": "module:uiServices.UiAnimation",
     "jsConcept": true,
     "$href": "module:uiServices.UiAnimation",
-    "$id": "T000002R000716"
+    "$id": "T000002R000812"
   },
   {
     "kind": "class",
@@ -5700,7 +6183,7 @@
     "scope": "static",
     "longname": "module:uiServices.UiAnimation.UiAnimation",
     "$href": "module:uiServices.UiAnimation.UiAnimation",
-    "$id": "T000002R000717"
+    "$id": "T000002R000813"
   },
   {
     "kind": "member",
@@ -5760,7 +6243,7 @@
     "description": "<p>Calculates the velocity of the animation for its $interval iteration:</p>\n<ul>\n<li><p>Calculate the scale between the initial and the ending css value according to a given offset (step), by divading the given offset (step) with the resulted CSS value from the INCREASED/DECRESED operation</p>\n</li>\n<li><p>Calculates the animation velocity by divading  the animationSpeed with the scale</p>\n</li>\n</ul>",
     "longname": "module:uiServices.UiAnimation.UiAnimation#calulateVelocity",
     "$href": "module:uiServices.UiAnimation.UiAnimation#calulateVelocity",
-    "$id": "T000002R000718"
+    "$id": "T000002R000814"
   },
   {
     "kind": "member",
@@ -5804,7 +6287,7 @@
     "description": "<p>Determines what operation will be applied to the CSS values :  accending or descending the values</p>",
     "longname": "module:uiServices.UiAnimation.UiAnimation#operation",
     "$href": "module:uiServices.UiAnimation.UiAnimation#operation",
-    "$id": "T000002R000720"
+    "$id": "T000002R000816"
   },
   {
     "kind": "member",
@@ -5871,6 +6354,6 @@
     "description": "<p>Trigers a linear animation by invocing:</p>\n<ul>\n<li><p><code>operation</code></p>\n</li>\n<li><p><code>velocity</code></p>\n</li>\n<li><p>Assign $interval function to <code>inisiate</code> :</p>\n</li>\n</ul>\n<blockquote>\n<p>$interval function  will make itteration throught time by doing:</p>\n<ul>\n<li>INCREASE or DECREASE a given CSS attribute by a give value called <code>step</code> up untill it reach a given ending value</li>\n<li><p>Assign the value new CSS value to a given DOMElement</p>\n</li>\n<li><p>CHECK if interval should be cancelled by compering the new CSS value with the given ending value</p>\n</li>\n</ul>\n</blockquote>",
     "longname": "module:uiServices.UiAnimation.UiAnimation#linear",
     "$href": "module:uiServices.UiAnimation.UiAnimation#linear",
-    "$id": "T000002R000722"
+    "$id": "T000002R000818"
   }
 ]);})();

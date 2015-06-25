@@ -1,7 +1,7 @@
 var helper = require('jsdoc/util/templateHelper');
 var logger = require('jsdoc/util/logger');
 var path = require('jsdoc/path');
-var fs = require('jsdoc/fs');
+var fs = require('jsdoc/fs'); 
 
 /* Minification */
 function minify(html) {

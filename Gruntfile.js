@@ -159,7 +159,7 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-watch');    
   /* Default task: requirejs then uglify */
  // grunt.registerTask('default', ['ngtemplates', 'uglify', 'less']);
-  grunt.registerTask('samples', ['default', 'ngtemplates','uglify','jsdoc-ng']);
+  grunt.registerTask('samples', ['ngtemplates', 'minifyHtml','uglify','less','jsdoc-ng']);
   grunt.registerTask('default', ['watch']);    
 
 };

@@ -24,43 +24,57 @@
       ng-repeat="element in elements.class"
       ng-if="elements.class && !isClassMemeberOfFunction(element) && !element.$prefix"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li> 
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'
+      ></li> 
 
   <li ng-if="elements.function" class="header">Functions</li>
   <li ng-if="elements.function"
       ng-repeat="element in elements.function"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'
+      ></li>
 
   <li ng-if="elements.member" class="header">Members</li>
   <li ng-if="elements.member"
       ng-repeat="element in elements.member"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'  
+      ></li>
     
   <li ng-if="elements.constant" class="header">Constants</li>
   <li ng-if="elements.constant"
       ng-repeat="element in elements.constant"
       ng-class="{'expanded' : (selectedDocletID == element.$id), 'method' : element.params, 'attribute' : !element.params }"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'    
+      ></li>
     
 
   <li ng-if="elements.event" class="header">Events</li>
   <li ng-if="elements.event"
       ng-repeat="element in elements.event"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'  
+      ></li>
 
   <li ng-if="elements.typedef" class="header">Type Definitions</li>
   <li ng-if="elements.typedef"
       ng-repeat="element in elements.typedef"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'        
+      ></li>
 
   <li ng-if="elements.namespace" class="header">Name Spaces</li>
   <li ng-if="elements.namespace"
       ng-repeat="element in elements.namespace"
       ng-class="{'expanded' : (selectedDocletID == element.$id)}"
-      ng-include="'templates/navbar-element.html'"></li>
+      ng-include="'templates/navbar-element.html'"
+      id='{{element.$href}}'        
+      ></li>
 
 </ul>

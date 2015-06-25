@@ -17,59 +17,60 @@ Provide the ability to non technical user's to visualize data using Google maps 
 * Oracle DB
 
 
-Architecture:
+Front End Architecture
 --------------------
-<h4>HTML</h4>
+<h4><strong>HTML</strong></h4>
 The Application makes use of JavaScript MVVC framework, Angular.<br />
-The HTML of the app is <strong>not</strong> delivered from JSP pages or any other server side scripting laguage. <br />
-Its been loaded to client when the app is loaded and delivered dynamically, througth the MVC Logic of Angular.
+The HTML of the app is <strong>not</strong> delivered by any server side scripting language. <br />
+Its been loaded to client when the app is loaded and delivered dynamically, through the MVC Logic of Angular.<br />
 
-The HTML is been divated to templates/views. <br />
+The HTML is been deviated to templates/views. <br />
 The templates/views are been appended into the index.html with the help of the router. <br /><br />
-Every template/view cames with a controller that defines a local scope for that template/view.<br />
-With the help of the local scopes that controllers define and with the usage of Directives and Services that have access to that scopes, a two way data binding is been achived, creating an itercative UI.
+Every template/view comes with a controller that defines a local scope for that template/view.<br />
+With the help of the local scopes that controllers define and with the usage of Directives and Services that access these scopes, a two way data binding is been achieved, creating an interactive UI.<br />
 
-The templates/views that are been used are:<br/>
+The templates/views that are been used are: <br />
 
-* createEditTemplate
-* createProjectTemplate
-* editProjectTemplate
-* logInTemplate
-* mapTemplate
-* navTemplate
-* userTemplate
-* viewMapTemplate 
+<h3 class='docExample'>createEditTemplate</h3>
+<h3 class='docExample'>createProjectTemplate</h3>
+<h3 class='docExample'>editProjectTemplate </h3>
+<h3 class='docExample'> logInTemplate </h3>
+<h3 class='docExample'> mapTemplate </h3>
+<h3 class='docExample'> navTemplate</h3>
+<h3 class='docExample'>userTemplate </h3>
+<h3 class='docExample'>viewMapTemplate </h3>
 
-<br/>
-<br/>
 
-<h4>CSS</h4>
-The app is been built with the usage of Zurb Foundation and SASS to created a responsive and easy to maintain app.
-The SASS files devided in three main folders:
 
-* Fonts
-* Navigation
-* Left Panel
-* Right Panel
+<h4><strong>CSS</strong></h4>  
+--------------------
+The app is been built with the usage of Zurb Foundation and SASS to created a responsive and easy to maintain app.<br />
+The SASS files divided in three main folders: <br />
 
-<br/>
-<br/>
+<h3 class='docExample'> Fonts</h3>
+<h3 class='docExample'> Navigation</h3>
+<h3 class='docExample'> Left Panel</h3>
+<h3 class='docExample'>  Right Panel</h3>
 
-<h4>JavaScript</h4>
-The Application is been devided into four modules:
+
+
+<h4><strong>JavaScript</strong></h4>
+--------------------
+The Application is been divided into four modules:
 
 The [app](#!/module:app) module is on the top level of the hierarchy. The rest three modules are dependencies of the App.
 
-That modular approach makes the application scalable and easy to be teasted as the functionalities are decoupled.
+That modular approach makes the application scalable and easy to be tested as the functionalities are decoupled.
 
+	
 <h3 class='literal'><span class='kind'>module</span> <span>[app](#!/module:app)</span></h3>
-Bootstrapts the app and defines.
+Bootstraps the app and defines.
 * Implements the routing of the app.
 * Executes user authentication using the services of [authModule](#!/module:authModule)
 
 <h3 class='literal'><span class='kind'>module</span> <span>[authModule](#!/module:authModule)</span></h3>
 Provides authentication services:
-* Autheticate a user
+* Authenticate a user
 * Create a session
 
 <h3 class='literal'><span class='kind'>module</span> <span>[mapModule](#!/module:mapModule)</span></h3> 
@@ -79,44 +80,41 @@ Provides  Google maps services:
 * Markers
 * Heat Map
 * KML layers
-* Timeline
-* CSV to Json convertion
-* Postcode to Lat/lot convertion
+* Time line
+* CSV to Json conversion
+* Postcode to Lat/lot conversion
 
 <h3 class='literal'><span class='kind'>module</span> <span>[uiService](#!/module:uiService)</span></h3> 
-Provides all the intermidiate services to achive interactivity between UI and [mapModule](#!/module:mapModule)
-* Trigers :
-> * Google Map Library
-> * Map positioning
-> * Markers
-> * Heat Map
-> * KML layers
-> * Timeline
-> * CSV to Json convertion
-> * Postcode to Lat/lot convertion
+Provides all the intermediate services to achieve communication between UI and [mapModule](#!/module:mapModule)
+* Tigers :<br />
+	Google Map Library<br />
+	Map positioning<br />
+	Markers<br />
+	Heat Map<br />
+	KML layers<br />
+	Time line<br />
+	CSV to Json conversion<br />
+	Postcode to Lat/lot conversion
 * popUp
 * animations
 
 
-Maintenaince of the App
+Maintenance of the App
 ---------------------------
 <h4>About</h4> 
-The development enviroment of the app is consistanced from the below folders:
+The development environment of the app is consisted from the below folders:
 
 * <strong>app </strong><br /> 
-	Contains the minified version of the app. The folder is been updated dinamicly from automated build that are defined to Grunt.js file. All the files of the app are been included automatically from the development enviroment. That folder should be then uploaded in the server as it is. 
+	Contains the minified version of the app. The folder is been updated dynamical from automated build that are defined to Grunt.js file. All the files of the app are been included automatically from the development environment. That folder should be then uploaded in the server as it is. 
 	
 * <strong>bower_components </strong><br /> 
-	Contains all the nessesary files for foundation
+	Contains all the necessary files for foundation
 	
 * <strong>css </strong><br /> 
-	Contains the minified development version of the css.Its been produces dinamicly from automated build that are defined to Grunt.js file
-	
-* <strong>csv </strong><br /> 
-	Contains test csv's for development perpouses
+	Contains the minified development version of the css. Its been produces dynamical from automated build that are defined to Grunt.js file
 	
 * <strong>js </strong><br /> 
-	Contains the JavaScripts for the  development enviroment	
+	Contains the JavaScripts for the  development environment	
 	
 * <strong>scss </strong><br /> 
 	Contains the SASS files
@@ -125,7 +123,7 @@ The development enviroment of the app is consistanced from the below folders:
 	Contains the node modules that are needed from the Grunt to implement the automated builds
 	
 * <strong>view </strong><br /> 
-	Contains the views of the App. In the development enviroment use of unminified.
+	Contains the views of the App. In the development environment use of unminified.
 	
 * <strong>Grunt.js </strong><br /> 
 	Task manager for automated builds
@@ -135,9 +133,9 @@ The development enviroment of the app is consistanced from the below folders:
 	
 <br/>
 <h4>Grunt</h4>	
-The Develpment enviroment of the app is been automated with Grunt.<br/>
+The Development environment of the app is been automated with Grunt.<br/>
 Every time that a change is been applied, Grunt will validated the code, minified and extract the resulted app into the app folder.<br/>
-Before any change is been applied to the development files, <strong>Grunt must be trigered</strong>.
+Before any change is been applied to the development files, <strong>Grunt must be triggered</strong>.
 
 To triger Grunt open CMD:<br />
 

@@ -51,7 +51,9 @@ ngDoc.config(['$locationProvider', '$provide', '$doclets', function($locationPro
   $provide.constant('$docletsByName', byName);
   $provide.constant('$docletsByPath', byPath);
   if (window) window.$$doclets = byName;
-   
+  
+    
+    
 }]);
 
 /* ======================================================================== */
@@ -268,16 +270,6 @@ function ModuleController($scope, $filterDoclets, $findChildren, spec) {
  if ($scope.module){
     console.log('da',$scope.elements);
  }
-     /* if($scope.module){
-       $scope.module.jsConcepts = [];
-       for(var jsConcept in $scope.elements.jsConcept){
-           
-           $scope.module.jsConcepts.push($scope.elements.jsConcept[jsConcept]);
-          
-         } 
-          console.log($scope);
-      }*/
-   
      
   }
 
@@ -325,8 +317,13 @@ ngDoc.controller('moduleController', ['$scope', '$attrs', '$filterDoclets', '$fi
  */
 ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$findChildren','$location', function($scope, $title, $filterDoclets, $findChildren,$location) {
 
+
+    
   /* The selected doclet is either the class, or the doclet itself */
   $scope.$on('$docletChanged', function(event, doclet) {
+      
+          
+
     if (doclet) {
       var parent = doclet;
      if (parent && (parent.kind == 'function')) {
@@ -353,6 +350,30 @@ ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$fi
     } else {
       $scope.selectedDocletID = null;
     }
+ 
+    var path;
+     path =  $location.$$path.replace('/','');
+     path = path.split('.');
+
+     for(var i = 0; i< path.length ; i++){
+
+         if(path[i] === ''|| path[i] === undefined){
+                        console.log('skata')
+         }else{
+            if(!angular.element(document.getElementById(path[i]).getElementsByTagName('div')[0] ).hasClass('active')){
+                        angular.element(document.getElementById(path[i]).getElementsByTagName('div')[0] ).addClass('active')
+             angular.element(document.getElementById(path[i]) ).addClass('active')
+
+            }
+ 
+            
+              if(path[i+1] !== undefined){
+                path[i+1] = path[i]+'.'+path[i+1]
+              }
+             
+         }
+  
+     }
   });
 
   /* Inject a list of all the globals (if we have any) */
@@ -454,8 +475,7 @@ $scope.topLevelModules =[];
     
      $scope.isClassMemeberOfAFunction = function(elements){
  
-        
-             
+            
              for(var class in  elements.class){
 
                 if(elements.class[class].$parent.kind ==='function'){
@@ -467,8 +487,6 @@ $scope.topLevelModules =[];
            
     } 
      }
-
-
 
 
 }]);

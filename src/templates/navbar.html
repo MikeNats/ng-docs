@@ -9,6 +9,7 @@
        ng-if="module && !module.jsConceptParent  && !module.jsConcept"
       ng-include="'templates/navbar-module.html'"
       ng-controller="moduleController"
+      id='{{module.$href}}'
 >
   </li>
 </ul>
@@ -20,7 +21,8 @@
      
       <li ng-repeat="topLevel in topLevelModules"
           ng-controller="moduleController"   
-          ng-class='{{topLevel.name}}' 
+          ng-class='{{topLevel.name}}'
+          id='{{topLevel.$href}}'
 		  >
           
            <div ng-if="topLevel"
@@ -54,7 +56,12 @@
               
               ng-include="'templates/navbar-module.html'"
               
-              ng-controller="moduleController">
+              ng-controller="moduleController"
+              
+               id='{{module.$href}}'
+              >
+              
+              
               
           </li> 
 
