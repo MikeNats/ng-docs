@@ -1,5 +1,6 @@
-Google Maps App 
+Here Goes the Index Page
 ==============
+<<<<<<< HEAD
 Responsive single page application for non BI users.<br />
 Provide the ability to non technical user's to visualize data using Google maps having as source a CSV file. 
 
@@ -138,6 +139,9 @@ Every time that a change is been applied, Grunt will validated the code, minifie
 Before any change is been applied to the development files, <strong>Grunt must be triggered</strong>.
 
 To triger Grunt open CMD:<br />
+=======
+To triger Grunt open CMD:<br /
+>>>>>>> origin/master
 
 ```bash
 cd pathToTheDevelopmentStack
