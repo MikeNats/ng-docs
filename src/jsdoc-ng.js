@@ -358,8 +358,9 @@ ngDoc.controller('navbarController', ['$scope', '$title', '$filterDoclets', '$fi
      for(var i = 0; i< path.length ; i++){
 
          if(path[i] === ''|| path[i] === undefined){
-                        console.log('skata')
+                       
          }else{
+             
             if(!angular.element(document.getElementById(path[i]).getElementsByTagName('div')[0] ).hasClass('active')){
                         angular.element(document.getElementById(path[i]).getElementsByTagName('div')[0] ).addClass('active')
              angular.element(document.getElementById(path[i]) ).addClass('active')
@@ -608,12 +609,12 @@ ngDoc.controller('contentController', ['$scope', '$location', '$title', '$doclet
 	 $scope.isfunctionAndHasOnlyTypeAttr = function (element) {
         
          if(element.kind == 'function'){
-            console.log(element.returns[0].type.names[0],element.type.names[0],element.returns.length)
-             if(element.returns[0].type.names[0] === element.type.names[0] && element.returns.length == 1 ){
+           // console.log(element.returns[0].type.names[0])
+             /*if(element.returns[0].type.names[0] === element.type.names[0] && element.returns.length == 1 ){
                  
                  return true;
      
-             }
+             }*/
          
          }
         return false;
@@ -621,14 +622,14 @@ ngDoc.controller('contentController', ['$scope', '$location', '$title', '$doclet
       
     $scope.isfunctionAndHasTypeAttrThatMuchReturnAttr = function (element, returns){
         
-        if(element.kind == 'function'){
+        /*if(element.kind == 'function'){
         
             if(returns.type.names[0] === element.type.names[0]){ 
             
                 return true;
             }
         
-        }
+        }*/
     
         return false
     }; 
@@ -658,21 +659,25 @@ ngDoc.controller('contentController', ['$scope', '$location', '$title', '$doclet
                       && (parent.kind != 'module')
                       && (parent.kind != 'namespace')) {
           parent = parent.$parent;
-        }
+        } 
 
         if (parent && (parent.kind == 'class')) {
+            console.log('class');
           $scope.template = "templates/content-class.html";
           $scope.doclet = parent;
           $this.apply({memberof: parent.longname});
         } else if (parent && (parent.kind == 'module')) {
+             console.log('module');
           $scope.template = "templates/content-module.html";
           $scope.doclet = parent;
           $this.apply({memberof: parent.longname});
         } else if (parent && (parent.kind == 'namespace')) {
+                   console.log('namespace');
           $scope.template = "templates/content-module.html";
           $scope.doclet = parent;
           $this.apply({memberof: parent.longname});
         } else {
+            console.log('globals');
           $scope.template = "templates/content-globals.html";
           $scope.doclet = null;
           $this.apply({scope: 'global'});

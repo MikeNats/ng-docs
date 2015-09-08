@@ -1,4 +1,6 @@
 /*global uiServices*/
+/*global angular*/
+
 
 /**   
 * @framework angular  
@@ -8,6 +10,7 @@
 * @memberof module:uiServices
 * @Description Handles Header Visibility and provide global access to popUp.
 * @requires $scope
+* @requires $http
 * @requires popUp+module:authModule.uiServices.popUp
 * @requires isSateInitialized+module:uiServices.isSateInitialized
 * @author Michail Tsougkranis
@@ -17,7 +20,7 @@
 
 
 
-uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popUp', function ($scope, isSateInitialized, popUp) {
+uiServices.controller('mainAppController', ['$rootScope', '$scope', '$http', 'isSateInitialized', 'popUp', 'Session', 'commit', function ($rootScope, $scope, $http,  isSateInitialized, popUp, Session, commit) {
 	
 	"use strict";
 
@@ -82,9 +85,9 @@ uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popU
     /**
     * @class 
     * @name popUp 
-    * @memberof module:uiServices.mainAppController.$scope
+    * @memberof  module:uiServices.mainAppController.$scope
     * @classdesc Objects attached to controllers {@link module:uiServices.mainAppController $scope}. 
-    *
+    * 
     * Encapsulates  Modal Window.
     */
     
@@ -92,7 +95,7 @@ uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popU
 
     
     /**  
-    * @member 
+    * @member  
     * @name togglePopUp 
     * @memberof module:uiServices.mainAppController.$scope.popUp
     * @param {object} DOMElement
@@ -108,4 +111,45 @@ uiServices.controller('mainAppController', ['$scope', 'isSateInitialized', 'popU
 		popUp.togglePopUp(element);
 		
 	};
+	
+   //a simple model to bind to and send to the server
+    $scope.model = Session;
+    
+    
+    //an array of files selected
+    $scope.file  = null;
+
+    //listen for the file selected event
+    $scope.$on("UpdateModel", function (event, args) {
+		
+        $scope.$apply(function () {
+			var projectToSave = {};
+            //add the file object to the scope's files collection
+            $scope.file = args.file[0];
+            projectToSave.name = Session.name;
+            projectToSave.passWord = Session.pass;
+            projectToSave.project = args.project;
+            commit.data($scope.file, args.fileName, projectToSave);
+            
+            /*commit.data($scope.file,  args.project).then(function(){
+        
+                $rootScope.$broadcast('refresh-Map');
+                
+            }).error(function () {
+
+            //populate pop up with a warning message
+
+        });;*/
+       
+        });
+    });
+    
+    $scope.refresh = function () {
+        
+        $rootScope.$broadcast('refresh-Map');
+          
+    };
+
+	
+	
 }]);

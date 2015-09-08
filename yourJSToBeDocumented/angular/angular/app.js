@@ -6,7 +6,7 @@
 * @name app 
 * @variable app 
 * @public
-* @static  
+* @static
 * @requires ngRoute
 * @requires ngAnimate
 * @requires routeSateModule
@@ -23,10 +23,10 @@
 
 
 // when not run throught server
-var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
-	bracets = 'http://127.0.0.1:53394/',
+var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/mapsApp-master',
+	bracets = 'http://127.0.0.1:51723',
 	mac = '/Users/mikenats/Documents/Dev/github/mapsApp/',
-	templateUrl = mac,
+	templateUrl = bracets,
 	
 	app = angular.module('app', ['ngRoute', 'ngAnimate', 'mapModule', 'ui.router', 'uiServices', 'authModule']).run(['$rootScope', '$state', '$stateParams', '$q', 'AUTH_EVENTS', 'authService', 'isSateInitialized', 'gMap', function ($rootScope, $state, $stateParams, $q, AUTH_EVENTS, authService, isSateInitialized, gMap) {
 
@@ -59,8 +59,8 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
 		$rootScope.$state = $state;
         
         /** 
-        * @property
-        * @name $state 
+        * @member
+        * @name $state
         * @memberof module:app.run.$rootScope
         * @public 
         * @Description  Makes availiable {@link $state} to the hole App.
@@ -124,100 +124,40 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
         * @requires $stateProvide
         * @requires $urlRouterProvider
         * @Description Routing of the App
-        * @example -
-        *    /////////////////////////////
-        *    // Redirects and Otherwise //
-        *    /////////////////////////////
-        *
-        *    $urlRouterProvider.otherwise('/index');
-        *
-        *    //////////////////////////
-        *    // State Configurations //
-        *    //////////////////////////
-        *
-        *    // Home //
-        *    $stateProvider.state("index", {
-        *    
-        *        url: "/index",
-        *        templateUrl: 'views/logInTemplate.html',
-        *        data : { requireLogin : false}
-        *
-        *    }).state("createdit", {
-        *    
-        *        url: "/createdit",
-        *        views: {
-        *            "userView": { templateUrl: "views/userTemplate.html" },
-        *            "createEditProjectView": { templateUrl: "views/createEditTemplate.html" }
-        *        },
-        *        data : { requireLogin : true}
-        *
-        *    }).state("createproject", {
-        *    
-        *        url: "/createproject",
-        *        views: {
-        *            "navView": { templateUrl: "views/navTemplate.html" },
-        *            "userView": { templateUrl: "views/userTemplate.html" },
-        *            "createProjectView": { templateUrl: "views/createProjectTemplate.html" }
-        *        },
-        *        data : { requireLogin : true}
-        *
-        *    }).state("editproject", {
-        *        url: "/editproject",
-        *        views: {
-        *            "navView": { templateUrl: "views/navTemplate.html" },
-        *            "userView": { templateUrl: "views/userTemplate.html" },
-        *            "editProjectView": { templateUrl: "views/editProjectTemplate.html" }
-        *        },
-        *        data : {requireLogin : true}
-        *
-        *    }).state("customap", {
-        *        url: "/customap/path",
-        *        views: {
-        *            "navView": { templateUrl: "views/navTemplate.html" },
-        *            "userView": { templateUrl: "views/userTemplate.html" },
-        *            "mapView": { templateUrl: "views/mapTemplate.html" }
-        *        },
-        *        data : {requireLogin : true}
-        *
-        *    }).state("map", {
-        *        url: "/map/path",
-        *        templateUrl: 'views/viewMapTemplate.html',
-        *        data : {requireLogin : false}
-        *    });
         */
 		
-		$urlRouterProvider.otherwise('/index');
+		$urlRouterProvider.otherwise('/log-in');
 		
 		// Home //
 		$stateProvider.state("index", {
 			
-			url: "/index",
-			templateUrl: 'views/logInTemplate.html',
+			url: "/log-in",
+			templateUrl: 'views/logIn-View.html',
 			data : {
 				
 				requireLogin : false
 				
 			}
  
-        }).state("createdit", {
+        }).state("select-action", {
 			
-			url: "/createdit",
+			url: "/select-action",
 			views: {
-				"userView": { templateUrl: "views/userTemplate.html" },
-				"createEditProjectView": { templateUrl: "views/createEditTemplate.html" }
+				"userCredentialSlot": { templateUrl: "views/userCredentials-Slot.html" },
+				"createEditProjectView": { templateUrl: "views/select-action-View.html" }
 			},
 			data : {
 				
 				requireLogin : true
 			}
 			
-		}).state("createproject", {
+		}).state("create-project", {
 			
-			url: "/createproject",
+			url: "/create-project",
 			views: {
 				"navView": { templateUrl: "views/navTemplate.html" },
-				"userView": { templateUrl: "views/userTemplate.html" },
-				"createProjectView": { templateUrl: "views/createProjectTemplate.html" }
+				"userCredentialSlot": { templateUrl: "views/userCredentials-Slot.html" },
+				"createProjectView": { templateUrl: "views/create-project-View.html" }
 			},
 			data : {
 				
@@ -225,13 +165,13 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
 				
 			}
 		
-		}).state("editproject", {
+		}).state("edit-project", {
 			
-			url: "/editproject",
+			url: "/edit-project",
 			views: {
 				"navView": { templateUrl: "views/navTemplate.html" },
-				"userView": { templateUrl: "views/userTemplate.html" },
-				"editProjectView": { templateUrl: "views/editProjectTemplate.html" }
+				"userCredentialSlot": { templateUrl: "views/userCredentials-Slot.html" },
+				"editProjectView": { templateUrl: "views/edit-project-View.html" }
 			},
 			data : {
 				
@@ -239,22 +179,22 @@ var windows = 'file:///C:/Users/michalis.tsougkranis/Desktop/map',
 				
 			}
 		
-		}).state("customap", {
+		}).state("custom-visualization", {
 			
-			url: "/customap/*path",
+			url: "/custom-visualization/*path",
 			views: {
 				"navView": { templateUrl: "views/navTemplate.html" },
-				"userView": { templateUrl: "views/userTemplate.html" },
-				"mapView": { templateUrl: "views/mapTemplate.html" }
+				"userCredentialSlot": { templateUrl: "views/userCredentials-Slot.html" },
+				"visualizationView": { templateUrl: "views/custom-visualization-View.html" }
 			},
 			data : {
 				requireLogin : true
 			}
  
-        }).state("map", {
+        }).state("published-visualization", {
  
-			url: "/map/*path",
-			templateUrl: 'views/viewMapTemplate.html',
+			url: "/visualization/*path",
+			templateUrl: 'views/pupblished-visualization-View.html',
 			data : {
 				requireLogin : false
 			}

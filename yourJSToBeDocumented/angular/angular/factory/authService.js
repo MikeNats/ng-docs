@@ -43,8 +43,7 @@ auth.factory('authService', ['$http', 'AUTH_EVENTS', 'Session', function ($http,
         */
         
 		authenticatited : 'auth-not-authenticated',
-		path : templateUrl + '/js/app/data/userDataResponse.js',
-	 
+
 
 
         /**

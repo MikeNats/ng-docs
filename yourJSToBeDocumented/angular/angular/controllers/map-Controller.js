@@ -21,7 +21,7 @@
 */
 
 
-uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 'gMapsLib', 'gMap', 'deleteHeadScripts', function ($rootScope, $stateParams, $scope, gMapsLib, gMap, deleteHeadScripts) {
+uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 'gMapsLib', 'gMap', 'deleteHeadScripts', 'Session', 'modelBuilder', 'timeline', function ($rootScope, $stateParams, $scope, gMapsLib, gMap, deleteHeadScripts, Session, modelBuilder, timeline) {
  
     /**   
     * @class
@@ -31,17 +31,18 @@ uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 
     */
     
     "use strict";
-	
+
     /**   
     * @member 
-    * @name urlVariables  
+    * @name projectNumber  
+    * @type {Integer}
     * @memberof module:uiServices.mapController.$scope
-    * @Description  varriables fetched from {@link $stateParams.path}
+    * @Description position of the Session.project array. Fetched from url
     */
 	
-	$scope.urlVariables = JSON.parse($stateParams.path);
+	$scope.projectNumber = JSON.parse($stateParams.path);
     
-	console.log('insideController', $scope.urlVariables);
+   
     /**  
     * @class 
     * @name map  
@@ -56,21 +57,12 @@ uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 
     * 
     */
 	
-    $scope.map = {
-		
-		urlVariables : $scope.urlVariables,
-		/**   
-		* @property 
-		* @name settings
-		* @memberof module:uiServices.mapController.$scope.map
-		* @Description settings of the map initialy are been fetched throught URL  
-		*
-		* Using {@link $stateParams} service
-		*/
-         
-        settings : $scope.urlVariables.settings//parse url parameters as json
-    };
+
+  
+
+    $scope.project = Session.projects[$scope.projectNumber];
     
+
     /**   
     * @function 
     * @name mapsInitialized
@@ -84,13 +76,26 @@ uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 
     * 
     * > Settings {@link module:mapModule.mapController.$scope $scope.map.settings} are been updated.  
     */
+    $scope.project.executeVisualization = function () {
+        
+        gMapsLib.mapsInitialized.then(function () {//Promise fullfiled when google maps Head Script is appened.
+
+            //settings are been updated  with the nw features
+            $scope.project.settings = gMap.features(gMap.append(modelBuilder.data($scope.project.settings)), $scope.project.projectId);//Initiate gmap features
+
+        });
     
-    gMapsLib.mapsInitialized.then(function () {//Promise fullfiled when google maps Head Script is appened.
+    };
     
-        //settings are been updated  with the nw features
-        $scope.map.settings = gMap.features(gMap.append($scope.map.settings));//Initiate gmap features
-     
+    $scope.project.executeVisualization();
+    
+    
+    $scope.$on('refresh-Map', function(event, args) {
+        
+        $scope.project.executeVisualization();
+        
     });
+    
     
     /** 
     * @event 
@@ -108,16 +113,22 @@ uiServices.controller('mapController', ['$rootScope', '$stateParams', '$scope', 
     
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {//When user leave the template
         
-        if ($rootScope.$state.$current.name === 'customap') {//If the template is the customap
+        if ($rootScope.$state.$current.name === 'custom-visualization') {//If the template is the customap
             
             /* Set delete gmap, relevant script and set settings map  to null */
             
-            $scope.map.settings.map = null;
-            $scope.map.settings.allow  = false;
+            $scope.project.settings.map = null;
+            
+            $scope.project.settings.allow  = false;
+            
+            Session.projects[$scope.projectNumber].settings = modelBuilder.data($scope.project.settings);
+        
+            
+            
             
             angular.element(document.getElementById('map-canvas')).empty();
             
-        //    deleteHeadScripts.exclude(['appScripts']);
+           // deleteHeadScripts.exclude(['appScripts']);
         }
     });
 }]);

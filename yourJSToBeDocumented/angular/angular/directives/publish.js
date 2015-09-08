@@ -1,5 +1,6 @@
 /*global uiServices */
 /*global templateUrl */
+/*global angular*/
 /*jshint -W089*/
 
 
@@ -12,6 +13,7 @@
 * @Description  Produce a URL with nesesacry variables for embading the custom map into iframe and makes the URL availiable to the USER by trigering and populating a modal window.
 * @requires popUp+module:uiServices.popUp
 * @requires errorHandler+module:mapModule.errorHandler
+* @requires modelBuilder+module:uiServices.modelBuilder
 * @author Michail Tsougkranis
 * @version 1.0
 * @since Angular.1.3.9     
@@ -22,7 +24,7 @@
 
 
 
-uiServices.directive('publish', ['popUp', 'errorHandler', 'Session', function (popUp, errorHandler, Session) { // Debendancies injection.
+uiServices.directive('publish', ['popUp', 'errorHandler', 'Session', 'modelBuilder', function (popUp, errorHandler, Session, modelBuilder) { // Debendancies injection.
 	
 	"use strict";
 
@@ -45,31 +47,6 @@ uiServices.directive('publish', ['popUp', 'errorHandler', 'Session', function (p
         * @classdesc  Directive's local scope: {@link module:mapModule.mapController.$scope.map mapcontrols}.
         */
  
-        /** 
-        * @memeber 
-        * @name updateSession 
-        * @param {Object} updateMap
-        * @memberof module:uiServices.publish.anonymous.scope
-        * @Description Updates User data
-        */
-
-        scope.mapcontrols.updateSession = function (data) {
-
-			var project;
-			
-			for (project in Session.projects) {
-			
-				if (Session.projects.hasOwnProperty(project)) {
-					
-					if (Session.projects[project].projectName === scope.mapcontrols.urlVariables.projectName) {
-						
-						Session.projects[project].settings = data;
-						
-					}
-
-				}
-			}
-        };
 		
  
         /** 
@@ -88,33 +65,17 @@ uiServices.directive('publish', ['popUp', 'errorHandler', 'Session', function (p
         */
             
         
-		scope.mapcontrols.publish = function () {
+		scope.project.publish = function () {
 
-			var seetingsToString = {},
-				attribute,
-				temSettings = Object.create(scope.mapcontrols.settings);//copies scope.mapcontrols.settings for local use
-			
-			temSettings.allow = false;
-			temSettings.markers = [];
-			
-			
-			for (attribute in temSettings) {
-				
+			var model = {};
+            model.projectId = scope.project.projectId;
+            model.projectName = scope.project.projectName;
+            model.settings = modelBuilder.data(scope.project.settings);
+            console.log(model);
+			popUp.populate('<p><strong>Project Saved Succesfully!!!</strong></p><p style="font-size:12px;float:left;"><strong>URL: </strong><br/>' + templateUrl + '/index.html#/visualization/' + angular.toJson(model) + '</p>');
+           
 
-				if (attribute !== 'response' && attribute !== 'map'  && attribute !== 'heatMap' && attribute !== 'heatmap'  && attribute !== 'layers' && attribute !== 'animate' && attribute !== 'errorHandler' && attribute !== 'findMinMaxDates'  && attribute !== 'monthAsNumber'   && attribute !== 'resetHeatMapMemory'   && attribute !== 'resetHeatMapMemory' && attribute !== 'setMinMaxDates'  && attribute !== 'setMinMaxDetailedDates' && attribute !== 'visibleCoords'  && attribute !== 'layerObject'   && attribute !== 'cashedHeatMapsBackrward') {//filters out the unnesesary variables
-					
-					seetingsToString[attribute] = temSettings[attribute];
-						
-				}
-			}
-			
-			seetingsToString.zoom = Math.round(seetingsToString.zoom / 10) * 10;//Google maps zoom value has to be rounded.
- 
-			
-			popUp.populate('<p style="font-size:12px;float:left;">' + templateUrl + '/index.html#/map/' + errorHandler.settingsParseJson(seetingsToString) + '</p>');
-            
-            scope.mapcontrols.updateSession(seetingsToString);
-			
+       
 		};
 	}
    
@@ -136,10 +97,6 @@ uiServices.directive('publish', ['popUp', 'errorHandler', 'Session', function (p
 		
 		link : link,
 		restrict : 'A',
-		scope: {
-			
-			mapcontrols : '='
-			
-		}
+		scope: true
 	};
 }]);

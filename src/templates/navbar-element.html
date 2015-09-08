@@ -21,8 +21,14 @@
       ><a  ng-href="#!/{{element.$href}}">{{element.name}}</a
     ></div>  
 
-        <div ng-controller="navbarExpandedController1" doclet="element"
-            >
+        <div ng-controller="navbarExpandedController1" doclet="element">
+            
+            
+            
+            
+            
+            
+
 
             <ul  class="nav expanded  ">
 
@@ -37,15 +43,15 @@
                 </li> 
 
 
-            <!--<li ng-if="elements.class" class="header">Constractors</li>
+            <li ng-if="elements.class" class="header">class</li>
                 <li ng-if="elements.class"
-                    ng-repeat="constractor in elements.class" 
-                    ng-class="{'method' : constractor.params, 'attribute' : !constractor.params }">
-            <div >-->
-            <!--  <span ng-if="constractor.$prefix" class="kind-prefix">{{constractor.$prefix}}.</span
-              >--><!-- <a  ng-href="#!/{{constractor.$href}}">{{constractor.name}}</a
+                    ng-repeat="class in elements.class" 
+                    ng-class="{'method' : class.params, 'attribute' : !class.params }">
+            <div >
+             <!--<span ng-if="class.$prefix" class="kind-prefix">{{class.$prefix}}.</span
+              >--><a  ng-href="#!/{{class.$href}}">{{class.name}}</a
             ></div>
-            </li> -->
+            </li>
 
 
                 <li ng-if="elements.member" class="header">Members</li>
